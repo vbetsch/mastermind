@@ -9,4 +9,7 @@ install:
 requirements:
 	pip freeze > ${requirements_file}
 
+run:
+	./venv/bin/python src/main.py
+
 .PHONY: install requirements

@@ -25,11 +25,3 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest --cov=src --cov-report=html --cov-fail-under=10 tests/
-
-      - name: Upload coverage report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: htmlcov/
-          retention-days: 5

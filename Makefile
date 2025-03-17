@@ -15,4 +15,7 @@ run:
 tests:
 	./venv/bin/python -m unittest tests/libs/test_singleton.py
 
-.PHONY: install requirements run tests
+coverage:
+	pytest --cov=src --cov-report=term-missing --cov-fail-under=10 tests/
+
+.PHONY: install requirements run tests coverage

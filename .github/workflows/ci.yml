@@ -24,7 +24,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=src --cov-report=term-missing --cov-fail-under=10 tests/
+          pytest --cov=src --cov-report=html --cov-fail-under=10 tests/
 
       - name: Upload coverage report
         if: always()

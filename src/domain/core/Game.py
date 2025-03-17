@@ -1,4 +1,4 @@
-from lib.decorators.Singleton import Singleton
+from src.libs.decorators.Singleton import Singleton
 
 
 @Singleton

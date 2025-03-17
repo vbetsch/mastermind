@@ -1,6 +1,6 @@
 requirements_file := requirements.txt
 
-all: install
+all: run
 .PHONY: all
 
 install:
@@ -12,4 +12,7 @@ requirements:
 run:
 	./venv/bin/python src/main.py
 
-.PHONY: install requirements
+tests:
+	./venv/bin/python -m unittest tests/libs/test_singleton.py
+
+.PHONY: install requirements run tests

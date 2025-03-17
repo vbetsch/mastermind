@@ -1,5 +1,5 @@
+from lib.abstract.Memento import Memento
 from src.domain.entities.Session import Session
-from src.domain.values.mementos.Memento import Memento
 
 
 class SessionMemento(Memento):

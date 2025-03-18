@@ -3,7 +3,7 @@ from src.domain.usecases.create_a_game import CreateAGame
 from src.domain.usecases.show_leaderboard import ShowLeaderboard
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
-from src.libs.options.menu.MainMenuOptionsList import MainMenuOptionsList
+from src.libs.options.menu.MainMenuOptions import MainMenuOptions
 
 
 class MainMenuController(Subscriber):
@@ -15,13 +15,13 @@ class MainMenuController(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case MainMenuOptionsList.CREATE_A_GAME.name:
+            case MainMenuOptions.CREATE_A_GAME.name:
                 self.create_a_game.execute()
-            case MainMenuOptionsList.CONTINUE_A_GAME.name:
+            case MainMenuOptions.CONTINUE_A_GAME.name:
                 self.continue_a_game.execute()
-            case MainMenuOptionsList.SHOW_LEADERBOARD.name:
+            case MainMenuOptions.SHOW_LEADERBOARD.name:
                 self.show_leaderboard.execute()
-            case MainMenuOptionsList.QUIT.name:
+            case MainMenuOptions.QUIT.name:
                 self.send("EXIT")
             case _:
                 raise Exception(f"Unknown choice: {message}")

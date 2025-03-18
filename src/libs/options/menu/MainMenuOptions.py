@@ -1,7 +1,7 @@
 from src.libs.options.menu.MenuOption import MenuOption
 
 
-class MainMenuOptionsList:
+class MainMenuOptions:
     CREATE_A_GAME = MenuOption("CREATE_A_GAME", "Create a game")
     CONTINUE_A_GAME = MenuOption("CONTINUE_A_GAME", "Continue a game")
     SHOW_LEADERBOARD = MenuOption("SHOW_LEADERBOARD", "Show leaderboard")

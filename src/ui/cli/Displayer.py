@@ -2,7 +2,7 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
-from src.libs.options.menu.MainMenuOptionsList import MainMenuOptionsList
+from src.libs.options.menu.MainMenuOptions import MainMenuOptions
 from src.libs.options.menu.MenuOption import MenuOption
 from src.ui.cli.components.Menu import Menu
 
@@ -26,9 +26,9 @@ class Displayer:
             console=self._console,
             title="Main menu",
             options=[
-                MainMenuOptionsList.CREATE_A_GAME,
-                MainMenuOptionsList.CONTINUE_A_GAME,
-                MainMenuOptionsList.SHOW_LEADERBOARD,
-                MainMenuOptionsList.QUIT
+                MainMenuOptions.CREATE_A_GAME,
+                MainMenuOptions.CONTINUE_A_GAME,
+                MainMenuOptions.SHOW_LEADERBOARD,
+                MainMenuOptions.QUIT
             ])
         return main_menu.show()

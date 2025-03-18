@@ -1,5 +1,5 @@
 from src.app.controllers.MainMenuController import MainMenuController
-from src.libs.mediators.Mediator import Mediator
+from src.libs.communication.Mediator import Mediator
 from src.view.cli.CLIController import CLIController
 
 

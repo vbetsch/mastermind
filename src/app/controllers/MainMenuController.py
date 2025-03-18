@@ -1,6 +1,6 @@
 from src.libs.enums.OptionEnum import OptionEnum
-from src.libs.mediators.IMediator import IMediator
-from src.libs.mediators.Subscriber import Subscriber
+from src.libs.communication.IMediator import IMediator
+from src.libs.communication.Subscriber import Subscriber
 
 
 class MainMenuController(Subscriber):

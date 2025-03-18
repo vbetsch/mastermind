@@ -1,6 +1,6 @@
 from typing import Self
 
-from src.libs.mediators.IMediator import IMediator
+from src.libs.communication.IMediator import IMediator
 
 
 class Subscriber:

@@ -4,8 +4,8 @@ from src.app.usecases.create_a_game import CreateAGame
 from src.app.usecases.show_leaderboard import ShowLeaderboard
 from src.common.communication.IMediator import IMediator
 from src.common.communication.Subscriber import Subscriber
-from src.common.messages.cli.menu.MainMenuOptions import MainMenuOptions
-from src.common.messages.controllers.ControllerMessages import ControllerMessages
+from src.common.communication.messages.cli.menu.MainMenuOptions import MainMenuOptions
+from src.common.communication.messages.controllers.ControllerMessages import ControllerMessages
 
 
 class MainMenuController(Subscriber):

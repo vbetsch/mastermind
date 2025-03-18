@@ -1,7 +1,7 @@
 from src.common.communication.IMediator import IMediator
 from src.common.communication.Subscriber import Subscriber
-from src.common.messages.cli.menu.MenuOption import MenuOption
-from src.common.messages.controllers.ControllerMessages import ControllerMessages
+from src.common.communication.messages.cli.menu.MenuOption import MenuOption
+from src.common.communication.messages.controllers.ControllerMessages import ControllerMessages
 from src.ui.cli.Displayer import Displayer
 
 

@@ -5,16 +5,22 @@ from src.app.usecases.continue_a_game import ContinueAGame
 from src.app.usecases.create_a_game import CreateAGame
 from src.app.usecases.show_leaderboard import ShowLeaderboard
 from src.common.communication.Mediator import Mediator
+from src.domain.entities.Player import Player
 from src.infra.repositories.SessionRepository import SessionRepository
 from src.ui.cli.CLIController import CLIController
 
 
 def inject_dependencies() -> CLIController:
+    # Player
+    player = Player(name="default")
+
     # Repositories
     session_repository: ISessionRepository = SessionRepository()
 
     # Use Cases
-    create_a_game: IMainMenuUseCase = CreateAGame(session_repository=session_repository)
+    create_a_game: IMainMenuUseCase = CreateAGame(
+        player=player,
+        session_repository=session_repository)
     continue_a_game: IMainMenuUseCase = ContinueAGame()
     show_leaderboard: IMainMenuUseCase = ShowLeaderboard()
 

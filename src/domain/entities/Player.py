@@ -1,9 +1,10 @@
+from dataclasses import dataclass, field
+
 from src.domain.entities.Score import Score
 from src.domain.values.sessions.SessionHistory import SessionHistory
 
-
+@dataclass(frozen=True)
 class Player:
-    def __init__(self, name: str) -> None:
-        self._name = name
-        self._sessions = SessionHistory()
-        self._score = Score()
+    name: str
+    sessions: SessionHistory = field(default_factory=SessionHistory)
+    score: Score = field(default_factory=Score)

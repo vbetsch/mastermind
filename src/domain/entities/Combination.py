@@ -1,6 +1,7 @@
+from dataclasses import dataclass, field
+
 from src.domain.values.combinations.Unit import Unit
 
-
+@dataclass(frozen=True)
 class Combination:
-    def __init__(self, units: list[Unit]) -> None:
-        self._units: list[Unit] = units
+    units: list[Unit] = field(default_factory=list[Unit])

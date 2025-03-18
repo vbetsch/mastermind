@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True, order=True)
 class Score:
-    def __init__(self) -> None:
-        self._value: int = 0
+    value: int = 0

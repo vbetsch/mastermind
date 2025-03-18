@@ -1,10 +1,10 @@
+from src.app.usecases.continue_a_game import ContinueAGame
+from src.app.usecases.create_a_game import CreateAGame
+from src.app.usecases.show_leaderboard import ShowLeaderboard
 from src.common.communication.IMediator import IMediator
 from src.common.communication.Subscriber import Subscriber
 from src.common.options.callbacks.UICallbackOptions import UICallbackOptions
 from src.common.options.menu.MainMenuOptions import MainMenuOptions
-from src.domain.usecases.continue_a_game import ContinueAGame
-from src.domain.usecases.create_a_game import CreateAGame
-from src.domain.usecases.show_leaderboard import ShowLeaderboard
 
 
 class MainMenuController(Subscriber):

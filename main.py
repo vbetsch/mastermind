@@ -1,10 +1,10 @@
-from src.view.cli.CLI import CLI
+from src.view.cli.CLIController import CLIController
 
 
 def run():
-    cli = CLI()
+    cli: CLIController = CLIController()
     cli.welcome()
-    cli.show_main_menu()
+    cli.main_menu()
 
 if __name__ == '__main__':
     run()

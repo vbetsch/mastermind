@@ -1,22 +1,38 @@
-requirements_file := requirements.txt
-tests_folder := tests/
+VENV := venv
+PYTHON := $(VENV)/bin/python
+PIP := $(VENV)/bin/pip
+REQUIREMENTS_FILE := requirements.txt
+
+PROJECT_NAME := mastermind
+ROOT_FOLDER := src
+TESTS_FOLDER := tests/
+
 
 all: run
 .PHONY: all
 
-install:
-	pip install -r ${requirements_file}
+.env:
+	echo 'ERROR: No environment variable configured'
+	exit 1
 
-requirements:
-	pip freeze > ${requirements_file}
+$(VENV)/bin/activate:
+	python3 -m venv $(VENV)
+	$(PIP) install --upgrade pip
 
-run:
-	./venv/bin/python main.py
 
-tests:
-	pytest ${tests_folder}
+install: $(VENV)/bin/activate
+	$(PIP) install -r ${REQUIREMENTS_FILE}
 
-coverage:
-	pytest --cov=src --cov-report=term-missing --cov-fail-under=10 ${tests_folder}
+requirements: install
+	$(PIP) freeze > ${REQUIREMENTS_FILE}
+
+run: install .env
+	$(PYTHON) main.py
+
+tests: install
+	pytest ${TESTS_FOLDER}
+
+coverage: install
+	pytest --cov=${ROOT_FOLDER} --cov-report=term-missing --cov-fail-under=10 ${TESTS_FOLDER}
 
 .PHONY: install requirements run tests coverage

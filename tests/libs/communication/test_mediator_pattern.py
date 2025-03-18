@@ -1,8 +1,8 @@
 from unittest import TestCase, main
 
-from src.libs.communication.IMediator import IMediator
-from src.libs.communication.Mediator import Mediator
-from src.libs.communication.Subscriber import Subscriber
+from src.common.communication.IMediator import IMediator
+from src.common.communication.Mediator import Mediator
+from src.common.communication.Subscriber import Subscriber
 
 
 class SubscriberTest(Subscriber):

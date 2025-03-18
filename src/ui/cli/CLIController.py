@@ -1,7 +1,7 @@
-from src.libs.communication.IMediator import IMediator
-from src.libs.communication.Subscriber import Subscriber
-from src.libs.options.callbacks.UICallbackOptions import UICallbackOptions
-from src.libs.options.menu.MenuOption import MenuOption
+from src.common.communication.IMediator import IMediator
+from src.common.communication.Subscriber import Subscriber
+from src.common.options.callbacks.UICallbackOptions import UICallbackOptions
+from src.common.options.menu.MenuOption import MenuOption
 from src.ui.cli.Displayer import Displayer
 
 

@@ -2,8 +2,8 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
-from src.libs.options.menu.MainMenuOptions import MainMenuOptions
-from src.libs.options.menu.MenuOption import MenuOption
+from src.common.options.menu.MainMenuOptions import MainMenuOptions
+from src.common.options.menu.MenuOption import MenuOption
 from src.ui.cli.components.Menu import Menu
 
 

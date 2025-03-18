@@ -13,7 +13,7 @@ run:
 	./venv/bin/python main.py
 
 tests:
-	./venv/bin/python -m unittest tests/libs/test_singleton.py
+	pytest tests/
 
 coverage:
 	pytest --cov=src --cov-report=term-missing --cov-fail-under=10 tests/

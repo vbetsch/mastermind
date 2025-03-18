@@ -1,4 +1,4 @@
-from src.libs.communication.IMediator import IMediator
+from src.common.communication.IMediator import IMediator
 
 
 class Mediator(IMediator):

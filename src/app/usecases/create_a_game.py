@@ -1,9 +1,9 @@
 from src.app.ports.repositories.ISessionRepository import ISessionRepository
-from src.common.abstract.IUseCase import IUseCase
+from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 from src.domain.entities.Session import Session
 
 
-class CreateAGame(IUseCase):
+class CreateAGame(IMainMenuUseCase):
     def __init__(self, session_repository: ISessionRepository) -> None:
         self.session_repository: ISessionRepository = session_repository
 

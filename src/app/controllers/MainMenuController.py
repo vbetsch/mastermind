@@ -1,5 +1,5 @@
 from src.app.exceptions.NotHandledException import NotHandledException
-from src.common.abstract.IUseCase import IUseCase
+from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 from src.common.communication.IMediator import IMediator
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.messages.cli.menu.MainMenuOptions import MainMenuOptions
@@ -7,12 +7,12 @@ from src.common.communication.messages.controllers.ControllerMessages import Con
 
 
 class MainMenuController(Subscriber):
-    def __init__(self, mediator: IMediator, create_a_game: IUseCase, continue_a_game: IUseCase,
-                 show_leaderboard: IUseCase) -> None:
+    def __init__(self, mediator: IMediator, create_a_game: IMainMenuUseCase, continue_a_game: IMainMenuUseCase,
+                 show_leaderboard: IMainMenuUseCase) -> None:
         super().__init__(self.__class__.__name__, mediator)
-        self.create_a_game: IUseCase = create_a_game
-        self.continue_a_game: IUseCase = continue_a_game
-        self.show_leaderboard: IUseCase = show_leaderboard
+        self.create_a_game: IMainMenuUseCase = create_a_game
+        self.continue_a_game: IMainMenuUseCase = continue_a_game
+        self.show_leaderboard: IMainMenuUseCase = show_leaderboard
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:

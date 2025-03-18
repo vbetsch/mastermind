@@ -1,7 +1,7 @@
-from src.common.abstract.IRepository import IRepository
+from src.app.ports.repositories.ISessionRepository import ISessionRepository
 from src.domain.entities.Session import Session
 
 
-class SessionRepository(IRepository):
+class SessionRepository(ISessionRepository):
     def create(self, session: Session):
         print(f"Creating the session {session}...")

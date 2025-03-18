@@ -1,9 +1,9 @@
 from src.app.controllers.MainMenuController import MainMenuController
 from src.app.ports.repositories.ISessionRepository import ISessionRepository
+from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 from src.app.usecases.continue_a_game import ContinueAGame
 from src.app.usecases.create_a_game import CreateAGame
 from src.app.usecases.show_leaderboard import ShowLeaderboard
-from src.common.abstract.IUseCase import IUseCase
 from src.common.communication.Mediator import Mediator
 from src.infra.repositories.SessionRepository import SessionRepository
 from src.ui.cli.CLIController import CLIController
@@ -14,11 +14,11 @@ def inject_dependencies() -> CLIController:
     session_repository: ISessionRepository = SessionRepository()
 
     # Use Cases
-    create_a_game: IUseCase = CreateAGame(session_repository=session_repository)
-    continue_a_game: IUseCase = ContinueAGame()
-    show_leaderboard: IUseCase = ShowLeaderboard()
+    create_a_game: IMainMenuUseCase = CreateAGame(session_repository=session_repository)
+    continue_a_game: IMainMenuUseCase = ContinueAGame()
+    show_leaderboard: IMainMenuUseCase = ShowLeaderboard()
 
-    # Communication
+    # Controllers
     mediator: Mediator = Mediator()
     cli: CLIController = CLIController(mediator=mediator)
     MainMenuController(

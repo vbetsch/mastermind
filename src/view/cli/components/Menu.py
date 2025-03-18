@@ -2,14 +2,14 @@ from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 
-from src.libs.enums.OptionEnum import OptionEnum
+from src.libs.enums.MainMenuOptionEnum import MainMenuOptionEnum
 
 
 class Menu:
-    def __init__(self, console: Console, title: str, options: list[OptionEnum]) -> None:
+    def __init__(self, console: Console, title: str, options: list[MainMenuOptionEnum]) -> None:
         self._console: Console = console
         self._title: str = title
-        self._options: list[OptionEnum] = options
+        self._options: list[MainMenuOptionEnum] = options
 
     def _render_columns(self, table: Table) -> None:
         table.add_column("Number", style="bold cyan", justify="center")
@@ -31,17 +31,17 @@ class Menu:
     def _render_choices(self) -> list[str]:
         return [str(i + 1) for i in range(len(self._options))]
 
-    def _ask_option(self) -> OptionEnum:
+    def _ask_option(self) -> MainMenuOptionEnum:
         choice: str = Prompt.ask("[bold yellow]Choose an option[/]", choices=self._render_choices())
 
         if int(choice) < 1 or int(choice) > len(self._options):
             raise IndexError
 
-        selected_option: OptionEnum = self._options[int(choice) - 1]
+        selected_option: MainMenuOptionEnum = self._options[int(choice) - 1]
         if not selected_option:
             raise IndexError
         return selected_option
 
-    def show(self) -> OptionEnum:
+    def show(self) -> MainMenuOptionEnum:
         self._show_table()
         return self._ask_option()

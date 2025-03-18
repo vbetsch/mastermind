@@ -1,4 +1,4 @@
-from src.libs.enums.OptionEnum import OptionEnum
+from src.libs.enums.MainMenuOptionEnum import MainMenuOptionEnum
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
 
@@ -9,13 +9,13 @@ class MainMenuController(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case OptionEnum.CREATE_A_GAME.name:
+            case MainMenuOptionEnum.CREATE_A_GAME.name:
                 print("Creating a new game...")
-            case OptionEnum.CONTINUE_A_GAME.name:
+            case MainMenuOptionEnum.CONTINUE_A_GAME.name:
                 print("Continuing game...")
-            case OptionEnum.SHOW_LEADERBOARD.name:
+            case MainMenuOptionEnum.SHOW_LEADERBOARD.name:
                 print("Showing leaderboard...")
-            case OptionEnum.QUIT.name:
+            case MainMenuOptionEnum.QUIT.name:
                 self.send("EXIT")
             case _:
                 raise Exception(f"Unknown choice: {message}")

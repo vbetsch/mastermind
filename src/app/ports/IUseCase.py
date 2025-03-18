@@ -3,5 +3,5 @@ from abc import ABC, abstractmethod
 
 class IUseCase(ABC):
     @abstractmethod
-    def handle(self) -> None:
+    def execute(self) -> None:
         pass

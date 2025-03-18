@@ -1,4 +1,5 @@
-import unittest
+from unittest import TestCase, main
+
 
 from src.libs.decorators.Singleton import Singleton
 
@@ -9,7 +10,7 @@ class Config:
         self.value = value
 
 
-class TestSingleton(unittest.TestCase):
+class TestSingleton(TestCase):
     def setUp(self):
         Config.clear_instance()
 
@@ -32,4 +33,4 @@ class TestSingleton(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()

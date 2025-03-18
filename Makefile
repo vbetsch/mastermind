@@ -10,7 +10,7 @@ requirements:
 	pip freeze > ${requirements_file}
 
 run:
-	./venv/bin/python src/main.py
+	./venv/bin/python main.py
 
 tests:
 	./venv/bin/python -m unittest tests/libs/test_singleton.py

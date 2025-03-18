@@ -2,7 +2,8 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
-from src.libs.enums.MainMenuOptionEnum import MainMenuOptionEnum
+from src.libs.options.aggregates.MainMenuOptionsList import MainMenuOptionsList
+from src.libs.options.values.MenuOption import MenuOption
 from src.view.cli.components.Menu import Menu
 
 
@@ -20,14 +21,14 @@ class Displayer:
         text = Text(message, style=style)
         self._console.print(text)
 
-    def show_main_menu(self) -> MainMenuOptionEnum:
+    def show_main_menu(self) -> MenuOption:
         main_menu: Menu = Menu(
             console=self._console,
             title="Main menu",
             options=[
-                MainMenuOptionEnum.CREATE_A_GAME,
-                MainMenuOptionEnum.CONTINUE_A_GAME,
-                MainMenuOptionEnum.SHOW_LEADERBOARD,
-                MainMenuOptionEnum.QUIT
+                MainMenuOptionsList.CREATE_A_GAME,
+                MainMenuOptionsList.CONTINUE_A_GAME,
+                MainMenuOptionsList.SHOW_LEADERBOARD,
+                MainMenuOptionsList.QUIT
             ])
         return main_menu.show()

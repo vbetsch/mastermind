@@ -1,6 +1,6 @@
-from src.libs.enums.MainMenuOptionEnum import MainMenuOptionEnum
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
+from src.libs.options.values.MenuOption import MenuOption
 from src.view.cli.Displayer import Displayer
 
 
@@ -21,7 +21,7 @@ class CLIController(Subscriber):
         self.displayer.print_ascii_art("mastermind")
 
     def main_menu(self) -> None:
-        choice: MainMenuOptionEnum = self.displayer.show_main_menu()
+        choice: MenuOption = self.displayer.show_main_menu()
         self.send(choice.name)
 
     def quit(self):

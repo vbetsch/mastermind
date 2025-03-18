@@ -9,10 +9,10 @@ from src.view.cli.components.Menu import Menu
 @Singleton
 class CLI:
     def __init__(self) -> None:
-        self.console: Console = Console()
-        self.ascii_font: str = "slant"
-        self.main_menu: Menu = Menu(
-            console=self.console,
+        self._console: Console = Console()
+        self._ascii_font: str = "slant"
+        self._main_menu: Menu = Menu(
+            console=self._console,
             title="Main menu",
             options=[
                 "Create a game",
@@ -22,17 +22,17 @@ class CLI:
             ])
 
     def _print_ascii_art(self, text: str) -> None:
-        ascii_art = figlet_format(text, font=self.ascii_font)
+        ascii_art = figlet_format(text, font=self._ascii_font)
         ascii_text = Text(ascii_art, style="bold")
-        self.console.print(ascii_text)
+        self._console.print(ascii_text)
 
     def _print_message(self, message: str, style=None) -> None:
         text = Text(message, style=style)
-        self.console.print(text)
+        self._console.print(text)
 
     def welcome(self) -> None:
         self._print_message("Welcome to")
         self._print_ascii_art("mastermind")
 
     def show_main_menu(self) -> None:
-        choice = self.main_menu.show()
+        choice = self._main_menu.show()

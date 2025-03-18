@@ -1,4 +1,4 @@
-from src.app.ports.IUseCase import IUseCase
+from src.common.abstract.IUseCase import IUseCase
 
 
 class ShowLeaderboard(IUseCase):

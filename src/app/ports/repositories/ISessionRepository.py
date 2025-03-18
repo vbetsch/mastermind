@@ -1,7 +1,10 @@
+from abc import ABC, abstractmethod
+
 from src.common.abstract.IRepository import IRepository
 from src.domain.entities.Session import Session
 
 
-class SessionRepository(IRepository):
+class ISessionRepository(IRepository):
+    @abstractmethod
     def create(self, session: Session):
-        print(f"Creating the session {session}...")
+        pass

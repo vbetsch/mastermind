@@ -1,11 +1,12 @@
-from src.app.ports.IRepository import IRepository
-from src.app.ports.IUseCase import IUseCase
-from src.infra.repositories.SessionRepository import SessionRepository
+from src.app.ports.repositories.ISessionRepository import ISessionRepository
+from src.common.abstract.IUseCase import IUseCase
+from src.domain.entities.Session import Session
 
 
 class CreateAGame(IUseCase):
-    def __init__(self) -> None:
-        self.session_repository: IRepository = SessionRepository()
+    def __init__(self, session_repository: ISessionRepository) -> None:
+        self.session_repository: ISessionRepository = session_repository
 
     def execute(self) -> None:
-        self.session_repository.create()
+        new_session = Session()
+        self.session_repository.create(new_session)

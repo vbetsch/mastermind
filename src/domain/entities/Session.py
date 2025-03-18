@@ -8,7 +8,7 @@ from src.domain.values.sessions.SessionMemento import SessionMemento
 
 @dataclass(frozen=True)
 class Session:
-    status: StatusEnum
+    status: StatusEnum = StatusEnum.NOT_STARTED
     score: Score = field(default_factory=Score)
 
     def save(self) -> SessionMemento:

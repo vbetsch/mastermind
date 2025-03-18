@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 from src.common.abstract.IRepository import IRepository
 from src.domain.entities.Session import Session

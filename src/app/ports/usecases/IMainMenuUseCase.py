@@ -1,4 +1,4 @@
-from abc import abstractmethod, ABC
+from abc import abstractmethod
 
 from src.common.abstract.IUseCase import IUseCase
 

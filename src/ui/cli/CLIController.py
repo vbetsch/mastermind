@@ -1,6 +1,6 @@
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
-from src.libs.options.values.MenuOption import MenuOption
+from src.libs.options.menu.MenuOption import MenuOption
 from src.ui.cli.Displayer import Displayer
 
 

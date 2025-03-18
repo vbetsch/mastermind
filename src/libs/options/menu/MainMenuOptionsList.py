@@ -1,4 +1,4 @@
-from src.libs.options.values.MenuOption import MenuOption
+from src.libs.options.menu.MenuOption import MenuOption
 
 
 class MainMenuOptionsList:

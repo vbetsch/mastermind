@@ -3,7 +3,7 @@ from src.domain.usecases.create_a_game import CreateAGame
 from src.domain.usecases.show_leaderboard import ShowLeaderboard
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
-from src.libs.options.aggregates.MainMenuOptionsList import MainMenuOptionsList
+from src.libs.options.menu.MainMenuOptionsList import MainMenuOptionsList
 
 
 class MainMenuController(Subscriber):

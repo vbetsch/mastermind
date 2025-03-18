@@ -4,7 +4,7 @@ from rich.text import Text
 
 from src.libs.options.aggregates.MainMenuOptionsList import MainMenuOptionsList
 from src.libs.options.values.MenuOption import MenuOption
-from src.view.cli.components.Menu import Menu
+from src.ui.cli.components.Menu import Menu
 
 
 class Displayer:

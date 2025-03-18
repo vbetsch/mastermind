@@ -1,6 +1,6 @@
 from src.app.controllers.MainMenuController import MainMenuController
 from src.libs.communication.Mediator import Mediator
-from src.view.cli.CLIController import CLIController
+from src.ui.cli.CLIController import CLIController
 
 
 def run():

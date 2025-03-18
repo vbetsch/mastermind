@@ -1,7 +1,7 @@
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
 from src.libs.options.values.MenuOption import MenuOption
-from src.view.cli.Displayer import Displayer
+from src.ui.cli.Displayer import Displayer
 
 
 class CLIController(Subscriber):

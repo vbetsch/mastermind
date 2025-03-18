@@ -1,9 +1,10 @@
+from abc import ABC, abstractmethod
 from typing import Self
 
 from src.common.communication.IMediator import IMediator
 
 
-class Subscriber:
+class Subscriber(ABC):
     def __init__(self, name: str, mediator: IMediator) -> None:
         self.name: str = name
         self.mediator: IMediator = mediator
@@ -15,5 +16,6 @@ class Subscriber:
     def receive(self, message: str, sender: Self) -> None:
         self.handle(message, sender)
 
+    @abstractmethod
     def handle(self, message: str, sender: Self) -> None:
         pass

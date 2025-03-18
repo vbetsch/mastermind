@@ -1,5 +1,5 @@
 from src.common.messages.IMessage import IMessage
 
 
-class CallbackMessage(IMessage):
+class ControllerMessage(IMessage):
     pass

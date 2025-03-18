@@ -2,7 +2,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 
-from src.common.messages.menu.MenuOption import MenuOption
+from src.common.messages.cli.menu.MenuOption import MenuOption
 
 
 class Menu:

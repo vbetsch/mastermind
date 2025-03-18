@@ -1,4 +1,5 @@
 requirements_file := requirements.txt
+tests_folder := tests/
 
 all: run
 .PHONY: all
@@ -13,9 +14,9 @@ run:
 	./venv/bin/python main.py
 
 tests:
-	pytest tests/
+	pytest ${tests_folder}
 
 coverage:
-	pytest --cov=src --cov-report=term-missing --cov-fail-under=10 tests/
+	pytest --cov=src --cov-report=term-missing --cov-fail-under=10 ${tests_folder}
 
 .PHONY: install requirements run tests coverage

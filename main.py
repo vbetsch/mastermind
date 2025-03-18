@@ -1,8 +1,12 @@
+from src.app.controllers.MainMenuController import MainMenuController
+from src.libs.mediators.Mediator import Mediator
 from src.view.cli.CLIController import CLIController
 
 
 def run():
-    cli: CLIController = CLIController()
+    mediator: Mediator = Mediator()
+    cli: CLIController = CLIController(mediator)
+    main_menu: MainMenuController = MainMenuController(mediator)
     cli.welcome()
     cli.main_menu()
 

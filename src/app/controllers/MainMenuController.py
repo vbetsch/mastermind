@@ -1,19 +1,21 @@
-from src.libs.abstract.IController import IController
-from src.libs.callbacks.ICallback import ICallback
-from src.libs.callbacks.UICallback import UICallback
 from src.libs.enums.OptionEnum import OptionEnum
+from src.libs.mediators.IMediator import IMediator
+from src.libs.mediators.Subscriber import Subscriber
 
 
-class MainMenuController(IController):
-    def handle(self, choice: OptionEnum) -> ICallback | None:
-        match choice:
-            case OptionEnum.CREATE_A_GAME:
+class MainMenuController(Subscriber):
+    def __init__(self, mediator: IMediator) -> None:
+        super().__init__(self.__class__.__name__, mediator)
+
+    def handle(self, message: str, sender: Subscriber) -> None:
+        match message:
+            case OptionEnum.CREATE_A_GAME.name:
                 print("Creating a new game...")
-            case OptionEnum.CONTINUE_A_GAME:
+            case OptionEnum.CONTINUE_A_GAME.name:
                 print("Continuing game...")
-            case OptionEnum.SHOW_LEADERBOARD:
+            case OptionEnum.SHOW_LEADERBOARD.name:
                 print("Showing leaderboard...")
-            case OptionEnum.QUIT:
-                return UICallback("QUIT")
+            case OptionEnum.QUIT.name:
+                self.send("EXIT")
             case _:
-                raise Exception(f"Unknown choice: {choice}")
+                raise Exception(f"Unknown choice: {message}")

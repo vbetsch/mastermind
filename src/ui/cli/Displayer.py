@@ -25,10 +25,6 @@ class Displayer:
         main_menu: Menu = Menu(
             console=self._console,
             title="Main menu",
-            options=[
-                MainMenuOptions.CREATE_A_GAME,
-                MainMenuOptions.CONTINUE_A_GAME,
-                MainMenuOptions.SHOW_LEADERBOARD,
-                MainMenuOptions.QUIT
-            ])
+            options=MainMenuOptions.all_options()
+        )
         return main_menu.show()

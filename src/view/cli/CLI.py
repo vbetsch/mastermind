@@ -2,7 +2,9 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
+from src.app.controllers.MainMenuController import MainMenuController
 from src.libs.decorators.Singleton import Singleton
+from src.libs.enums.OptionEnum import OptionEnum
 from src.view.cli.components.Menu import Menu
 
 
@@ -15,11 +17,12 @@ class CLI:
             console=self._console,
             title="Main menu",
             options=[
-                "Create a game",
-                "Continue a game",
-                "Show leaderboard",
-                "Quit"
+                OptionEnum.CREATE_A_GAME,
+                OptionEnum.CONTINUE_A_GAME,
+                OptionEnum.SHOW_LEADERBOARD,
+                OptionEnum.QUIT
             ])
+        self.main_menu_controller = MainMenuController()
 
     def _print_ascii_art(self, text: str) -> None:
         ascii_art = figlet_format(text, font=self._ascii_font)
@@ -35,4 +38,5 @@ class CLI:
         self._print_ascii_art("mastermind")
 
     def show_main_menu(self) -> None:
-        choice = self._main_menu.show()
+        choice: str = self._main_menu.show()
+        self.main_menu_controller.handle(choice)

@@ -1,0 +1,34 @@
+from rich.console import Console
+from rich.prompt import Prompt
+from rich.table import Table
+
+
+class Menu:
+    def __init__(self, console: Console, title: str, options: list[str]):
+        self._console: Console = console
+        self._title: str = title
+        self._options: list[str] = options
+
+    def _render_columns(self, table: Table):
+        table.add_column("Number", style="bold cyan", justify="center")
+        table.add_column("Label")
+
+    def _render_options(self, table: Table):
+        for i, option in enumerate(self._options, start=1):
+            table.add_row(str(i), option)
+
+    def _render_table(self) -> Table:
+        table = Table(title=self._title, header_style="bold magenta", show_header=False)
+        self._render_columns(table)
+        self._render_options(table)
+        return table
+
+    def _ask_option(self) -> str:
+        return Prompt.ask("[bold yellow]Choose an option[/]", choices=[str(i+1) for i in range(len(self._options))])
+
+    def _show_table(self):
+        self._console.print(self._render_table())
+
+    def show(self) -> str:
+        self._show_table()
+        return self._ask_option()

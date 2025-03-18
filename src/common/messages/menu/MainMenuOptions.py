@@ -1,4 +1,4 @@
-from src.common.options.menu.MenuOption import MenuOption
+from src.common.messages.menu.MenuOption import MenuOption
 
 
 class MainMenuOptions:

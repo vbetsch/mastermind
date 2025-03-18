@@ -3,6 +3,7 @@ from src.domain.usecases.create_a_game import CreateAGame
 from src.domain.usecases.show_leaderboard import ShowLeaderboard
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
+from src.libs.options.callbacks.UICallbackOptions import UICallbackOptions
 from src.libs.options.menu.MainMenuOptions import MainMenuOptions
 
 
@@ -22,6 +23,6 @@ class MainMenuController(Subscriber):
             case MainMenuOptions.SHOW_LEADERBOARD.name:
                 self.show_leaderboard.execute()
             case MainMenuOptions.QUIT.name:
-                self.send("EXIT")
+                self.send(UICallbackOptions.EXIT.name)
             case _:
                 raise Exception(f"Unknown choice: {message}")

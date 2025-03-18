@@ -1,5 +1,6 @@
 from src.libs.communication.IMediator import IMediator
 from src.libs.communication.Subscriber import Subscriber
+from src.libs.options.callbacks.UICallbackOptions import UICallbackOptions
 from src.libs.options.menu.MenuOption import MenuOption
 from src.ui.cli.Displayer import Displayer
 
@@ -11,7 +12,7 @@ class CLIController(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case "EXIT":
+            case UICallbackOptions.EXIT.name:
                 self.quit()
             case _:
                 raise Exception(f"Unknown message: {message}")

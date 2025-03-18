@@ -12,7 +12,7 @@ from src.ui.cli.CLIController import CLIController
 
 def inject_dependencies() -> CLIController:
     # Player
-    player = Player(name="default")
+    player: Player = Player(name="default")
 
     # Repositories
     session_repository: ISessionRepository = SessionRepository()

@@ -3,6 +3,7 @@ iniconfig==2.0.0
 markdown-it-py==3.0.0
 mdurl==0.1.2
 packaging==24.2
+peewee==3.17.9
 pluggy==1.5.0
 pyfiglet==1.0.2
 Pygments==2.19.1

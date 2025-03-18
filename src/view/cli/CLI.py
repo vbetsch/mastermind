@@ -13,7 +13,7 @@ class CLI:
 
     def _print_ascii_art(self, text) -> None:
         ascii_art = figlet_format(text, font=self.ascii_font)
-        ascii_text = Text(ascii_art, style="overline")
+        ascii_text = Text(ascii_art, style="bold")
         self.console.print(ascii_text)
 
     def _print_message(self, message, style=None) -> None:
@@ -23,4 +23,3 @@ class CLI:
     def welcome(self):
         self._print_message("Welcome to")
         self._print_ascii_art("mastermind")
-

@@ -1,4 +1,5 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
+from typing import Self
 
 from src.domain.entities.Score import Score
 from src.domain.values.StatusEnum import StatusEnum
@@ -13,6 +14,6 @@ class Session:
     def save(self) -> SessionMemento:
         return SessionMemento(self)
 
-    def restore(self, memento: SessionMemento) -> None:
+    def restore(self, memento: SessionMemento) -> Self:
         session = memento.get_saved_state()
-        # TODO: set datas
+        return replace(self, **vars(session))

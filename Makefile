@@ -36,3 +36,24 @@ coverage: install
 	pytest --cov=${ROOT_FOLDER} --cov-report=term-missing --cov-fail-under=10 ${TESTS_FOLDER}
 
 .PHONY: install requirements run tests coverage
+
+
+UML_FILE_EXTENSION := dot
+UML_IMAGE_EXTENSION := png
+UML_FILE_NAME_TO_CONVERT := classes
+UML_GENERATED_FILE_NAME := uml
+UML_FILE_TO_CONVERT := ${UML_FILE_NAME_TO_CONVERT}.${UML_IMAGE_EXTENSION}
+
+uml: install
+	pyreverse -o ${UML_FILE_EXTENSION} -p ${PROJECT_NAME} ${ROOT_FOLDER}.
+	dot -Tpng ${UML_FILE_NAME_TO_CONVERT}_${PROJECT_NAME}.${UML_FILE_EXTENSION} -o ${UML_FILE_TO_CONVERT}
+	mv ${UML_FILE_TO_CONVERT} ${UML_GENERATED_FILE_NAME}.${UML_IMAGE_EXTENSION}
+	rm *.${UML_FILE_EXTENSION}
+
+.PHONY: uml
+
+clean:
+	rm -rf $(VENV)
+	find . -name "__pycache__" -exec rm -rf {} +
+
+.PHONY: clean

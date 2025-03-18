@@ -1,6 +1,15 @@
-from src.app.ports.IUseCase import IUseCase
+from src.app.ports.repositories.ISessionRepository import ISessionRepository
+from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
+from src.domain.entities.Player import Player
+from src.domain.entities.Session import Session
 
 
-class CreateAGame(IUseCase):
+class CreateAGame(IMainMenuUseCase):
+    def __init__(self, player: Player, session_repository: ISessionRepository) -> None:
+        self.player: Player = player
+        self.session_repository: ISessionRepository = session_repository
+
     def execute(self) -> None:
-        print("Creating a new game...")
+        new_session = Session(self.player)
+        self.session_repository.create(new_session)
+        new_session.run()

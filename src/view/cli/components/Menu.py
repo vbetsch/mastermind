@@ -31,7 +31,7 @@ class Menu:
     def _render_choices(self) -> list[str]:
         return [str(i + 1) for i in range(len(self._options))]
 
-    def _ask_option(self) -> str:
+    def _ask_option(self) -> OptionEnum:
         choice: str = Prompt.ask("[bold yellow]Choose an option[/]", choices=self._render_choices())
 
         if int(choice) < 1 or int(choice) > len(self._options):
@@ -40,8 +40,8 @@ class Menu:
         selected_option: OptionEnum = self._options[int(choice) - 1]
         if not selected_option:
             raise IndexError
-        return selected_option.name
+        return selected_option
 
-    def show(self) -> str:
+    def show(self) -> OptionEnum:
         self._show_table()
         return self._ask_option()

@@ -1,8 +1,8 @@
 from src.domain.entities.Session import Session
-from src.libs.abstract.Memento import Memento
+from src.libs.abstract.IMemento import IMemento
 
 
-class SessionMemento(Memento):
+class SessionMemento(IMemento):
     def __init__(self, state: Session) -> None:
         self._state = state
 

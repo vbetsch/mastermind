@@ -11,20 +11,28 @@ class CLI:
     def __init__(self) -> None:
         self.console: Console = Console()
         self.ascii_font: str = "slant"
-        self.main_menu = Menu(console=self.console, title="Main menu", options=["Create a game", "Continue a game", "Show leaderboard", "Quit"])
+        self.main_menu: Menu = Menu(
+            console=self.console,
+            title="Main menu",
+            options=[
+                "Create a game",
+                "Continue a game",
+                "Show leaderboard",
+                "Quit"
+            ])
 
-    def _print_ascii_art(self, text) -> None:
+    def _print_ascii_art(self, text: str) -> None:
         ascii_art = figlet_format(text, font=self.ascii_font)
         ascii_text = Text(ascii_art, style="bold")
         self.console.print(ascii_text)
 
-    def _print_message(self, message, style=None) -> None:
+    def _print_message(self, message: str, style=None) -> None:
         text = Text(message, style=style)
         self.console.print(text)
 
-    def welcome(self):
+    def welcome(self) -> None:
         self._print_message("Welcome to")
         self._print_ascii_art("mastermind")
 
-    def show_main_menu(self):
+    def show_main_menu(self) -> None:
         choice = self.main_menu.show()

@@ -4,16 +4,16 @@ from rich.table import Table
 
 
 class Menu:
-    def __init__(self, console: Console, title: str, options: list[str]):
+    def __init__(self, console: Console, title: str, options: list[str]) -> None:
         self._console: Console = console
         self._title: str = title
         self._options: list[str] = options
 
-    def _render_columns(self, table: Table):
+    def _render_columns(self, table: Table) -> None:
         table.add_column("Number", style="bold cyan", justify="center")
         table.add_column("Label")
 
-    def _render_options(self, table: Table):
+    def _render_options(self, table: Table) -> None:
         for i, option in enumerate(self._options, start=1):
             table.add_row(str(i), option)
 
@@ -26,7 +26,7 @@ class Menu:
     def _ask_option(self) -> str:
         return Prompt.ask("[bold yellow]Choose an option[/]", choices=[str(i+1) for i in range(len(self._options))])
 
-    def _show_table(self):
+    def _show_table(self) -> None:
         self._console.print(self._render_table())
 
     def show(self) -> str:

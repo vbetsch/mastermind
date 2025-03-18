@@ -23,8 +23,11 @@ class Menu:
         self._render_options(table)
         return table
 
+    def _render_choices(self) -> list[str]:
+        return [str(i + 1) for i in range(len(self._options))]
+
     def _ask_option(self) -> str:
-        return Prompt.ask("[bold yellow]Choose an option[/]", choices=[str(i+1) for i in range(len(self._options))])
+        return Prompt.ask("[bold yellow]Choose an option[/]", choices=self._render_choices())
 
     def _show_table(self) -> None:
         self._console.print(self._render_table())

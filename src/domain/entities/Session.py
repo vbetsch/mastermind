@@ -24,13 +24,13 @@ class Session:
             print(self.combination)
             print(self.score)
             print("'save' to save the game")
-            print("'stop' to save and quit the game")
-            print("'quit' to quit the game")
+            print("'stop' to quit the game")
+            print("'quit' to save and quit the game")
             print("another is a proposal")
-            proposal = input("Proposal: ")
-            if proposal == "save" or proposal == "stop":
+            proposal: str = input("Proposal: ")
+            if proposal == "quit" or proposal == "save":
                 self.save()
-            if proposal == "stop" or proposal == "quit":
+            if proposal == "quit" or proposal == "stop":
                 self.status = StatusEnum.STOPPED
 
     def save(self) -> SessionMemento:

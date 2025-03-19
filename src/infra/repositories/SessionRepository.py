@@ -7,6 +7,6 @@ from src.infra.database.models.SessionModel import SessionModel
 class SessionRepository(ISessionRepository):
     def create(self, session: Session):
         DatabaseConfig().connect()
-        SessionModel.create(status=session.status.value, score=session.score.value)
+        SessionModel.create(status=session.status.name, score=session.score.value)
         DatabaseConfig().close()
         print("Session created!")

@@ -2,6 +2,4 @@
 
 ## Technologies
 
-## Design patterns
-
 ## Commits convention

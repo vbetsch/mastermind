@@ -10,10 +10,8 @@
 * [Instructions for use](docs/instructions-for-use.md)
 * [Functional specifications](docs/functional-specifications.md)
 * [Technical specifications](docs/technical-specifications.md)
-
-## Asserts
-
-- [Diagram C4](docs/diagram-c4.md)
+* [Design patterns](docs/design-patterns.md)
+* [Diagram C4](docs/diagram-c4.md)
 
 ## Dependencies
 

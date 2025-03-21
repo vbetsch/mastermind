@@ -8,8 +8,8 @@
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 * [Instructions for use](docs/instructions-for-use.md)
-* [Technical specifications](docs/technical-specifications.md)
 * [Functional specifications](docs/functional-specifications.md)
+* [Technical specifications](docs/technical-specifications.md)
 
 ## Asserts
 

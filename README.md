@@ -19,12 +19,29 @@
 
 - [Python 3.13](https://www.python.org/)
 
-[//]: # (# EACHOS)
-
 ## Installation guide
 
 1. You need to have all the listed dependencies
+2. Create a virtual environment
+    ```shell
+    python3.13 -m venv venv
+    ```
+3. Install pip in your virtual environment
+    ```shell
+    venv/bin/pip install --upgrade pip
+    ```
+4. Install all requirements
+    ```shell
+    venv/bin/pip install -r requirements.txt
+    ```
+5. Copy the `.env.example` file to create your own `.env` file
 
 ## Getting Started
+
+* Run the project
+
+```shell
+venv/bin/python main.py
+```
 
 [//]: # (PROCEDURE2)

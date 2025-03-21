@@ -2,6 +2,9 @@ name: Run Tests
 
 on:
   push:
+    branches-ignore:
+      - 'demo'
+      - 'docs'
   pull_request:
 
 jobs:

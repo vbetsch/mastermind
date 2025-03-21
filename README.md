@@ -19,29 +19,53 @@
 
 - [Python 3.13](https://www.python.org/)
 
+# Windows
+
 ## Installation guide
+
+1. You need to have all the listed dependencies
+2. Verify that you have the correct version of python installed
+3. Install all requirements
+   ```shell
+    pip install -r requirements.txt
+    ```
+4. Copy the `.env.example` file to create your own `.env` file
+
+## Getting Started
+
+* Run the project
+    ```shell
+    python main.py
+    ```
+
+# MacOS, WSL & Linux
+
+## Installation guide
+
+> **IMPORTANT: Don't use your system python**
 
 1. You need to have all the listed dependencies
 2. Create a virtual environment
     ```shell
     python3.13 -m venv venv
     ```
-3. Install pip in your virtual environment
+3. Activate virtual environment
     ```shell
-    venv/bin/pip install --upgrade pip
+    source venv/bin/activate
     ```
 4. Install all requirements
     ```shell
-    venv/bin/pip install -r requirements.txt
+    pip install -r requirements.txt
     ```
 5. Copy the `.env.example` file to create your own `.env` file
 
 ## Getting Started
 
-* Run the project
+> You need to follow the _Installation guide_ before
 
-```shell
-venv/bin/python main.py
-```
+* Run the project
+   ```shell
+   python main.py
+   ```
 
 [//]: # (PROCEDURE2)

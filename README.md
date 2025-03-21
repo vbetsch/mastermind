@@ -33,6 +33,8 @@
 
 ## Getting Started
 
+> You need to follow the _Installation guide_ before
+
 * Run the project
     ```shell
     python main.py

@@ -14,9 +14,9 @@ Mastermind is a deduction game where you have to discover a secret combination o
 
 1. The computer generates a sequence of colors for you to guess.
 2. In each round, propose a color combination.
-3. After each suggestion, you are given red and white counters:
-    - **Red counter**: A color is correct and well placed.
-    - **White piece**: A color is correct but incorrectly placed.
+3. After each suggestion, you are given red and white pawns:
+    - **Red pawn**: A color is correct and well placed.
+    - **White pawn**: A color is correct but incorrectly placed.
 
 **Goal**: Discover the secret combination in a limited number of attempts.
 

@@ -11,7 +11,7 @@ The player can start a new game from the main menu. The game ends when the playe
 ## Game rules
 
 * **Secret combination generation**: The computer randomly generates a combination.
-* **Proposal evaluation**: For each player's proposal, the number of red and white pieces is calculated.
+* **Proposal evaluation**: For each player's proposal, the number of red and white pawns is calculated.
 * **Victory condition**: The player wins if he discovers the combination before exhausting his attempts.
 * **Defeat condition**: The player loses if he hasn't discovered the combination after using up all his attempts.
 
@@ -21,8 +21,8 @@ For each suggestion, the game displays :
 
 * The number of attempts.
 * The proposed combination.
-* The number of red units (right colors in the right place).
-* The number of white units (right colors in the wrong place).
+* The number of red pawns (right colors in the right place).
+* The number of white pawns (right colors in the wrong place).
 * A history of previous attempts is displayed to help players refine their proposals.
 
 ## Save and restore game

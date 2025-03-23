@@ -8,6 +8,11 @@ class Config:
     def __init__(self, value):
         self.value = value
 
+    @classmethod
+    def clear_instance(cls):
+        pass
+
+
 
 class TestSingleton(TestCase):
     def setUp(self):

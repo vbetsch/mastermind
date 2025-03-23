@@ -10,7 +10,8 @@ from src.domain.values.combinations.UnitColorEnum import UnitColorEnum
 class Generator:
     nb_units: int = 4
 
-    def generate_unit(self) -> Unit:
+    @staticmethod
+    def generate_unit() -> Unit:
         color_picked: UnitColorEnum = choice(list(UnitColorEnum))
         return Unit(color_picked)
 

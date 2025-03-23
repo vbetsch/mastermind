@@ -1,3 +1,4 @@
+# noinspection PyPep8Naming
 def Singleton(cls):
     cls._instance = None
 

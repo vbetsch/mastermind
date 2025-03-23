@@ -11,7 +11,8 @@ class Menu:
         self._title: str = title
         self._options: list[MenuOption] = options
 
-    def _render_columns(self, table: Table) -> None:
+    @staticmethod
+    def _render_columns(table: Table) -> None:
         table.add_column("Number", style="bold cyan", justify="center")
         table.add_column("Label")
 

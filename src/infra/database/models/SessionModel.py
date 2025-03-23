@@ -1,4 +1,4 @@
-from peewee import CharField, IntegerField
+from peewee import CharField
 
 from src.infra.database.models.BaseModel import BaseModel
 

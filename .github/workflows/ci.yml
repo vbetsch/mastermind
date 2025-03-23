@@ -4,12 +4,10 @@ on:
   push:
     branches-ignore:
       - 'master'
-      - 'demo'
       - 'docs'
   pull_request:
     branches-ignore:
       - 'master'
-      - 'demo'
       - 'docs'
 
 jobs:

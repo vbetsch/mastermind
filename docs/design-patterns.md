@@ -12,8 +12,8 @@ the Singleton.
 
 ## Mediator
 
-I've decided to use this behavioral pattern for communication between my front-end and back-end. Each controller and
-handler will subscribe to the same mediator. This will enable simple, efficient communication with a system of sending
+I've decided to use this behavioral pattern for communication between my front-end and back-end. Each controller will
+subscribe to the same mediator. This will enable simple, efficient communication with a system of sending
 and responding to events. When I need to trigger an event from one subscriber to another, I send a message and all the
 other subscribers receive it. Each of them will decide whether or not to handle it. This pattern also lets me scale the
 application: I can add as many controllers and graphical interfaces as I like.

@@ -123,6 +123,36 @@ Here's the list of types of tests you can find:
 
 ## Game rules
 
+Game rules are managed by [entities](../src/domain/entities) and [core objects](../src/domain/core).
+
 ## Session management
 
+[Sessions](../src/domain/entities/Session.py) are managed using a memento pattern. When I save a
+game, a snapshot ([SessionMemento](../src/domain/values/sessions/SessionMemento.py)) is created of the state of the game
+and saves it in
+a history ([SessionHistory](../src/domain/values/sessions/SessionHistory.py)). When I need to resume a game, the
+snapshot is retrieved from the history and restored to the exact state it
+was in.
+
+## User interfaces
+
+### CLI
+
+The CLI graphical interface is managed by the [CLIController](../src/ui/cli/CLIController.py), which uses
+the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
+screen. The Displayer uses [components](../src/ui/cli/components).
+
+## Communication
+
+Communication between the backend and frontend is managed by [Mediator](../src/common/communication/Mediator.py). Each
+controller (backend and frontend) subscribes to it. This makes communication simple and efficient, with a
+system for sending and responding to [events](../src/common/communication/messages). When I
+need to trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the
+other subscribers receive it. Each of them then
+decides whether or not to process it (with the handle function). This model also allows me to evolve the application: I
+can add as many controllers
+and graphical interfaces as I like.
+
 ## Commits convention
+
+To make commits legible and easy to write, I use the [Gitmoji](https://gitmoji.dev/) convention.

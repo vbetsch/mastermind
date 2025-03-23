@@ -3,7 +3,7 @@ from src.app.ports.repositories.ISessionRepository import ISessionRepository
 from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 from src.app.usecases.continue_a_session import ContinueASession
 from src.app.usecases.create_a_session import CreateASession
-from src.app.usecases.show_leaderboard import ShowLeaderboard
+from src.app.usecases.show_games import ShowGames
 from src.common.communication.Mediator import Mediator
 from src.domain.entities.Player import Player
 from src.infra.repositories.SessionRepository import SessionRepository
@@ -22,7 +22,7 @@ def inject_dependencies() -> CLIController:
         player=player,
         session_repository=session_repository)
     continue_a_session: IMainMenuUseCase = ContinueASession()
-    show_leaderboard: IMainMenuUseCase = ShowLeaderboard()
+    show_games: IMainMenuUseCase = ShowGames()
 
     # Controllers
     mediator: Mediator = Mediator()
@@ -31,7 +31,7 @@ def inject_dependencies() -> CLIController:
         mediator=mediator,
         create_a_session=create_a_session,
         continue_a_session=continue_a_session,
-        show_leaderboard=show_leaderboard,
+        show_games=show_games,
     )
     return cli
 

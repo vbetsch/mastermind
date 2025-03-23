@@ -1,6 +1,6 @@
 from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 
 
-class ShowLeaderboard(IMainMenuUseCase):
+class ShowGames(IMainMenuUseCase):
     def execute(self) -> None:
-        print("Showing leaderboard...")
+        print("Showing games...")

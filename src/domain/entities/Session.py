@@ -10,7 +10,7 @@ from src.domain.values.sessions.SessionMemento import SessionMemento
 @dataclass(frozen=False)
 class Session:
     player: Player
-    combination: Combination
+    secret_combination: Combination
     status: StatusEnum = StatusEnum.NOT_STARTED
 
     def run(self):

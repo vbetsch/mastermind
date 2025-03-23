@@ -2,8 +2,8 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
-from src.common.communication.messages.cli.menu.MainMenuOptions import MainMenuOptions
-from src.common.communication.messages.cli.menu.MenuOption import MenuOption
+from src.common.communication.events.cli.menu.MainMenuOptions import MainMenuOptions
+from src.common.communication.events.cli.menu.MenuOption import MenuOption
 from src.ui.cli.components.Menu import Menu
 
 

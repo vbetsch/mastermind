@@ -1,6 +1,6 @@
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.messages.cli.menu.MenuOption import MenuOption
-from src.common.communication.messages.controllers.ControllerMessages import ControllerMessages
+from src.common.communication.events.cli.menu.MenuOption import MenuOption
+from src.common.communication.events.controllers.ControllerEvents import ControllerEvents
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 
@@ -12,9 +12,9 @@ class CLIController(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case ControllerMessages.MAIN_MENU.name:
+            case ControllerEvents.MAIN_MENU.name:
                 self.main_menu()
-            case ControllerMessages.EXIT.name:
+            case ControllerEvents.EXIT.name:
                 self.quit()
             case _:
                 raise Exception(f"Unknown message: {message}")

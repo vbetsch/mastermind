@@ -1,4 +1,4 @@
-from src.common.communication.messages.cli.menu.MenuOption import MenuOption
+from src.common.communication.events.cli.menu.MenuOption import MenuOption
 
 
 class MainMenuOptions:

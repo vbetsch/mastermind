@@ -1,8 +1,8 @@
 from src.app.exceptions.NotHandledException import NotHandledException
 from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.messages.cli.menu.MainMenuOptions import MainMenuOptions
-from src.common.communication.messages.controllers.ControllerMessages import ControllerMessages
+from src.common.communication.events.cli.menu.MainMenuOptions import MainMenuOptions
+from src.common.communication.events.controllers.ControllerEvents import ControllerEvents
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -18,14 +18,14 @@ class MainMenuController(Subscriber):
         match message:
             case MainMenuOptions.CREATE_A_SESSION.name:
                 self.create_a_session.execute()
-                self.send(ControllerMessages.MAIN_MENU.name)
+                self.send(ControllerEvents.MAIN_MENU.name)
             case MainMenuOptions.CONTINUE_A_SESSION.name:
                 self.continue_a_session.execute()
-                self.send(ControllerMessages.MAIN_MENU.name)
+                self.send(ControllerEvents.MAIN_MENU.name)
             case MainMenuOptions.SHOW_SESSIONS.name:
                 self.show_sessions.execute()
-                self.send(ControllerMessages.MAIN_MENU.name)
+                self.send(ControllerEvents.MAIN_MENU.name)
             case MainMenuOptions.QUIT.name:
-                self.send(ControllerMessages.EXIT.name)
+                self.send(ControllerEvents.EXIT.name)
             case _:
                 raise NotHandledException()

@@ -53,6 +53,11 @@ uml: install
 
 .PHONY: uml
 
+
+tree:
+	tree -dL 6 --gitignore -I 'docs|__pycache__'
+
+
 clean:
 	rm -rf $(VENV)
 	rm *.${UML_FILE_EXTENSION}

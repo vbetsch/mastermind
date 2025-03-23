@@ -8,6 +8,49 @@
 * [SQLite](https://www.sqlite.org/) : Serverless database
 
 ## Architecture
+Here is the architecture of the project, which respects clean architecture :
+```
+.
+├── src
+│   ├── app
+│   │   ├── controllers
+│   │   ├── exceptions
+│   │   ├── gateways
+│   │   ├── ports
+│   │   │   ├── repositories
+│   │   │   └── usecases
+│   │   ├── presenters
+│   │   └── usecases
+│   ├── common
+│   │   ├── abstract
+│   │   ├── communication
+│   │   │   └── messages
+│   │   │       ├── cli
+│   │   │       │   ├── main
+│   │   │       │   └── menu
+│   │   │       └── controllers
+│   │   └── decorators
+│   ├── domain
+│   │   ├── core
+│   │   ├── entities
+│   │   └── values
+│   │       ├── combinations
+│   │       └── sessions
+│   ├── infra
+│   │   ├── database
+│   │   │   └── models
+│   │   ├── env
+│   │   └── repositories
+│   └── ui
+│       └── cli
+│           └── components
+└── tests
+    ├── archi
+    │   └── patterns
+    └── libs
+        ├── communication
+        └── decorators
+```
 
 ## Game rules
 

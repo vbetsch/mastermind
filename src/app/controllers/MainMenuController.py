@@ -1,6 +1,6 @@
 from src.app.exceptions.NotHandledException import NotHandledException
 from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
-from src.common.communication.IMediator import IMediator
+from src.common.abstract.mediator.IMediator import IMediator
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.messages.cli.menu.MainMenuOptions import MainMenuOptions
 from src.common.communication.messages.controllers.ControllerMessages import ControllerMessages

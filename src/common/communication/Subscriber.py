@@ -1,18 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Self
 
-from src.common.communication.IMediator import IMediator
+from src.common.abstract.mediator.IComponent import IComponent
 
 
-class Subscriber(ABC):
-    def __init__(self, name: str, mediator: IMediator) -> None:
-        self.name: str = name
-        self.mediator: IMediator = mediator
-        self.mediator.subscribe(self)
-
-    def send(self, message: str) -> None:
-        self.mediator.send_message(message, self)
-
+class Subscriber(IComponent):
     def receive(self, message: str, sender: Self) -> None:
         self.handle(message, sender)
 

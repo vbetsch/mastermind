@@ -1,4 +1,4 @@
-from src.common.abstract.IMemento import IMemento
+from src.common.abstract.memento.IMemento import IMemento
 
 
 class SessionMemento(IMemento):

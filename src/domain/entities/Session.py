@@ -1,6 +1,7 @@
 from dataclasses import dataclass, replace, field
 from typing import Self
 
+from src.common.abstract.memento.IOriginator import IOriginator
 from src.domain.entities.Combination import Combination
 from src.domain.entities.Player import Player
 from src.domain.entities.Turn import Turn
@@ -9,7 +10,7 @@ from src.domain.values.sessions.SessionMemento import SessionMemento
 
 
 @dataclass(frozen=False)
-class Session:
+class Session(IOriginator):
     player: Player
     secret_combination: Combination
     status: StatusEnum = StatusEnum.NOT_STARTED

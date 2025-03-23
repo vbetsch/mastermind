@@ -1,0 +1,21 @@
+from abc import ABC
+
+from src.common.abstract.memento.IMemento import IMemento
+from src.common.abstract.memento.IOriginator import IOriginator
+
+
+class ICareTaker(ABC):
+    def __init__(self) -> None:
+        self._mementos: list[IMemento] = []
+
+    def save(self, originator: IOriginator) -> None:
+        memento = originator.save()
+        self._mementos.append(memento)
+
+    def undo(self, originator: IOriginator) -> None:
+        if len(self._mementos) <= 1:
+            raise Exception("No memento to restore")
+
+        self._mementos.pop()
+        last_memento: IMemento = self._mementos[-1]
+        originator.restore(last_memento)

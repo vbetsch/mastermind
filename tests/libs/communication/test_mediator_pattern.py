@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from src.common.communication.IMediator import IMediator
+from src.common.abstract.mediator.IMediator import IMediator
 from src.common.communication.Mediator import Mediator
 from src.common.communication.Subscriber import Subscriber
 

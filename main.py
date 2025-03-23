@@ -41,6 +41,12 @@ def run():
     cli.welcome()
     cli.main_menu()
 
+def cancel():
+    cli: CLIController = inject_dependencies()
+    cli.quit()
 
 if __name__ == '__main__':
-    run()
+    try:
+        run()
+    except KeyboardInterrupt:
+        cancel()

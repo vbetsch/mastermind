@@ -10,4 +10,4 @@ class EnvironmentHandler:
         load_dotenv()
 
     def get_database_file_path(self) -> str:
-        return getenv("DATABASE_FILE_PATH")
+        return getenv("DATABASE_FILE_PATH") or 'mastermind.db'

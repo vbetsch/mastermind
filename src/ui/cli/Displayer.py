@@ -11,6 +11,11 @@ class Displayer:
     def __init__(self) -> None:
         self._console: Console = Console()
         self._ascii_font: str = "slant"
+        self._main_menu: Menu = Menu(
+            console=self._console,
+            title="Main menu",
+            options=MainMenuOptions.all_options()
+        )
 
     def print_ascii_art(self, text: str) -> None:
         ascii_art = figlet_format(text, font=self._ascii_font)
@@ -22,9 +27,5 @@ class Displayer:
         self._console.print(text)
 
     def show_main_menu(self) -> MenuOption:
-        main_menu: Menu = Menu(
-            console=self._console,
-            title="Main menu",
-            options=MainMenuOptions.all_options()
-        )
-        return main_menu.show()
+        print("\n")
+        return self._main_menu.show()

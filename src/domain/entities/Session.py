@@ -12,26 +12,13 @@ from src.domain.values.sessions.SessionMemento import SessionMemento
 @dataclass(frozen=False)
 class Session:
     player: Player
+    combination: Combination
     status: StatusEnum = StatusEnum.NOT_STARTED
     score: Score = field(default_factory=Score)
-    combination: Combination = Generator().generate_combination()
 
     def run(self):
         self.status = StatusEnum.RUNNING
         print("Session started")
-        while self.status == StatusEnum.RUNNING:
-            # TODO: To implement
-            print(self.combination)
-            print(self.score)
-            print("'save' to save the game")
-            print("'stop' to quit the game")
-            print("'quit' to save and quit the game")
-            print("another is a proposal")
-            proposal: str = input("Proposal: ")
-            if proposal == "quit" or proposal == "save":
-                self.save()
-            if proposal == "quit" or proposal == "stop":
-                self.status = StatusEnum.STOPPED
 
     def save(self) -> SessionMemento:
         print("Session saved")

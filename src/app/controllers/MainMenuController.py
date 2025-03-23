@@ -18,10 +18,13 @@ class MainMenuController(Subscriber):
         match message:
             case MainMenuOptions.CREATE_A_GAME.name:
                 self.create_a_game.execute()
+                self.send(ControllerMessages.MAIN_MENU.name)
             case MainMenuOptions.CONTINUE_A_GAME.name:
                 self.continue_a_game.execute()
+                self.send(ControllerMessages.MAIN_MENU.name)
             case MainMenuOptions.SHOW_LEADERBOARD.name:
                 self.show_leaderboard.execute()
+                self.send(ControllerMessages.MAIN_MENU.name)
             case MainMenuOptions.QUIT.name:
                 self.send(ControllerMessages.EXIT.name)
             case _:

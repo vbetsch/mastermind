@@ -8,7 +8,8 @@ from src.infra.env.EnvironmentHandler import EnvironmentHandler
 @Singleton
 class DatabaseConfig:
     def __init__(self):
-        self._db = SqliteDatabase(EnvironmentHandler().get_database_file_path() or 'mastermind.db')
+        self._database_file_path = EnvironmentHandler().get_database_file_path()
+        self._db = SqliteDatabase(self._database_file_path)
         self._tables = [SessionModel]
         self._db.bind(self._tables)
         self._create_tables()

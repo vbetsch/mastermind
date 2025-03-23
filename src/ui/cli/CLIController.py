@@ -12,6 +12,8 @@ class CLIController(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
+            case ControllerMessages.MAIN_MENU.name:
+                self.main_menu()
             case ControllerMessages.EXIT.name:
                 self.quit()
             case _:

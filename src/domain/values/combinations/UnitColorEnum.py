@@ -2,9 +2,8 @@ from enum import Enum
 
 
 class UnitColorEnum(Enum):
-    BLUE = "blue"
-    RED = "red"
-    ORANGE = "orange"
-    YELLOW = "yellow"
-    WHITE = "white"
-    BLACK = "black"
+    B = "blue"
+    R = "red"
+    G = "green"
+    Y = "yellow"
+    M = "magenta"

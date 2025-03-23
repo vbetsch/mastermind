@@ -21,8 +21,8 @@ For each suggestion, the game displays :
 
 * The number of attempts.
 * The proposed combination.
-* The number of white units (right colors in the right place).
-* The number of red units (right colors in the wrong place).
+* The number of red units (right colors in the right place).
+* The number of white units (right colors in the wrong place).
 * A history of previous attempts is displayed to help players refine their proposals.
 
 ## Save and restore game

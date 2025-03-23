@@ -1,4 +1,4 @@
-from src.domain.values.turn.indicators.IndicatorColorEnum import IndicatorColorEnum
+from src.domain.values.turns.indicators.IndicatorColorEnum import IndicatorColorEnum
 
 
 class Indicator:

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from src.domain.entities.Combination import Combination
 from src.domain.values.StatusEnum import StatusEnum
-from src.domain.values.turn.Feedback import Feedback
+from src.domain.values.turns.Feedback import Feedback
 
 
 @dataclass(frozen=True)

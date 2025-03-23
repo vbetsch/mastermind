@@ -1,5 +1,5 @@
-from src.domain.values.turn.indicators.Indicator import Indicator
-from src.domain.values.turn.indicators.IndicatorColorEnum import IndicatorColorEnum
+from src.domain.values.turns.indicators.Indicator import Indicator
+from src.domain.values.turns.indicators.IndicatorColorEnum import IndicatorColorEnum
 
 
 class Feedback:

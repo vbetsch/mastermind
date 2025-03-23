@@ -129,7 +129,7 @@ Game rules are managed by [entities](../src/domain/entities) and [core objects](
 ### Entities
 
 * [Session](../src/domain/entities/Session.py) : represents games
-* [Combination](../src/domain/entities/Combination.py) : represents combinations
+* [Combination](../src/domain/values/combinations/Combination.py) : represents combinations
   of [Beads](../src/domain/values/combinations/Bead.py)
 
 ### Core objects

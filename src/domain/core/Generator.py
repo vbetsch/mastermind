@@ -1,8 +1,8 @@
 from random import choice
 
-from src.domain.entities.Combination import Combination
 from src.domain.values.combinations.Bead import Bead
 from src.domain.values.combinations.BeadColorEnum import BeadColorEnum
+from src.domain.values.combinations.Combination import Combination
 
 
 class Generator:

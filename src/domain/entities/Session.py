@@ -2,11 +2,11 @@ from dataclasses import dataclass, replace, field
 from typing import Self
 
 from src.common.patterns.memento.IOriginator import IOriginator
-from src.domain.entities.Combination import Combination
 from src.domain.entities.Player import Player
-from src.domain.entities.Turn import Turn
 from src.domain.values.StatusEnum import StatusEnum
+from src.domain.values.combinations.Combination import Combination
 from src.domain.values.sessions.SessionMemento import SessionMemento
+from src.domain.values.sessions.Turn import Turn
 
 
 @dataclass(frozen=False)

@@ -25,20 +25,25 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   ├── presenters
 │   │   └── usecases
 │   ├── common
-│   │   ├── abstract
 │   │   ├── communication
-│   │   │   └── messages
+│   │   │   └── events
 │   │   │       ├── cli
 │   │   │       │   ├── main
 │   │   │       │   └── menu
 │   │   │       └── controllers
-│   │   └── decorators
+│   │   ├── decorators
+│   │   └── patterns
+│   │       ├── mediator
+│   │       └── memento
 │   ├── domain
 │   │   ├── core
 │   │   ├── entities
 │   │   └── values
 │   │       ├── combinations
-│   │       └── sessions
+│   │       ├── players
+│   │       ├── sessions
+│   │       └── turns
+│   │           └── indicators
 │   ├── infra
 │   │   ├── database
 │   │   │   └── models
@@ -80,8 +85,8 @@ This folder is the common library for the front-end and back-end.<br>
 
 Here's the list of items you can find:
 
-* Abstract objects
 * Decorators
+* All about design patterns structure
 * All about communication between front and back
 
 ### domain
@@ -149,7 +154,7 @@ was in.
 
 ### CLI
 
-The CLI graphical interface is managed by the [CLIController](../src/ui/cli/CLI.py), which uses
+The CLI graphical interface is managed by the [CLI](../src/ui/cli/CLI.py) object, which uses
 the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
 screen. The Displayer uses [components](../src/ui/cli/components).
 

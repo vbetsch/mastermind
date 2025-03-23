@@ -8,11 +8,11 @@ from src.common.patterns.mediator.IMediator import IMediator
 
 class MainMenuController(Subscriber):
     def __init__(self, mediator: IMediator, create_a_session: IMainMenuUseCase, continue_a_session: IMainMenuUseCase,
-                 show_games: IMainMenuUseCase) -> None:
+                 show_sessions: IMainMenuUseCase) -> None:
         super().__init__(self.__class__.__name__, mediator)
         self.create_a_session: IMainMenuUseCase = create_a_session
         self.continue_a_session: IMainMenuUseCase = continue_a_session
-        self.show_games: IMainMenuUseCase = show_games
+        self.show_sessions: IMainMenuUseCase = show_sessions
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
@@ -22,8 +22,8 @@ class MainMenuController(Subscriber):
             case MainMenuOptions.CONTINUE_A_SESSION.name:
                 self.continue_a_session.execute()
                 self.send(ControllerMessages.MAIN_MENU.name)
-            case MainMenuOptions.SHOW_GAMES.name:
-                self.show_games.execute()
+            case MainMenuOptions.SHOW_SESSIONS.name:
+                self.show_sessions.execute()
                 self.send(ControllerMessages.MAIN_MENU.name)
             case MainMenuOptions.QUIT.name:
                 self.send(ControllerMessages.EXIT.name)

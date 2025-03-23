@@ -46,14 +46,19 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   └── repositories
 │   └── ui
 │       └── cli
-│           └── components
+│           ├── components
 │           └── controllers
 └── tests
     ├── archi
     │   └── patterns
-    └── libs
-        ├── communication
-        └── decorators
+    └── units
+        ├── app
+        │   ├── controllers
+        │   └── usecases
+        └── domain
+            ├── core
+            ├── entities
+            └── values
 ```
 
 ### app
@@ -112,6 +117,9 @@ Here's the list of items you can find in each UI :
 This folder contains all the project tests.<br>
 
 Here's the list of types of tests you can find:
+
+* Architecture tests (clean architecture, design patterns, etc)
+* Unit tests
 
 ## Game rules
 

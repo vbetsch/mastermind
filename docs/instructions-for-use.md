@@ -23,7 +23,7 @@ Mastermind is a deduction game where you have to discover a secret combination o
 ## User Interface
 
 You will see menus displayed. For each menu, you have a table of each option with a column on the left representing
-its number, and a column on the right representing its name. To select an option, type its number, then press Enter.
+its number, and a column on the right representing its name. To select an option, type its number, then press _Enter_.
 
 ## How to play
 

@@ -10,7 +10,7 @@ The player can start a new game from the main menu. The game ends when the playe
 
 ## Game rules
 
-* **Secret combination generation**: The computer randomly generates a combination according to the defined parameters.
+* **Secret combination generation**: The computer randomly generates a combination.
 * **Proposal evaluation**: For each player's proposal, the number of red and white pieces is calculated.
 * **Victory condition**: The player wins if he discovers the combination before exhausting his attempts.
 * **Defeat condition**: The player loses if he hasn't discovered the combination after using up all his attempts.

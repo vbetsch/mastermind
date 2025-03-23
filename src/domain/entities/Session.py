@@ -14,6 +14,7 @@ class Session:
     secret_combination: Combination
     status: StatusEnum = StatusEnum.NOT_STARTED
     turns: list[Turn] = field(default_factory=list)
+    previous_attempts: list[Combination] = field(default_factory=list)
 
     def run(self):
         self.status = StatusEnum.RUNNING

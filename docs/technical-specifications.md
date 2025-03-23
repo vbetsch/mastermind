@@ -125,6 +125,16 @@ Here's the list of types of tests you can find:
 
 Game rules are managed by [entities](../src/domain/entities) and [core objects](../src/domain/core).
 
+### Entities
+
+* [Session](../src/domain/entities/Session.py) : represents games
+* [Combination](../src/domain/entities/Combination.py) : represents combinations
+  of [Units](../src/domain/values/combinations/Unit.py)
+
+### Core objects
+
+* [Arbitrator](../src/domain/core/Arbitrator.py) : defines whether a combination is right or wrong
+
 ## Session management
 
 [Sessions](../src/domain/entities/Session.py) are managed using a memento pattern. When I save a

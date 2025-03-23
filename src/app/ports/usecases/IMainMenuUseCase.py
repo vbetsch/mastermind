@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from src.common.abstract.IUseCase import IUseCase
+from src.app.ports.usecases.IUseCase import IUseCase
 
 
 class IMainMenuUseCase(IUseCase):

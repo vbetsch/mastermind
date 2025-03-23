@@ -1,9 +1,5 @@
 # Technical specifications
 
-- [Sommaire](#table-of-contents)
-  - [Section 1](#section-1)
-  - [Section 2](#section-2)
-
 ## Technologies
 
 * [Python](https://www.python.org/) : language used in lessons, and easy to use for creating video games in CLI

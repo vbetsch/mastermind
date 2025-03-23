@@ -5,7 +5,7 @@ from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 
 
-class CLIController(Subscriber):
+class CLI(Subscriber):
     def __init__(self, mediator: IMediator) -> None:
         super().__init__(self.__class__.__name__, mediator)
         self.displayer: Displayer = Displayer()

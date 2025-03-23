@@ -7,10 +7,10 @@ from src.app.usecases.show_sessions import ShowSessions
 from src.common.communication.Mediator import Mediator
 from src.domain.entities.Player import Player
 from src.infra.repositories.SessionRepository import SessionRepository
-from src.ui.cli.CLIController import CLIController
+from src.ui.cli.CLI import CLI
 
 
-def inject_dependencies() -> CLIController:
+def inject_dependencies() -> CLI:
     # Player
     player: Player = Player(name="default")
 
@@ -26,7 +26,7 @@ def inject_dependencies() -> CLIController:
 
     # Controllers
     mediator: Mediator = Mediator()
-    cli: CLIController = CLIController(mediator=mediator)
+    cli: CLI = CLI(mediator=mediator)
     MainMenuController(
         mediator=mediator,
         create_a_session=create_a_session,
@@ -37,12 +37,12 @@ def inject_dependencies() -> CLIController:
 
 
 def run():
-    cli: CLIController = inject_dependencies()
+    cli: CLI = inject_dependencies()
     cli.welcome()
     cli.main_menu()
 
 def cancel():
-    cli: CLIController = inject_dependencies()
+    cli: CLI = inject_dependencies()
     cli.quit()
 
 if __name__ == '__main__':

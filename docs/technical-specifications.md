@@ -149,7 +149,7 @@ was in.
 
 ### CLI
 
-The CLI graphical interface is managed by the [CLIController](../src/ui/cli/CLIController.py), which uses
+The CLI graphical interface is managed by the [CLIController](../src/ui/cli/CLI.py), which uses
 the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
 screen. The Displayer uses [components](../src/ui/cli/components).
 

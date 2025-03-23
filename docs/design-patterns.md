@@ -20,6 +20,6 @@ application: I can add as many controllers and graphical interfaces as I like.
 
 ## Memento
 
-I've decided to use this behavioral pattern to manage game saves and restores. When I save a game, it will create a
-snapshot of the state of the game and save it in a history. When I need to resume a game, the capture will be retrieved
+I've decided to use this behavioral pattern to manage session saves and restores. When I save a game, it will create a
+snapshot of the state of the session and save it in a history. When I need to resume a game, the capture will be retrieved
 from the history and restored to the exact state it was in.

@@ -5,7 +5,7 @@ from src.domain.entities.Player import Player
 from src.domain.entities.Session import Session
 
 
-class CreateAGame(IMainMenuUseCase):
+class CreateASession(IMainMenuUseCase):
     def __init__(self, player: Player, session_repository: ISessionRepository) -> None:
         self.player: Player = player
         self.session_repository: ISessionRepository = session_repository

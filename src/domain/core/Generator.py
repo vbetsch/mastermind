@@ -1,12 +1,10 @@
 from random import choice
 
-from src.common.decorators.Singleton import Singleton
 from src.domain.entities.Combination import Combination
 from src.domain.values.combinations.Unit import Unit
 from src.domain.values.combinations.UnitColorEnum import UnitColorEnum
 
 
-@Singleton
 class Generator:
     nb_units: int = 4
 

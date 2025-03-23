@@ -2,13 +2,13 @@ from peewee import SqliteDatabase
 
 from src.common.decorators.Singleton import Singleton
 from src.infra.database.models.SessionModel import SessionModel
-from src.infra.env.EnvironmentHandler import EnvironmentHandler
+from src.infra.env.EnvironmentConfig import EnvironmentConfig
 
 
 @Singleton
 class DatabaseConfig:
     def __init__(self):
-        self._database_file_path = EnvironmentHandler().get_database_file_path()
+        self._database_file_path = EnvironmentConfig().get_database_file_path()
         self._db = SqliteDatabase(self._database_file_path)
         self._tables = [SessionModel]
         self._db.bind(self._tables)

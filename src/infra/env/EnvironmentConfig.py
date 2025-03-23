@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 
 @Singleton
-class EnvironmentHandler:
+class EnvironmentConfig:
     def __init__(self):
         load_dotenv()
 

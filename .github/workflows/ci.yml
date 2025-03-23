@@ -7,6 +7,10 @@ on:
       - 'demo'
       - 'docs'
   pull_request:
+    branches-ignore:
+      - 'master'
+      - 'demo'
+      - 'docs'
 
 jobs:
   tests:

@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class UnitColorEnum(Enum):
+class BeadColorEnum(Enum):
     B = "blue"
     R = "red"
     G = "green"

@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 
-from src.domain.values.combinations.Unit import Unit
+from src.domain.values.combinations.Bead import Bead
 
 @dataclass(frozen=True)
 class Combination:
-    units: list[Unit] = field(default_factory=list[Unit])
+    beads: list[Bead] = field(default_factory=list[Bead])
 
     def __repr__(self):
-        return f"Combination={[unit.color.value for unit in self.units]}"
+        return f"Combination={[bead.color.value for bead in self.beads]}"

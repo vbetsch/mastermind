@@ -1,20 +1,20 @@
 from random import choice
 
 from src.domain.entities.Combination import Combination
-from src.domain.values.combinations.Unit import Unit
-from src.domain.values.combinations.UnitColorEnum import UnitColorEnum
+from src.domain.values.combinations.Bead import Bead
+from src.domain.values.combinations.BeadColorEnum import BeadColorEnum
 
 
 class Generator:
-    nb_units: int = 4
+    nb_beads: int = 4
 
     @staticmethod
-    def generate_unit() -> Unit:
-        color_picked: UnitColorEnum = choice(list(UnitColorEnum))
-        return Unit(color_picked)
+    def generate_bead() -> Bead:
+        color_picked: BeadColorEnum = choice(list(BeadColorEnum))
+        return Bead(color_picked)
 
     def generate_combination(self) -> Combination:
-        units: list[Unit] = []
-        for _ in range(self.nb_units):
-            units.append(self.generate_unit())
-        return Combination(units)
+        beads: list[Bead] = []
+        for _ in range(self.nb_beads):
+            beads.append(self.generate_bead())
+        return Combination(beads)

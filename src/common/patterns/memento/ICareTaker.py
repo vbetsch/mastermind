@@ -1,7 +1,7 @@
 from abc import ABC
 
-from src.common.abstract.memento.IMemento import IMemento
-from src.common.abstract.memento.IOriginator import IOriginator
+from src.common.patterns.memento.IMemento import IMemento
+from src.common.patterns.memento.IOriginator import IOriginator
 
 
 class ICareTaker(ABC):

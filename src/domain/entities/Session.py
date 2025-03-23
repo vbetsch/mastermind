@@ -1,7 +1,7 @@
 from dataclasses import dataclass, replace, field
 from typing import Self
 
-from src.common.abstract.memento.IOriginator import IOriginator
+from src.common.patterns.memento.IOriginator import IOriginator
 from src.domain.entities.Combination import Combination
 from src.domain.entities.Player import Player
 from src.domain.entities.Turn import Turn

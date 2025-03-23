@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import Self
 
-from src.common.abstract.mediator.IComponent import IComponent
+from src.common.patterns.mediator.IComponent import IComponent
 
 
 class Subscriber(IComponent):

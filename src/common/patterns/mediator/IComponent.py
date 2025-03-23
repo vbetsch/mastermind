@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Self
 
-from src.common.abstract.mediator.IMediator import IMediator
+from src.common.patterns.mediator.IMediator import IMediator
 
 
 class IComponent(ABC):

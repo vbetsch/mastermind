@@ -1,20 +1,19 @@
+from src.common.communication.Subscriber import Subscriber
+from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
-from src.ui.cli.handlers.IHandler import IHandler
 
 
-class CLI:
-    def __init__(self, main_menu_handler: IHandler) -> None:
+class CLI(Subscriber):
+    def __init__(self, mediator: IMediator) -> None:
+        super().__init__(self.__class__.__name__, mediator)
         self.displayer: Displayer = Displayer()
-        self.main_menu_handler: IHandler = main_menu_handler
 
-    def handle_callbacks(self, callback: str):
-        match callback:
+    def handle(self, message: str, sender: Subscriber) -> None:
+        match message:
             case "SHOW_MAIN_MENU":
                 self.main_menu()
             case "SHOW_PLAY_MENU":
                 print("Display play menu...")
-            case _:
-                raise Exception(f"Unknown callback: {callback}")
 
     def welcome(self) -> None:
         self.displayer.print_message("Welcome to")
@@ -22,8 +21,7 @@ class CLI:
 
     def main_menu(self) -> None:
         choice: str = self.displayer.show_main_menu()
-        callback: str = self.main_menu_handler.manage(choice)
-        self.handle_callbacks(callback)
+        self.send(choice)
 
     def quit(self):
         self.displayer.print_message("Good Bye!")

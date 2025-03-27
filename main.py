@@ -11,6 +11,9 @@ from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
 
 
 def inject_dependencies() -> CLI:
+    # Mediator
+    mediator: Mediator = Mediator()
+
     # Player
     player: Player = Player(name="default")
 
@@ -27,20 +30,17 @@ def inject_dependencies() -> CLI:
         session_repository=session_repository,
     )
 
-    # Mediator
-    mediator: Mediator = Mediator()
-
-    # Handlers
-    main_menu_handler: MainMenuHandler = MainMenuHandler(mediator=mediator)
-
     # Controllers
-    cli: CLI = CLI(main_menu_handler=main_menu_handler)
     SessionController(
         mediator=mediator,
         create_session=create_session,
         run_session=run_session
     )
-    return cli
+
+    # Handlers
+    MainMenuHandler(mediator=mediator)
+
+    return CLI(mediator=mediator)
 
 
 def run():

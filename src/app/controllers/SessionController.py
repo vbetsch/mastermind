@@ -15,5 +15,3 @@ class SessionController(IController):
             case "CREATE_AND_RUN_SESSION":
                 self.create_session.execute()
                 self.run_session.execute()
-            case _:
-                raise Exception(f"Unknown message: {message}")

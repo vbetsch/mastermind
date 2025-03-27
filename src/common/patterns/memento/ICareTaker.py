@@ -1,5 +1,6 @@
 from abc import ABC
 
+from src.common.exceptions.MementoException import MementoException
 from src.common.patterns.memento.IMemento import IMemento
 from src.common.patterns.memento.IOriginator import IOriginator
 
@@ -10,7 +11,7 @@ class ICareTaker(ABC):
 
     def get_last_memento(self) -> IMemento:
         if len(self._mementos) < 1:
-            raise Exception("No memento available")
+            raise MementoException("No memento available")
         return self._mementos[-1]
 
     def save(self, originator: IOriginator) -> None:
@@ -19,7 +20,7 @@ class ICareTaker(ABC):
 
     def undo(self, originator: IOriginator) -> None:
         if len(self._mementos) <= 1:
-            raise Exception("No memento to restore")
+            raise MementoException("No memento to restore")
 
         self._mementos.pop()
         last_memento: IMemento = self.get_last_memento()

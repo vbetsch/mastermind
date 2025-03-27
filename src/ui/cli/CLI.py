@@ -1,3 +1,4 @@
+from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
@@ -10,18 +11,21 @@ class CLI(Subscriber):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case "SHOW_MAIN_MENU":
+            case EventEnum.SHOW_MAIN_MENU.name:
                 self.main_menu()
-            case "SHOW_PLAY_MENU":
-                print("Display play menu...")
+            case EventEnum.SHOW_PLAY_MENU.name:
+                self.play_menu()
 
     def welcome(self) -> None:
         self.displayer.print_message("Welcome to")
         self.displayer.print_ascii_art("mastermind")
 
     def main_menu(self) -> None:
-        choice: str = self.displayer.show_main_menu()
-        self.send(choice)
+        choice: EventEnum = self.displayer.show_main_menu()
+        self.send(choice.name)
+
+    def play_menu(self) -> None:
+        print("Display play menu...")
 
     def quit(self):
         self.displayer.print_message("Good Bye!")

@@ -1,3 +1,4 @@
+from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.handlers.IHandler import IHandler
@@ -9,6 +10,6 @@ class MainMenuHandler(IHandler):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case "CREATE_A_SESSION":
-                self.send("CREATE_AND_RUN_SESSION")
-                self.send("SHOW_PLAY_MENU")
+            case EventEnum.CREATE_A_SESSION.name:
+                self.send(EventEnum.CREATE_AND_RUN_SESSION.name)
+                self.send(EventEnum.SHOW_PLAY_MENU.name)

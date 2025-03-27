@@ -2,6 +2,7 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
+from src.common.communication.EventEnum import EventEnum
 from src.ui.cli.components.Menu import Menu
 
 
@@ -11,8 +12,8 @@ class Displayer:
         self._ascii_font: str = "slant"
         self._main_menu: Menu = Menu(
             console=self._console,
-            title="Main menu",
-            options=["CREATE_A_SESSION"],
+            title=EventEnum.SHOW_MAIN_MENU.value,
+            options=[EventEnum.CREATE_A_SESSION],
         )
 
     def print_ascii_art(self, text: str) -> None:
@@ -24,6 +25,6 @@ class Displayer:
         text = Text(message, style=style)
         self._console.print(text)
 
-    def show_main_menu(self) -> str:
+    def show_main_menu(self) -> EventEnum:
         print("\n")
         return self._main_menu.show()

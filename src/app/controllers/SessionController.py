@@ -1,5 +1,6 @@
 from src.app.controllers.IController import IController
 from src.app.ports.usecases.ISessionUseCase import ISessionUseCase
+from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.patterns.mediator.IMediator import IMediator
 
@@ -12,6 +13,6 @@ class SessionController(IController):
 
     def handle(self, message: str, sender: Subscriber) -> None:
         match message:
-            case "CREATE_AND_RUN_SESSION":
+            case EventEnum.CREATE_AND_RUN_SESSION.name:
                 self.create_session.execute()
                 self.run_session.execute()

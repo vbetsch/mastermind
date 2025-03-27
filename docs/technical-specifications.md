@@ -162,7 +162,7 @@ screen. The Displayer uses [components](../src/ui/cli/components).
 
 Communication between the backend and frontend is managed by [Mediator](../src/common/communication/Mediator.py). Each
 controller (backend and frontend) subscribes to it. This makes communication with a
-system for sending and responding to [events](../src/common/communication/events). When I
+system for sending and responding to [events](../src/common/communication/EventEnum.py). When I
 need to trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the
 other subscribers receive it. Each of them then
 decides whether or not to process it (with the handle function). This model also allows me to evolve the application: I

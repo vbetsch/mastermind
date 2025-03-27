@@ -26,11 +26,6 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   └── usecases
 │   ├── common
 │   │   ├── communication
-│   │   │   └── events
-│   │   │       ├── cli
-│   │   │       │   ├── main
-│   │   │       │   └── menu
-│   │   │       └── controllers
 │   │   ├── decorators
 │   │   └── patterns
 │   │       ├── mediator
@@ -52,7 +47,7 @@ Here is the architecture of the project, which respects clean architecture :
 │   └── ui
 │       └── cli
 │           ├── components
-│           └── controllers
+│           └── handlers
 └── tests
     ├── archi
     │   └── patterns

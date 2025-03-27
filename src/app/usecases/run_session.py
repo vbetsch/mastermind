@@ -1,6 +1,7 @@
 from src.app.ports.repositories.ISessionRepository import ISessionRepository
 from src.app.ports.usecases.ISessionUseCase import ISessionUseCase
 from src.domain.entities.Player import Player
+from src.domain.entities.Session import Session
 
 
 class RunSession(ISessionUseCase):
@@ -9,4 +10,6 @@ class RunSession(ISessionUseCase):
         self.session_repository: ISessionRepository = session_repository
 
     def execute(self) -> None:
-        print("Run session...")
+        actual_session: Session = self.player.sessions.get_last_memento().get_saved_state()
+        actual_session.run()
+        self.session_repository.update(actual_session)

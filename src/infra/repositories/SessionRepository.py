@@ -5,8 +5,17 @@ from src.infra.database.models.SessionModel import SessionModel
 
 
 class SessionRepository(ISessionRepository):
-    def create(self, session: Session):
+    def create(self, session: Session) -> int:
         DatabaseConfig().connect()
-        SessionModel.create(status=session.status.name)
+        session_model: SessionModel = SessionModel.create(
+            status=session.status.name
+        )
         DatabaseConfig().close()
-        print("Session created!")
+        return session_model.get_id()
+
+    def update(self, session: Session):
+        DatabaseConfig().connect()
+        session_model: SessionModel = SessionModel.get_by_id(session.id)
+        session_model.status = session.status.name
+        SessionModel.save(session_model)
+        DatabaseConfig().close()

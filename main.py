@@ -1,13 +1,13 @@
-from src.app.controllers.MainMenuController import MainMenuController
+from src.app.controllers.SessionController import SessionController
 from src.app.ports.repositories.ISessionRepository import ISessionRepository
-from src.app.ports.usecases.IMainMenuUseCase import IMainMenuUseCase
-from src.app.usecases.continue_a_session import ContinueASession
-from src.app.usecases.create_a_session import CreateASession
-from src.app.usecases.show_sessions import ShowSessions
+from src.app.ports.usecases.ISessionUseCase import ISessionUseCase
+from src.app.usecases.create_session import CreateSession
+from src.app.usecases.run_session import RunSession
 from src.common.communication.Mediator import Mediator
 from src.domain.entities.Player import Player
 from src.infra.repositories.SessionRepository import SessionRepository
 from src.ui.cli.CLI import CLI
+from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
 
 
 def inject_dependencies() -> CLI:
@@ -18,20 +18,27 @@ def inject_dependencies() -> CLI:
     session_repository: ISessionRepository = SessionRepository()
 
     # Use Cases
-    create_a_session: IMainMenuUseCase = CreateASession(
+    create_session: ISessionUseCase = CreateSession(
         player=player,
-        session_repository=session_repository)
-    continue_a_session: IMainMenuUseCase = ContinueASession()
-    show_sessions: IMainMenuUseCase = ShowSessions()
+        session_repository=session_repository,
+    )
+    run_session: ISessionUseCase = RunSession(
+        player=player,
+        session_repository=session_repository,
+    )
+
+    # Mediator
+    mediator: Mediator = Mediator()
+
+    # Handlers
+    main_menu_handler: MainMenuHandler = MainMenuHandler(mediator=mediator)
 
     # Controllers
-    mediator: Mediator = Mediator()
-    cli: CLI = CLI(mediator=mediator)
-    MainMenuController(
+    cli: CLI = CLI(main_menu_handler=main_menu_handler)
+    SessionController(
         mediator=mediator,
-        create_a_session=create_a_session,
-        continue_a_session=continue_a_session,
-        show_sessions=show_sessions,
+        create_session=create_session,
+        run_session=run_session
     )
     return cli
 
@@ -41,9 +48,11 @@ def run():
     cli.welcome()
     cli.main_menu()
 
+
 def cancel():
     cli: CLI = inject_dependencies()
     cli.quit()
+
 
 if __name__ == '__main__':
     try:

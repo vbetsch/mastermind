@@ -2,8 +2,6 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.text import Text
 
-from src.common.communication.events.cli.menu.MainMenuOptions import MainMenuOptions
-from src.common.communication.events.cli.menu.MenuOption import MenuOption
 from src.ui.cli.components.Menu import Menu
 
 
@@ -14,7 +12,7 @@ class Displayer:
         self._main_menu: Menu = Menu(
             console=self._console,
             title="Main menu",
-            options=MainMenuOptions.all_options()
+            options=["CREATE_A_SESSION"],
         )
 
     def print_ascii_art(self, text: str) -> None:
@@ -26,6 +24,6 @@ class Displayer:
         text = Text(message, style=style)
         self._console.print(text)
 
-    def show_main_menu(self) -> MenuOption:
+    def show_main_menu(self) -> str:
         print("\n")
         return self._main_menu.show()

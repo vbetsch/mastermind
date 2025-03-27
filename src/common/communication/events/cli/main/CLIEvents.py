@@ -1,2 +1,0 @@
-class CLIEvents:
-    pass

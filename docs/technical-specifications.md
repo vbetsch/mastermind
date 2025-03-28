@@ -27,6 +27,7 @@ Here is the architecture of the project, which respects clean architecture :
 │   ├── common
 │   │   ├── communication
 │   │   ├── decorators
+│   │   ├── exceptions
 │   │   └── patterns
 │   │       ├── mediator
 │   │       └── memento

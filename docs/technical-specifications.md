@@ -81,7 +81,6 @@ This folder is the common library for the front-end and back-end.<br>
 
 Here's the list of items you can find:
 
-* Decorators
 * All about design patterns structure
 * All about communication between front and back
 
@@ -112,7 +111,7 @@ This folder contains all the project's graphical interfaces.<br>
 Here's the list of items you can find in each UI :
 
 * Components
-* Controllers
+* Handlers (middleware between CLI and Controllers)
 
 ### tests
 
@@ -129,12 +128,20 @@ Game rules are managed by [entities](../src/domain/entities) and [core objects](
 
 ### Entities
 
-* [Session](../src/domain/entities/Session.py) : represents games
+* [Player](../src/domain/entities/Player.py)
+* [Session](../src/domain/entities/Session.py)
+
+### Value objects
+
 * [Combination](../src/domain/values/combinations/Combination.py) : represents combinations
   of [Beads](../src/domain/values/combinations/Bead.py)
+* [Turn](../src/domain/values/sessions/Turn.py) : element of Session
+* [Feedback](../src/domain/values/turns/Feedback.py) : represents feedbacks returned by the system for a proposal
+* [Indicator](../src/domain/values/turns/indicators/Indicator.py) : element of Feedbacks
 
 ### Core objects
 
+* [Generator](../src/domain/core/Generator.py) : generates random combinations
 * [Arbitrator](../src/domain/core/Arbitrator.py) : defines whether a combination is right or wrong
 
 ## Session management
@@ -148,22 +155,22 @@ was in.
 
 ## User interfaces
 
-### CLI
-
-The CLI graphical interface is managed by the [CLI](../src/ui/cli/CLI.py) object, which uses
-the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
-screen. The Displayer uses [components](../src/ui/cli/components).
-
 ## Communication
 
 Communication between the backend and frontend is managed by [Mediator](../src/common/communication/Mediator.py). Each
-controller (backend and frontend) subscribes to it. This makes communication with a
+controller, each handler, and each UI subscribes to it. This makes communication with a
 system for sending and responding to [events](../src/common/communication/EventEnum.py). When I
 need to trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the
 other subscribers receive it. Each of them then
 decides whether or not to process it (with the handle function). This model also allows me to evolve the application: I
 can add as many controllers
 and graphical interfaces as I like.
+
+### CLI
+
+The CLI graphical interface is managed by the [CLI](../src/ui/cli/CLI.py) object, which uses
+the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
+screen. The Displayer uses [components](../src/ui/cli/components). The CLI will call events using [handlers](../src/ui/cli/handlers).
 
 ## Commits convention
 

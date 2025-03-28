@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class BeadColorEnum(Enum):
-    B = "blue"
-    R = "red"
-    G = "green"
-    Y = "yellow"
-    M = "magenta"
+    B: str = "blue"
+    R: str = "red"
+    G: str = "green"
+    Y: str = "yellow"
+    M: str = "magenta"

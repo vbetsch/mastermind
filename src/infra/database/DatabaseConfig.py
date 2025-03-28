@@ -7,23 +7,23 @@ from src.infra.env.EnvironmentConfig import EnvironmentConfig
 
 @Singleton
 class DatabaseConfig:
-    def __init__(self):
-        self._database_file_path = EnvironmentConfig().get_database_file_path()
-        self._db = SqliteDatabase(self._database_file_path)
+    def __init__(self) -> None:
+        self._database_file_path: str = EnvironmentConfig().get_database_file_path()
+        self._db: SqliteDatabase = SqliteDatabase(self._database_file_path)
         self._tables = [SessionModel]
         self._db.bind(self._tables)
         self._create_tables()
 
-    def _create_tables(self):
+    def _create_tables(self) -> None:
         self.connect()
         self._db.create_tables(self._tables)
         self.close()
 
-    def db(self):
+    def db(self) -> SqliteDatabase:
         return self._db
 
-    def connect(self):
+    def connect(self) -> None:
         self._db.connect()
 
-    def close(self):
+    def close(self) -> None:
         self._db.close()

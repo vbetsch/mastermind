@@ -3,7 +3,7 @@ from src.common.patterns.mediator.IMediator import IMediator
 
 
 class Mediator(IMediator):
-    def __init__(self):
+    def __init__(self) -> None:
         self._subscribers: list[Subscriber] = []
 
     def send_message(self, message: str, sender: Subscriber) -> None:

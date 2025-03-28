@@ -2,5 +2,5 @@ from src.domain.values.turns.indicators.IndicatorColorEnum import IndicatorColor
 
 
 class Indicator:
-    def __init__(self, color: IndicatorColorEnum):
+    def __init__(self, color: IndicatorColorEnum) -> None:
         self._color: IndicatorColorEnum = color

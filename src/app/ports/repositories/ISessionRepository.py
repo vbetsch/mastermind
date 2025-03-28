@@ -10,5 +10,5 @@ class ISessionRepository(IRepository):
         pass
 
     @abstractmethod
-    def update(self, session: Session):
+    def update(self, session: Session) -> None:
         pass

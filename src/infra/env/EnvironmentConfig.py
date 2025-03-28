@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 @Singleton
 class EnvironmentConfig:
-    def __init__(self):
+    def __init__(self) -> None:
         load_dotenv()
 
     @staticmethod

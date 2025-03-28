@@ -17,7 +17,7 @@ class Session(IOriginator):
     status: StatusEnum = StatusEnum.NOT_STARTED
     turns: list[Turn] = field(default_factory=list)
 
-    def run(self):
+    def run(self) -> None:
         self.status = StatusEnum.RUNNING
         print("Session started")
 
@@ -26,5 +26,5 @@ class Session(IOriginator):
         return SessionMemento(self)
 
     def restore(self, memento: SessionMemento) -> Self:
-        session = memento.get_saved_state()
+        session: Self = memento.get_saved_state()
         return replace(self, **vars(session))

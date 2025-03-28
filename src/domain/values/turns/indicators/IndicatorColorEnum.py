@@ -2,5 +2,5 @@ from enum import Enum
 
 
 class IndicatorColorEnum(Enum):
-    RED = "red"
-    WHITE = "white"
+    RED: str = "red"
+    WHITE: str = "white"

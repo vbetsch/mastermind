@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class StatusEnum(Enum):
-    NOT_STARTED = 0
-    RUNNING = 1
-    STOPPED = 2
-    DONE = 3
+    NOT_STARTED: int = 0
+    RUNNING: int = 1
+    STOPPED: int = 2
+    DONE: int = 3

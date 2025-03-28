@@ -15,7 +15,7 @@ class ICareTaker(ABC):
         return self._mementos[-1]
 
     def save(self, originator: IOriginator) -> None:
-        memento = originator.save()
+        memento: IMemento = originator.save()
         self._mementos.append(memento)
 
     def undo(self, originator: IOriginator) -> None:

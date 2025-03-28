@@ -21,7 +21,7 @@ class Menu:
             table.add_row(str(i), option.value)
 
     def _render_table(self) -> Table:
-        table = Table(title=self._title, header_style="bold magenta", show_header=False)
+        table: Table = Table(title=self._title, header_style="bold magenta", show_header=False)
         self._render_columns(table)
         self._render_options(table)
         return table

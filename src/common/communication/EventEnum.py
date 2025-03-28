@@ -3,11 +3,11 @@ from enum import Enum
 
 class EventEnum(Enum):
     # Display
-    SHOW_MAIN_MENU = "Main menu"
-    SHOW_PLAY_MENU = "Play menu"
+    SHOW_MAIN_MENU: str = "Main menu"
+    SHOW_PLAY_MENU: str = "Play menu"
 
     # Handlers
-    CREATE_A_SESSION = "New game"
+    CREATE_A_SESSION: str = "New game"
 
     # Back
-    CREATE_AND_RUN_SESSION = 1
+    CREATE_AND_RUN_SESSION: int = 1

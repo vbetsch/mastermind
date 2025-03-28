@@ -5,7 +5,7 @@ from src.ui.cli.handlers.IHandler import IHandler
 
 
 class MainMenuHandler(IHandler):
-    def __init__(self, mediator: IMediator):
+    def __init__(self, mediator: IMediator) -> None:
         super().__init__(self.__class__.__name__, mediator)
 
     def handle(self, message: str, sender: Subscriber) -> None:

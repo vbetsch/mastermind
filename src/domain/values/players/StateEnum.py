@@ -2,6 +2,6 @@ from enum import Enum
 
 
 class StateEnum(Enum):
-    PLAYING = 'PLAYING'
-    WON = 'WON'
-    LOST = 'LOST'
+    PLAYING: str = 'PLAYING'
+    WON: str = 'WON'
+    LOST: str = 'LOST'

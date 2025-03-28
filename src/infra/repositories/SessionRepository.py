@@ -13,7 +13,7 @@ class SessionRepository(ISessionRepository):
         DatabaseConfig().close()
         return session_model.get_id()
 
-    def update(self, session: Session):
+    def update(self, session: Session) -> None:
         DatabaseConfig().connect()
         session_model: SessionModel = SessionModel.get_by_id(session.id)
         session_model.status = session.status.name

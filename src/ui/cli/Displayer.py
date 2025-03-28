@@ -18,11 +18,11 @@ class Displayer:
 
     def print_ascii_art(self, text: str) -> None:
         ascii_art = figlet_format(text, font=self._ascii_font)
-        ascii_text = Text(ascii_art, style="bold")
+        ascii_text: Text = Text(ascii_art, style="bold")
         self._console.print(ascii_text)
 
     def print_message(self, message: str, style=None) -> None:
-        text = Text(message, style=style)
+        text: Text = Text(message, style=style)
         self._console.print(text)
 
     def show_main_menu(self) -> EventEnum:

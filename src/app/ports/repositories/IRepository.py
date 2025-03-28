@@ -7,5 +7,5 @@ class IRepository(ABC):
         pass
 
     @abstractmethod
-    def update(self, entity):
+    def update(self, entity) -> None:
         pass

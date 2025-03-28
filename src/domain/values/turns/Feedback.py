@@ -3,7 +3,7 @@ from src.domain.values.turns.indicators.IndicatorColorEnum import IndicatorColor
 
 
 class Feedback:
-    def __init__(self):
-        self._red_indicator = Indicator(IndicatorColorEnum.RED)
-        self._white_indicator = Indicator(IndicatorColorEnum.WHITE)
+    def __init__(self) -> None:
+        self._red_indicator: Indicator = Indicator(IndicatorColorEnum.RED)
+        self._white_indicator: Indicator = Indicator(IndicatorColorEnum.WHITE)
         self.indicators: list[Indicator] = [self._red_indicator, self._white_indicator]

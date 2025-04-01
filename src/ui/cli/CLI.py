@@ -20,6 +20,10 @@ class CLI(Subscriber):
         self.displayer.print_message("Welcome to")
         self.displayer.print_ascii_art("mastermind")
 
+    def start(self):
+        self.welcome()
+        self.main_menu()
+
     def main_menu(self) -> None:
         choice: EventEnum = self.displayer.show_main_menu()
         self.send(choice.name)

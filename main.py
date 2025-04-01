@@ -45,8 +45,7 @@ def inject_dependencies() -> CLI:
 
 def run():
     cli: CLI = inject_dependencies()
-    cli.welcome()
-    cli.main_menu()
+    cli.start()
 
 
 def cancel():

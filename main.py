@@ -19,6 +19,8 @@ def inject_dependencies() -> CLI:
     player: Player = Player(name="default")
 
     # Repositories
+    player_repository: IPlayerRepository = PlayerRepository()
+    history_repository: IHistoryRepository = HistoryRepository()
     session_repository: ISessionRepository = SessionRepository()
 
     # Use Cases

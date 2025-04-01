@@ -5,6 +5,9 @@ from src.infra.database.models.SessionModel import SessionModel
 
 
 class SessionRepository(ISessionRepository):
+    def find(self, value) -> Session | None:
+        pass
+
     def create(self, session: Session) -> int:
         DatabaseConfig().connect()
         session_model: SessionModel = SessionModel.create(
@@ -19,3 +22,6 @@ class SessionRepository(ISessionRepository):
         session_model.status = session.status.name
         SessionModel.save(session_model)
         DatabaseConfig().close()
+
+    def delete(self, session: Session) -> None:
+        pass

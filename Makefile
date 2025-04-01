@@ -8,6 +8,8 @@ ROOT_FOLDER := src
 TESTS_FOLDER := tests
 UML_FOLDER := docs/img/c4
 
+DB_FILE := src/infra/database/mastermind.db
+
 
 all: run
 .PHONY: all
@@ -28,7 +30,9 @@ requirements:
 	$(PIP) freeze > ${REQUIREMENTS_FILE}
 
 run: install .env
-	rm src/infra/database/mastermind.db
+	@if [ -f "${DB_FILE}" ]; then \
+		rm ${DB_FILE}; \
+	fi
 	$(PYTHON) main.py
 
 tests: install

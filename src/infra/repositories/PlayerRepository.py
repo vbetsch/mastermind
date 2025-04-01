@@ -7,9 +7,14 @@ from src.infra.database.models.PlayerModel import PlayerModel
 class PlayerRepository(IPlayerRepository):
     def find(self, name: str) -> Player | None:
         DatabaseConfig().connect()
-        result: Player | None = PlayerModel.get_or_none(PlayerModel.name == name)
+        result: PlayerModel | None = PlayerModel.get_or_none(PlayerModel.name == name)
         DatabaseConfig().close()
-        return result
+        if not result:
+            return None
+        return Player(
+            name=result.name,
+            state=result.state,
+        )
 
     def create(self, player: Player) -> int:
         DatabaseConfig().connect()

@@ -1,10 +1,9 @@
-from src.app.ports.usecases.ISessionUseCase import ISessionUseCase
+from src.app.ports.usecases.IStopSessionUseCase import IStopSessionUseCase
 from src.domain.core.Game import Game
-from src.domain.entities.Player import Player
 
 
-class StopSession(ISessionUseCase):
-    def execute(self, player: Player) -> None:
+class StopSession(IStopSessionUseCase):
+    def execute(self, arg=None) -> None:
         session = Game().get_current_session()
         session.stop()
         Game().set_current_session(session)

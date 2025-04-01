@@ -5,6 +5,6 @@ from src.infra.database.models.HistoryModel import HistoryModel
 
 
 class PlayerModel(BaseModel):
-    name = CharField(null=False)
+    name = CharField(null=False, unique=True)
     state = CharField(null=False)
     history = ForeignKeyField(HistoryModel, unique=True, null=False)

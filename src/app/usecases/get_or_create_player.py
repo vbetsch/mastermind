@@ -12,10 +12,13 @@ class GetOrCreatePlayer(IPlayerUseCase):
         player: Player | None = self.player_repository.find(name=player_name)
 
         if player:
+            print(f"User found: {player}")
             return player
 
+        print("Creating new user...")
         new_player: Player = Player(name=player_name)
         player_id: int = self.player_repository.create(new_player)
         new_player.id = player_id
+        print(f"New user created! {new_player}")
 
         return new_player

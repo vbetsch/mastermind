@@ -12,8 +12,10 @@ class PlayerRepository(IPlayerRepository):
         if not result:
             return None
         return Player(
+            id=result.id,
             name=result.name,
             state=result.state,
+            history_id=result.history.id
         )
 
     def create(self, player: Player, history_id: int) -> int:

@@ -11,6 +11,6 @@ class CreateSession(ISessionUseCase):
 
     def execute(self, player: Player) -> None:
         new_session: Session = Session(player, Generator().generate_combination())
-        session_id: int = self.session_repository.create(new_session)
+        session_id: int = self.session_repository.create(new_session, player.sessions.get_id())
         new_session.id = session_id
         player.sessions.save(new_session)

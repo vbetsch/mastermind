@@ -8,10 +8,11 @@ class SessionRepository(ISessionRepository):
     def find(self, value) -> Session | None:
         pass
 
-    def create(self, session: Session, dependency=None) -> int:
+    def create(self, session: Session, history_id: int) -> int:
         DatabaseConfig().connect()
         session_model: SessionModel = SessionModel.create(
-            status=session.status.name
+            status=session.status.name,
+            history=history_id,
         )
         DatabaseConfig().close()
         return session_model.get_id()

@@ -13,5 +13,8 @@ class SessionHistory(ICareTaker):
         except MementoException:
             return None
 
+    def get_id(self) -> int:
+        return self._id
+
     def set_id(self, value: int):
         self._id = value

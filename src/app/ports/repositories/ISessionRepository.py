@@ -10,7 +10,7 @@ class ISessionRepository(IRepository):
         pass
 
     @abstractmethod
-    def create(self, session: Session, dependency=None) -> int:
+    def create(self, session: Session, history_id: int) -> int:
         pass
 
     @abstractmethod

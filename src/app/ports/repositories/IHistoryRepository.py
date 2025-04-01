@@ -6,7 +6,7 @@ from src.domain.values.sessions.SessionHistory import SessionHistory
 
 class IHistoryRepository(IRepository):
     @abstractmethod
-    def find(self, value) -> SessionHistory | None:
+    def find(self, history_id: int) -> SessionHistory | None:
         pass
 
     @abstractmethod

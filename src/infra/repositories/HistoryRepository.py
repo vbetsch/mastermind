@@ -5,8 +5,12 @@ from src.infra.database.models.HistoryModel import HistoryModel
 
 
 class HistoryRepository(IHistoryRepository):
-    def find(self, value) -> SessionHistory | None:
-        pass
+    def find(self, history_id: int) -> SessionHistory | None:
+        result: HistoryModel = HistoryModel.get(HistoryModel.id == history_id)
+        DatabaseConfig().close()
+        history = SessionHistory()
+        history.set_id(result.id)
+        return history
 
     def create(self, history: SessionHistory, dependency=None) -> int:
         DatabaseConfig().connect()

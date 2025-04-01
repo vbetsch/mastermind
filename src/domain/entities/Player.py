@@ -10,3 +10,4 @@ class Player:
     id: int | None = None
     state: StateEnum = StateEnum.INSIDE_MENUS
     sessions: SessionHistory = field(default_factory=SessionHistory)
+    history_id: int | None = None

@@ -13,7 +13,6 @@ from src.domain.values.sessions.Turn import Turn
 class Session(IOriginator):
     player: Player
     secret_combination: Combination
-    id: int | None = None
     status: StatusEnum = StatusEnum.NOT_STARTED
     turns: list[Turn] = field(default_factory=list)
 

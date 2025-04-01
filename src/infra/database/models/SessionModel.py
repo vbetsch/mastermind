@@ -1,9 +1,7 @@
-from peewee import CharField, ForeignKeyField
+from peewee import CharField
 
 from src.infra.database.models.BaseModel import BaseModel
-from src.infra.database.models.HistoryModel import HistoryModel
 
 
 class SessionModel(BaseModel):
     status = CharField(null=False)
-    history = ForeignKeyField(HistoryModel, backref='sessions', null=False)

@@ -12,7 +12,6 @@
 * [Technical specifications](docs/technical-specifications.md)
 * [Design patterns](docs/design-patterns.md)
 * [Diagram C4](docs/diagram-c4.md)
-* [Entity-Relationship Diagram](docs/diagrams/erd.dbml)
 
 ## Dependencies
 

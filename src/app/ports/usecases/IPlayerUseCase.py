@@ -4,7 +4,7 @@ from src.app.ports.usecases.IUseCase import IUseCase
 from src.domain.entities.Player import Player
 
 
-class ISessionUseCase(IUseCase):
+class IPlayerUseCase(IUseCase):
     @abstractmethod
-    def execute(self, player: Player) -> None:
+    def execute(self, arg=None) -> Player:
         pass

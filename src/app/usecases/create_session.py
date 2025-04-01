@@ -6,12 +6,11 @@ from src.domain.entities.Session import Session
 
 
 class CreateSession(ISessionUseCase):
-    def __init__(self, player: Player, session_repository: ISessionRepository) -> None:
-        self.player: Player = player
+    def __init__(self, session_repository: ISessionRepository) -> None:
         self.session_repository: ISessionRepository = session_repository
 
-    def execute(self) -> None:
-        new_session: Session = Session(self.player, Generator().generate_combination())
+    def execute(self, player: Player) -> None:
+        new_session: Session = Session(player, Generator().generate_combination())
         session_id: int = self.session_repository.create(new_session)
         new_session.id = session_id
-        self.player.sessions.save(new_session)
+        player.sessions.save(new_session)

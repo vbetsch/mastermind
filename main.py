@@ -34,6 +34,7 @@ def inject_dependencies() -> CLI:
         session_repository=session_repository,
     )
     run_session: ISessionUseCase = RunSession(
+        player_repository=player_repository,
         session_repository=session_repository,
     )
     stop_session: ISessionUseCase = StopSession(

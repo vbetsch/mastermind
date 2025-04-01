@@ -29,7 +29,11 @@ class PlayerRepository(IPlayerRepository):
         return player_model.get_id()
 
     def update(self, player: Player) -> None:
-        pass
+        DatabaseConfig().connect()
+        player_model: PlayerModel = PlayerModel.get_by_id(player.id)
+        player_model.state = player.state.name
+        PlayerModel.save(player_model)
+        DatabaseConfig().close()
 
     def delete(self, player: Player) -> None:
         pass

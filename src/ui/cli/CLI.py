@@ -30,6 +30,7 @@ class CLI(Subscriber):
 
     def play_menu(self) -> None:
         print("Display play menu...")
+        self.main_menu() # TODO: to delete
 
     def quit(self):
         self.send(EventEnum.STOP_SESSION.name)

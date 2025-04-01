@@ -10,4 +10,4 @@ class EventEnum(Enum):
     CREATE_A_SESSION: str = "New game"
 
     # Back
-    CREATE_AND_RUN_SESSION: int = 1
+    CREATE_AND_RUN_SESSION: str = "CREATE_AND_RUN_SESSION"

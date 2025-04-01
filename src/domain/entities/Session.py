@@ -28,3 +28,7 @@ class Session(IOriginator):
     def restore(self, memento: SessionMemento) -> Self:
         session: Self = memento.get_saved_state()
         return replace(self, **vars(session))
+
+    def stop(self):
+        self.status = StatusEnum.STOPPED
+        print("Session stopped")

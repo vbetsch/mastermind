@@ -3,6 +3,7 @@ from src.app.ports.repositories.ISessionRepository import ISessionRepository
 from src.app.ports.usecases.ISessionUseCase import ISessionUseCase
 from src.app.usecases.create_session import CreateSession
 from src.app.usecases.run_session import RunSession
+from src.app.usecases.stop_session import StopSession
 from src.common.communication.Mediator import Mediator
 from src.domain.entities.Player import Player
 from src.infra.repositories.SessionRepository import SessionRepository
@@ -29,12 +30,17 @@ def inject_dependencies() -> CLI:
         player=player,
         session_repository=session_repository,
     )
+    stop_session: ISessionUseCase = StopSession(
+        player=player,
+        session_repository=session_repository,
+    )
 
     # Controllers
     SessionController(
         mediator=mediator,
         create_session=create_session,
-        run_session=run_session
+        run_session=run_session,
+        stop_session=stop_session
     )
 
     # Handlers

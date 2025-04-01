@@ -32,4 +32,5 @@ class CLI(Subscriber):
         print("Display play menu...")
 
     def quit(self):
+        self.send(EventEnum.STOP_SESSION.name)
         self.displayer.print_message("Good Bye!")

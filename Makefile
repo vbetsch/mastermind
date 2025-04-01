@@ -28,6 +28,7 @@ requirements:
 	$(PIP) freeze > ${REQUIREMENTS_FILE}
 
 run: install .env
+	rm src/infra/database/mastermind.db
 	$(PYTHON) main.py
 
 tests: install

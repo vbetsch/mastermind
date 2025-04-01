@@ -1,0 +1,22 @@
+Table Player {
+  id uuid [primary key, not null]
+  name varchar [not null]
+  state varchar [not null]
+  history uuid
+}
+
+Table History {
+  id uuid [primary key, not null]
+  player uuid
+  sessions Session[]
+}
+
+Table Session {
+  id uuid [primary key, not null]
+  status varchar [not null]
+  history uuid
+}
+
+// One To Many
+Ref: History.sessions < Session.history
+Ref: History.player - Player.history

@@ -2,16 +2,16 @@
 
 ## Context
 
-<img src="img/c4/context.png" alt="context">
+<img src="diagrams/c4/context.png" alt="context">
 
 ## Container
 
-<img src="img/c4/container.png" alt="container">
+<img src="diagrams/c4/container.png" alt="container">
 
 ## Components
 
-<img src="img/c4/components.png" alt="components">
+<img src="diagrams/c4/components.png" alt="components">
 
 ## Code
 
-<img src="img/c4/code.png" alt="code">
+<img src="diagrams/c4/code.png" alt="code">

@@ -158,19 +158,20 @@ was in.
 ## Communication
 
 Communication between the backend and frontend is managed by [Mediator](../src/common/communication/Mediator.py). Each
-controller, each handler, and each UI subscribes to it. This makes communication with a
+controller, each handler, and each UI subscribes to it. The handlers act as intermediaries between controllers and UIs,
+they are used in particular for menus. This makes communication with a
 system for sending and responding to [events](../src/common/communication/EventEnum.py). When I
 need to trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the
 other subscribers receive it. Each of them then
 decides whether or not to process it (with the handle function). This model also allows me to evolve the application: I
-can add as many controllers
-and graphical interfaces as I like.
+can add as many handlers, controllers and graphical interfaces as I like.
 
 ### CLI
 
 The CLI graphical interface is managed by the [CLI](../src/ui/cli/CLI.py) object, which uses
 the [Displayer](../src/ui/cli/Displayer.py) object to display elements on the
-screen. The Displayer uses [components](../src/ui/cli/components). The CLI will call events using [handlers](../src/ui/cli/handlers).
+screen. The Displayer uses [components](../src/ui/cli/components). The CLI will call events
+using [handlers](../src/ui/cli/handlers).
 
 ## Commits convention
 

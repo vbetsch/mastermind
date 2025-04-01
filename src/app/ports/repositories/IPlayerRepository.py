@@ -10,7 +10,7 @@ class IPlayerRepository(IRepository):
         pass
 
     @abstractmethod
-    def create(self, player: Player) -> int:
+    def create(self, player: Player, history_id: int) -> int:
         pass
 
     @abstractmethod

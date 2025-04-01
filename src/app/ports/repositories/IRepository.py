@@ -7,7 +7,7 @@ class IRepository(ABC):
         pass
 
     @abstractmethod
-    def create(self, entity) -> int:
+    def create(self, entity, dependency) -> int:
         pass
 
     @abstractmethod

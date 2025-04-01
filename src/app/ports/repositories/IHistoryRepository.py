@@ -10,7 +10,7 @@ class IHistoryRepository(IRepository):
         pass
 
     @abstractmethod
-    def create(self, history: SessionHistory) -> int:
+    def create(self, history: SessionHistory, dependency=None) -> int:
         pass
 
     @abstractmethod

@@ -27,6 +27,7 @@ def inject_dependencies() -> CLI:
 
     # Use Cases
     get_or_create_player: IPlayerUseCase = GetOrCreatePlayer(
+        history_repository=history_repository,
         player_repository=player_repository,
     )
     create_session: ISessionUseCase = CreateSession(

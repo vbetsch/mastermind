@@ -8,7 +8,7 @@ class SessionRepository(ISessionRepository):
     def find(self, value) -> Session | None:
         pass
 
-    def create(self, session: Session) -> int:
+    def create(self, session: Session, dependency=None) -> int:
         DatabaseConfig().connect()
         session_model: SessionModel = SessionModel.create(
             status=session.status.name

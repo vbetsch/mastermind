@@ -16,11 +16,12 @@ class PlayerRepository(IPlayerRepository):
             state=result.state,
         )
 
-    def create(self, player: Player) -> int:
+    def create(self, player: Player, history_id: int) -> int:
         DatabaseConfig().connect()
         player_model: PlayerModel = PlayerModel.create(
             name = player.name,
-            state = player.state
+            state = player.state,
+            history = history_id,
         )
         DatabaseConfig().close()
         return player_model.get_id()

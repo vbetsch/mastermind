@@ -18,7 +18,7 @@ class SessionController(IController):
         self.run_session: ISessionUseCase = run_session
         self.stop_session: ISessionUseCase = stop_session
 
-    def handle(self, message: str, sender: Subscriber) -> None:
+    def handle(self, message: str, sender: Subscriber, data=None) -> None:
         player = self.get_player.execute()
 
         match message:

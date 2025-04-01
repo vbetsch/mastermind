@@ -6,10 +6,10 @@ class Mediator(IMediator):
     def __init__(self) -> None:
         self._subscribers: list[Subscriber] = []
 
-    def send_message(self, message: str, sender: Subscriber) -> None:
+    def send_message(self, message: str, sender: Subscriber, data=None) -> None:
         for subscriber in self._subscribers:
             if subscriber != sender:
-                subscriber.receive(message, sender)
+                subscriber.receive(message, sender, data)
 
     def subscribe(self, subscriber: Subscriber) -> None:
         self._subscribers.append(subscriber)

@@ -5,9 +5,9 @@ from src.common.patterns.mediator.IComponent import IComponent
 
 
 class Subscriber(IComponent):
-    def receive(self, message: str, sender: Self) -> None:
-        self.handle(message, sender)
+    def receive(self, message: str, sender: Self, data=None) -> None:
+        self.handle(message, sender, data)
 
     @abstractmethod
-    def handle(self, message: str, sender: Self) -> None:
+    def handle(self, message: str, sender: Self, data) -> None:
         pass

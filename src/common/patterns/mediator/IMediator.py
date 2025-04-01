@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 class IMediator(ABC):
     @abstractmethod
-    def send_message(self, message: str, sender) -> None:
+    def send_message(self, message: str, sender, data=None) -> None:
         pass
 
     @abstractmethod

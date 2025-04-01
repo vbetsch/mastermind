@@ -2,21 +2,23 @@ Table Player {
   id uuid [primary key, not null]
   name varchar [not null]
   state varchar [not null]
-  history uuid
+  history History
 }
 
 Table History {
   id uuid [primary key, not null]
-  player uuid
+  playerId uuid
   sessions Session[]
 }
 
 Table Session {
   id uuid [primary key, not null]
   status varchar [not null]
-  history uuid
+  history History
 }
+
+// One To One
+Ref: Player.history - History.playerId
 
 // One To Many
 Ref: History.sessions < Session.history
-Ref: History.player - Player.history

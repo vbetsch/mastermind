@@ -1,4 +1,5 @@
-from peewee import Model
+from peewee import Model, AutoField
+
 
 class BaseModel(Model):
-    pass
+    id = AutoField()

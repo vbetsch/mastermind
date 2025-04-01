@@ -4,6 +4,7 @@ from src.infra.database.models.BaseModel import BaseModel
 from src.infra.database.models.HistoryModel import HistoryModel
 
 
-class SessionModel(BaseModel):
-    status = CharField(null=False)
-    history = ForeignKeyField(HistoryModel, backref='sessions', null=False)
+class PlayerModel(BaseModel):
+    name = CharField(null=False)
+    state = CharField(null=False)
+    history = ForeignKeyField(HistoryModel, unique=True, null=False)

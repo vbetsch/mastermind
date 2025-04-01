@@ -1,6 +1,8 @@
 from peewee import SqliteDatabase
 
 from src.common.decorators.Singleton import Singleton
+from src.infra.database.models.HistoryModel import HistoryModel
+from src.infra.database.models.PlayerModel import PlayerModel
 from src.infra.database.models.SessionModel import SessionModel
 from src.infra.env.EnvironmentConfig import EnvironmentConfig
 
@@ -10,7 +12,7 @@ class DatabaseConfig:
     def __init__(self) -> None:
         self._database_file_path: str = EnvironmentConfig().get_database_file_path()
         self._db: SqliteDatabase = SqliteDatabase(self._database_file_path)
-        self._tables = [SessionModel]
+        self._tables = [PlayerModel, HistoryModel, SessionModel]
         self._db.bind(self._tables)
         self._create_tables()
 

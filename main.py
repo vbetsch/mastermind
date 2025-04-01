@@ -15,9 +15,6 @@ def inject_dependencies() -> CLI:
     mediator: Mediator = Mediator()
 
     # Repositories
-    # player_repository: IPlayerRepository = PlayerRepository()
-    # history_repository: IHistoryRepository = HistoryRepository()
-    # session_repository: ISessionRepository = SessionRepository()
 
     # Use Cases
     get_player: IPlayerUseCase = GetPlayer()

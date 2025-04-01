@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Self
 
+from src.common.communication.Data import Data
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -10,9 +11,9 @@ class IComponent(ABC):
         self.mediator: IMediator = mediator
         self.mediator.subscribe(self)
 
-    def send(self, message: str, data=None) -> None:
+    def send(self, message: str, data: Data | None = None) -> None:
         self.mediator.send_message(message, self, data)
 
     @abstractmethod
-    def receive(self, message: str, sender: Self, data=None) -> None:
+    def receive(self, message: str, sender: Self, data: Data | None = None) -> None:
         pass

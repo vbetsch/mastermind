@@ -8,6 +8,7 @@ from src.ui.cli.Displayer import Displayer
 class CLI(Subscriber):
     def __init__(self, mediator: IMediator) -> None:
         super().__init__(self.__class__.__name__, mediator)
+        print(f"(02/04/2025 21:25) @reyks || CLI.py:11 || mediator || {mediator}")
         self.displayer: Displayer = Displayer()
 
     def handle(self, message: str, sender: Subscriber, data: Data | None = None) -> None:

@@ -1,5 +1,6 @@
 astroid==3.3.9
 coverage==7.7.0
+dependency-injector==4.46.0
 dill==0.3.9
 graphviz==0.20.3
 iniconfig==2.0.0

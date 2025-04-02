@@ -14,16 +14,16 @@ class SessionController(IController):
                  run_session: IRunSessionUseCase,
                  stop_session: IStopSessionUseCase) -> None:
         super().__init__(self.__class__.__name__, mediator)
-        self.create_session: ICreateSessionUseCase = create_session
-        self.run_session: IRunSessionUseCase = run_session
-        self.stop_session: IStopSessionUseCase = stop_session
+        self._create_session: ICreateSessionUseCase = create_session
+        self._run_session: IRunSessionUseCase = run_session
+        self._stop_session: IStopSessionUseCase = stop_session
 
     def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 if not data or not data.player:
                     return
-                self.create_session.execute(data.player)
-                self.run_session.execute()
+                self._create_session.execute(data.player)
+                self._run_session.execute()
             case EventEnum.STOP_SESSION.name:
-                self.stop_session.execute()
+                self._stop_session.execute()

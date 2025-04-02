@@ -10,12 +10,12 @@ class Generator:
     nb_beads: int = Rules().get_beads_per_combination()
 
     @staticmethod
-    def generate_bead() -> Bead:
+    def _generate_bead() -> Bead:
         color_picked: BeadColorEnum = choice(list(BeadColorEnum))
         return Bead(color_picked)
 
     def generate_combination(self) -> Combination:
         beads: list[Bead] = []
         for _ in range(self.nb_beads):
-            beads.append(self.generate_bead())
+            beads.append(self._generate_bead())
         return Combination(beads)

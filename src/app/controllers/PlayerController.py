@@ -9,10 +9,10 @@ from src.common.patterns.mediator.IMediator import IMediator
 class PlayerController(IController):
     def __init__(self, mediator: IMediator, get_player: IPlayerUseCase):
         super().__init__(self.__class__.__name__, mediator)
-        self.get_player: IPlayerUseCase = get_player
+        self._get_player: IPlayerUseCase = get_player
 
     def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
-                player = self.get_player.execute()
+                player = self._get_player.execute()
                 self.send(message, Data(player))

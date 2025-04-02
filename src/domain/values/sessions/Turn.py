@@ -5,6 +5,6 @@ from src.domain.values.turns.Feedback import Feedback
 
 class Turn:
     def __init__(self) -> None:
-        self.status: StatusEnum = StatusEnum.NOT_STARTED
-        self.feedback: Feedback | None = None
-        self.proposal: Combination | None = None
+        self._status: StatusEnum = StatusEnum.NOT_STARTED
+        self._feedback: Feedback | None = None
+        self._proposal: Combination | None = None

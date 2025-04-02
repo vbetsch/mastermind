@@ -9,7 +9,7 @@ from src.ui.cli.Displayer import Displayer
 class CLI(Subscriber):
     def __init__(self, mediator: IMediator) -> None:
         super().__init__(self.__class__.__name__, mediator)
-        self.displayer: Displayer = Displayer()
+        self._displayer: Displayer = Displayer()
 
     def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
@@ -19,15 +19,15 @@ class CLI(Subscriber):
                 self.play_menu()
 
     def welcome(self) -> None:
-        self.displayer.print_message("Welcome to")
-        self.displayer.print_ascii_art("mastermind")
+        self._displayer.print_message("Welcome to")
+        self._displayer.print_ascii_art("mastermind")
 
     def start(self):
         self.welcome()
         self.main_menu()
 
     def main_menu(self) -> None:
-        choice: EventEnum = self.displayer.show_main_menu()
+        choice: EventEnum = self._displayer.show_main_menu()
         self.send(choice.name)
 
     def play_menu(self) -> None:
@@ -36,4 +36,4 @@ class CLI(Subscriber):
 
     def cancel(self):
         self.send(EventEnum.STOP_SESSION.name)
-        self.displayer.print_message("Good Bye!", jump_lines=2)
+        self._displayer.print_message("Good Bye!", jump_lines=2)

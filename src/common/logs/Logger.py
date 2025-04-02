@@ -5,10 +5,10 @@ from src.common.logs.LoggerColorEnum import LoggerColorEnum
 @Singleton
 class Logger:
     def __init__(self) -> None:
-        self.prefix = "➔"
+        self._prefix = "➔"
 
     def _print(self, tag: str, message: str, color: LoggerColorEnum = None, with_line_break: bool = False) -> None:
-        content: str = f"{self.prefix} {tag}: {message}"
+        content: str = f"{self._prefix} {tag}: {message}"
         if color:
             print(f"{'\n' if with_line_break else ''}{color.value}{content}{LoggerColorEnum.RESET.value}")
         else:

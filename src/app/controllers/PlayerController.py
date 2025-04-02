@@ -9,7 +9,6 @@ from src.common.patterns.mediator.IMediator import IMediator
 class PlayerController(IController):
     def __init__(self, mediator: IMediator, get_player: IPlayerUseCase):
         super().__init__(self.__class__.__name__, mediator)
-        print(f"(02/04/2025 21:25) @reyks || PlayerController.py:12 || mediator || {mediator}")
         self.get_player: IPlayerUseCase = get_player
 
     def handle(self, message: str, sender: Subscriber, data: Data | None = None) -> None:

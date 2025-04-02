@@ -29,6 +29,6 @@ class Session(IOriginator):
         session: Self = memento.get_saved_state()
         return replace(self, **vars(session))
 
-    def stop(self):
+    def stop(self) -> None:
         self.status = StatusEnum.STOPPED
         Logger().log("Session stopped", line_break=True)

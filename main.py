@@ -1,8 +1,8 @@
 from src.Container import Container
 
-container = Container()
+container: Container = Container()
 
-def main():
+def main() -> None:
     cli = container.cli()
     try:
         cli.start()

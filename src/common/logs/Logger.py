@@ -5,7 +5,7 @@ from src.common.logs.LoggerColorEnum import LoggerColorEnum
 @Singleton
 class Logger:
     def __init__(self) -> None:
-        self._prefix = "➔"
+        self._prefix: str = "➔"
 
     def _print(self, tag: str, message: str, color: LoggerColorEnum = None, with_line_break: bool = False) -> None:
         content: str = f"{self._prefix} {tag}: {message}"

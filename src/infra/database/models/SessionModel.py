@@ -4,4 +4,4 @@ from src.infra.database.models.BaseModel import BaseModel
 
 
 class SessionModel(BaseModel):
-    status = CharField(null=False)
+    status: CharField = CharField(null=False)

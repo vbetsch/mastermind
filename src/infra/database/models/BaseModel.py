@@ -2,4 +2,4 @@ from peewee import Model, AutoField
 
 
 class BaseModel(Model):
-    id = AutoField()
+    id: AutoField = AutoField()

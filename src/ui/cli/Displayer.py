@@ -1,4 +1,4 @@
-from pyfiglet import figlet_format
+from pyfiglet import figlet_format, FigletString
 from rich.console import Console
 from rich.text import Text
 
@@ -17,7 +17,7 @@ class Displayer:
         )
 
     def print_ascii_art(self, text: str) -> None:
-        ascii_art = figlet_format(text, font=self._ascii_font)
+        ascii_art: FigletString = figlet_format(text, font=self._ascii_font)
         ascii_text: Text = Text(ascii_art, style="bold")
         self._console.print(ascii_text)
 

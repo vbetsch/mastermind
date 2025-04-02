@@ -7,7 +7,7 @@ from src.common.patterns.mediator.IMediator import IMediator
 
 
 class PlayerController(IController):
-    def __init__(self, mediator: IMediator, get_player: IPlayerUseCase):
+    def __init__(self, mediator: IMediator, get_player: IPlayerUseCase) -> None:
         super().__init__(self.__class__.__name__, mediator)
         self._get_player: IPlayerUseCase = get_player
 

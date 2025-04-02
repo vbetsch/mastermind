@@ -4,7 +4,7 @@ from src.domain.entities.Session import Session
 
 
 class StopSession(IStopSessionUseCase):
-    def execute(self, arg=None) -> None:
+    def execute(self) -> None:
         session: Session | None = Storage().get_current_session()
         if session is not None:
             session.stop()

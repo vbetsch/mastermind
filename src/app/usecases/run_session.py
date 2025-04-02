@@ -4,7 +4,7 @@ from src.domain.core.Storage import Storage
 
 
 class RunSession(IRunSessionUseCase):
-    def execute(self, arg=None) -> None:
+    def execute(self) -> None:
         session = Storage().get_current_session()
         session.run()
         Storage().set_current_session(session)

@@ -4,5 +4,5 @@ from src.domain.entities.Player import Player
 
 
 class GetPlayer(IPlayerUseCase):
-    def execute(self, arg=None) -> Player:
+    def execute(self) -> Player:
         return Storage().get_current_player()

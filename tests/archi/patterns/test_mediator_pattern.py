@@ -12,7 +12,7 @@ class SubscriberTest(Subscriber):
         self.received_messages = []
 
     def handle(self, message: str, sender: 'SubscriberTest', data: Data = None) -> None:
-        self.received_messages.append((message, sender.name))
+        self.received_messages.append((message, sender._name))
 
 class TestMediatorPattern(TestCase):
     def setUp(self):

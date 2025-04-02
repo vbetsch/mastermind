@@ -9,12 +9,20 @@ class Game:
     def __init__(self) -> None:
         self.currentPlayer: Player = Player(name="default", state=StateEnum.INSIDE_MENUS)
         self.currentSession: Session | None = None
+        self.beads_per_combination: int = 4
+        self.max_attempts_before_loose: int = 12
 
     def get_current_player(self) -> Player:
         return self.currentPlayer
 
     def get_current_session(self) -> Session | None:
         return self.currentSession
+
+    def get_beads_per_combination(self) -> int:
+        return self.beads_per_combination
+
+    def get_max_attempts_before_loose(self) -> int:
+        return self.max_attempts_before_loose
 
     def set_current_session(self, session: Session) -> None:
         self.currentSession = session

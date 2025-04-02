@@ -7,3 +7,6 @@ class Combination:
 
     def __repr__(self) -> str:
         return f"Combination={[bead.get_color() for bead in self._beads]}"
+
+    def get_beads(self) -> list[Bead]:
+        return self._beads

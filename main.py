@@ -7,7 +7,7 @@ def main():
     try:
         cli.start()
     except KeyboardInterrupt:
-        cli.quit()
+        cli.cancel()
 
 if __name__ == '__main__':
     main()

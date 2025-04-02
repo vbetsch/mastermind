@@ -122,7 +122,9 @@ Here's the list of types of tests you can find:
 
 ## Game rules
 
-Game rules are managed by [entities](../src/domain/entities) and [core objects](../src/domain/core).
+Game rules are managed mainly by the [Rules](../src/domain/core/Rules.py) object but also
+by [entities](../src/domain/entities), [value objects](../src/domain/values) and
+others [core objects](../src/domain/core) :
 
 ### Entities
 
@@ -135,12 +137,15 @@ Game rules are managed by [entities](../src/domain/entities) and [core objects](
   of [Beads](../src/domain/values/combinations/Bead.py)
 * [Turn](../src/domain/values/sessions/Turn.py) : element of Session
 * [Feedback](../src/domain/values/turns/Feedback.py) : represents feedbacks returned by the system for a proposal
-* [Indicator](../src/domain/values/turns/indicators/Indicator.py) : element of Feedbacks
+* [Indicator](../src/domain/values/turns/indicators/Indicator.py) : element of Feedbacks (represents red and white
+  pawns)
 
 ### Core objects
 
-* [Generator](../src/domain/core/Generator.py) : generates random combinations
 * [Arbitrator](../src/domain/core/Arbitrator.py) : defines whether a combination is right or wrong
+* [Generator](../src/domain/core/Generator.py) : generates random combinations
+* [Rules](../src/domain/core/Rules.py) : handle game rules
+* [Storage](../src/domain/core/Storage.py) : manage local storage
 
 ## Session management
 

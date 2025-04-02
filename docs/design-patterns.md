@@ -25,3 +25,5 @@ I've decided to use this behavioral pattern to manage session saves and restores
 snapshot of the state of the session and save it in a history. When I need to resume a game, the capture will be
 retrieved
 from the history and restored to the exact state it was in.
+
+>Note : The Factory design pattern is also used by python libraries

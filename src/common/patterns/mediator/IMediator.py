@@ -5,7 +5,7 @@ from src.common.communication.Data import Data
 
 class IMediator(ABC):
     @abstractmethod
-    def send_message(self, message: str, sender, data: Data | None = None) -> None:
+    def send_message(self, message: str, sender, data: Data = None) -> None:
         pass
 
     @abstractmethod

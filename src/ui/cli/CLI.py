@@ -11,7 +11,7 @@ class CLI(Subscriber):
         super().__init__(self.__class__.__name__, mediator)
         self.displayer: Displayer = Displayer()
 
-    def handle(self, message: str, sender: Subscriber, data: Data | None = None) -> None:
+    def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
             case EventEnum.SHOW_MAIN_MENU.name:
                 self.main_menu()

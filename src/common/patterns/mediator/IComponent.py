@@ -11,9 +11,9 @@ class IComponent(ABC):
         self.mediator: IMediator = mediator
         self.mediator.subscribe(self)
 
-    def send(self, message: str, data: Data | None = None) -> None:
+    def send(self, message: str, data: Data = None) -> None:
         self.mediator.send_message(message, self, data)
 
     @abstractmethod
-    def receive(self, message: str, sender: Self, data: Data | None = None) -> None:
+    def receive(self, message: str, sender: Self, data: Data = None) -> None:
         pass

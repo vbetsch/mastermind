@@ -11,7 +11,7 @@ class PlayerController(IController):
         super().__init__(self.__class__.__name__, mediator)
         self.get_player: IPlayerUseCase = get_player
 
-    def handle(self, message: str, sender: Subscriber, data: Data | None = None) -> None:
+    def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 player = self.get_player.execute()

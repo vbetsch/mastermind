@@ -7,7 +7,7 @@ class Mediator(IMediator):
     def __init__(self) -> None:
         self._subscribers: list[Subscriber] = []
 
-    def send_message(self, message: str, sender: Subscriber, data: Data | None = None) -> None:
+    def send_message(self, message: str, sender: Subscriber, data: Data = None) -> None:
         for subscriber in self._subscribers:
             if subscriber != sender:
                 subscriber.receive(message, sender, data)

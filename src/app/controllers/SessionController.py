@@ -18,7 +18,7 @@ class SessionController(IController):
         self.run_session: IRunSessionUseCase = run_session
         self.stop_session: IStopSessionUseCase = stop_session
 
-    def handle(self, message: str, sender: Subscriber, data: Data | None = None) -> None:
+    def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 if not data or not data.player:

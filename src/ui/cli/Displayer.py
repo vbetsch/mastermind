@@ -21,10 +21,9 @@ class Displayer:
         ascii_text: Text = Text(ascii_art, style="bold")
         self._console.print(ascii_text)
 
-    def print_message(self, message: str, style=None) -> None:
-        text: Text = Text(message, style=style)
+    def print_message(self, message: str, style=None, jump_lines: int = None) -> None:
+        text: Text = Text(f"{'\n' * jump_lines if jump_lines else ''}{message}", style=style)
         self._console.print(text)
 
     def show_main_menu(self) -> EventEnum:
-        print("\n")
         return self._main_menu.show()

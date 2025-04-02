@@ -1,6 +1,7 @@
 from dataclasses import dataclass, replace, field
 from typing import Self
 
+from src.common.logs.Logger import Logger
 from src.common.patterns.memento.IOriginator import IOriginator
 from src.domain.entities.Player import Player
 from src.domain.values.StatusEnum import StatusEnum
@@ -18,10 +19,10 @@ class Session(IOriginator):
 
     def run(self) -> None:
         self.status = StatusEnum.RUNNING
-        print("Session started")
+        Logger().log("Session started")
 
     def save(self) -> SessionMemento:
-        print("Session saved")
+        Logger().log("Session saved")
         return SessionMemento(self)
 
     def restore(self, memento: SessionMemento) -> Self:
@@ -30,4 +31,4 @@ class Session(IOriginator):
 
     def stop(self):
         self.status = StatusEnum.STOPPED
-        print("Session stopped")
+        Logger().log("Session stopped", line_break=True)

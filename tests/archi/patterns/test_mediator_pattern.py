@@ -1,8 +1,8 @@
 from unittest import TestCase, main
 
-from src.common.communication.Data import Data
 from src.common.communication.Mediator import Mediator
 from src.common.communication.Subscriber import Subscriber
+from src.common.communication.data.IData import IData
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -11,7 +11,7 @@ class SubscriberTest(Subscriber):
         super().__init__(name, mediator)
         self.received_messages = []
 
-    def handle(self, message: str, sender: 'SubscriberTest', data: Data = None) -> None:
+    def handle(self, message: str, sender: 'SubscriberTest', data: IData = None) -> None:
         self.received_messages.append((message, sender._name))
 
 class TestMediatorPattern(TestCase):

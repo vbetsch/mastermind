@@ -1,6 +1,6 @@
-from src.common.communication.Data import Data
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
+from src.common.communication.data.IData import IData
 from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
@@ -11,7 +11,7 @@ class CLI(Subscriber):
         super().__init__(self.__class__.__name__, mediator)
         self._displayer: Displayer = Displayer()
 
-    def handle(self, message: str, sender: Subscriber, data: Data = None) -> None:
+    def handle(self, message: str, sender: Subscriber, data: IData = None) -> None:
         match message:
             case EventEnum.SHOW_MAIN_MENU.name:
                 self.main_menu()

@@ -5,5 +5,5 @@ from src.app.ports.usecases.IUseCase import IUseCase
 
 class IRunSessionUseCase(IUseCase):
     @abstractmethod
-    def execute(self, arg=None) -> None:
+    def execute(self) -> None:
         pass

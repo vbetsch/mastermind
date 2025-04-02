@@ -6,5 +6,5 @@ from src.domain.entities.Player import Player
 
 class IPlayerUseCase(IUseCase):
     @abstractmethod
-    def execute(self, arg=None) -> Player:
+    def execute(self) -> Player:
         pass

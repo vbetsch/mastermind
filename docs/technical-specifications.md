@@ -28,6 +28,7 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   ├── communication
 │   │   ├── decorators
 │   │   ├── exceptions
+│   │   ├── logs
 │   │   └── patterns
 │   │       ├── mediator
 │   │       └── memento
@@ -53,9 +54,6 @@ Here is the architecture of the project, which respects clean architecture :
     ├── archi
     │   └── patterns
     └── units
-        ├── app
-        │   ├── controllers
-        │   └── usecases
         └── domain
             ├── core
             ├── entities

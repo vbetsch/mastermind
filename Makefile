@@ -62,6 +62,16 @@ uml: install
 tree:
 	tree -dL 6 --gitignore -I 'docs|__pycache__'
 
+check_init_files:
+	@missing=$$(find src -type d ! -path "*/__pycache__*" ! -exec test -e "{}/__init__.py" \; -print); \
+	if [ -n "$$missing" ]; then \
+		echo "❌ ERROR: The following directories are missing an __init__.py file:"; \
+		echo "$$missing"; \
+		exit 1; \
+	else \
+		echo "✅ All good! Every directory contains an __init__.py file."; \
+	fi
+
 
 clean:
 	rm -rf $(VENV)

@@ -6,7 +6,7 @@ REQUIREMENTS_FILE := requirements.txt
 PROJECT_NAME := mastermind
 ROOT_FOLDER := src
 TESTS_FOLDER := tests
-UML_FOLDER := docs/img/c4
+UML_FOLDER := docs/diagrams/c4
 
 DB_FILE := src/infra/database/mastermind.db
 

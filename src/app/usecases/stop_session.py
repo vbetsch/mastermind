@@ -5,5 +5,6 @@ from src.domain.core.Game import Game
 class StopSession(IStopSessionUseCase):
     def execute(self, arg=None) -> None:
         session = Game().get_current_session()
-        session.stop()
-        Game().set_current_session(session)
+        if session is not None:
+            session.stop()
+            Game().set_current_session(session)

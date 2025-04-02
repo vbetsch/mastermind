@@ -1,6 +1,5 @@
 from src.app.exceptions.SessionNotFoundException import SessionNotFoundException
 from src.app.ports.usecases.IRunSessionUseCase import IRunSessionUseCase
-from src.domain.core.Rules import Rules
 from src.domain.core.Storage import Storage
 from src.domain.entities.Session import Session
 

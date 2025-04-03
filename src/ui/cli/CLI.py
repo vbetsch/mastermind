@@ -30,6 +30,40 @@ class CLI(Subscriber):
     def _handle_ask_proposal(self, dto: PrepareDTO = None) -> None:
         self.ask_proposal(dto)
 
+    @staticmethod
+    def _has_right_length(proposal: str, beads_per_combination: int) -> bool:
+        if len(proposal) != beads_per_combination:
+            Logger().error(f"The proposal must be {beads_per_combination} characters long")
+            return False
+        return True
+
+    @staticmethod
+    def _has_only_available_colors(proposal: str, all_colors: dict[str, str]) -> bool:
+        for char in proposal:
+            if not char.upper() in all_colors.keys():
+                Logger().error(f"The proposal must be only has available colors")
+                return False
+        return True
+
+    def _ask_proposal_until_have_valid(self, dto: PrepareDTO):
+        has_right_length: bool = False
+        has_only_available_colors: bool = False
+        while not has_right_length or not has_only_available_colors:
+            proposal: str = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
+
+            if self._has_right_length(proposal, dto.beads_per_combination):
+                has_right_length = True
+
+            if self._has_only_available_colors(proposal, dto.all_colors):
+                has_only_available_colors = True
+
+    def _display_previous_attempts_and_available_colors(self, dto: PrepareDTO):
+        if len(dto.previous_proposals) > 0:
+            self._displayer.print_list("Previous attempts :", dto.previous_proposals)
+
+        self._displayer.print_list("All colors available :", dto.all_colors, are_colors=True)
+        self._displayer.jump_lines(1)
+
     def welcome(self) -> None:
         self._displayer.print_message("Welcome to")
         self._displayer.print_ascii_art("mastermind")
@@ -47,21 +81,10 @@ class CLI(Subscriber):
         self.send(choice.name)
 
     def ask_proposal(self, dto: PrepareDTO) -> None:
-        if len(dto.previous_proposals) > 0:
-            self._displayer.print_list("Previous attempts :", dto.previous_proposals)
-
-        self._displayer.print_list("All colors available :", dto.all_colors, are_colors=True)
-        self._displayer.jump_lines(1)
-
-        match_pattern: bool = False
-        while not match_pattern:
-            proposal: str = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
-            if len(proposal) == dto.beads_per_combination:
-                match_pattern = True
-            else:
-                Logger().error(f"The proposal must be {dto.beads_per_combination} characters long")
+        self._display_previous_attempts_and_available_colors(dto)
+        self._ask_proposal_until_have_valid(dto)
 
     def cancel(self) -> None:
         self.send(EventEnum.STOP_SESSION.name)
-        self._displayer.jump_lines(2)
+        self._displayer.jump_lines(1)
         self._displayer.print_message("Good Bye!")

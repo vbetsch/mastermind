@@ -1,6 +1,6 @@
 from typing import Dict
 
-from src.app.ports.usecases.values.IGetAllColors import IGetAllColors
+from src.app.ports.usecases.prepare.IGetAllColors import IGetAllColors
 from src.domain.values.combinations.BeadColorEnum import BeadColorEnum
 
 

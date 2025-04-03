@@ -19,6 +19,10 @@ class PlayMenuHandler(IHandler):
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)
             case EventEnum.CALLBACK_PREPARE.name:
-                if not data or not isinstance(data, PrepareDTO) or data.all_colors is None or data.previous_proposals is None:
+                if not data or not isinstance(data, PrepareDTO):
                     raise CallbackException("Callback prepare doesn't have data")
+                if (data.all_colors is None
+                        or data.previous_proposals is None
+                        or data.beads_per_combination is None):
+                    raise CallbackException("Callback prepare have data malformed")
                 self.send(EventEnum.ASK_PROPOSAL.name, data)

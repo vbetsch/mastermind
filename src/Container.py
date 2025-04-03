@@ -5,7 +5,7 @@ from src.app.controllers.PlayerController import PlayerController
 from src.app.controllers.PrepareController import PrepareController
 from src.app.controllers.SessionController import SessionController
 from src.app.usecases.player.get_player import GetPlayer
-from src.app.usecases.prepare.get_all_colors import GetAllColors
+from src.app.usecases.prepare.get_available_colors import GetAvailableColors
 from src.app.usecases.prepare.get_number_beads import GetBeadsPerCombination
 from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
 from src.app.usecases.session.create_session import CreateSession
@@ -30,7 +30,7 @@ class Container(DeclarativeContainer):
     stop_session = providers.Factory(StopSession)
 
     # Prepare
-    get_all_colors = providers.Factory(GetAllColors)
+    get_available_colors = providers.Factory(GetAvailableColors)
     get_previous_proposals = providers.Factory(GetPreviousProposals)
     get_beads_per_combination = providers.Factory(GetBeadsPerCombination)
 
@@ -50,7 +50,7 @@ class Container(DeclarativeContainer):
     prepare_controller_factory = providers.Factory(
         PrepareController,
         mediator=mediator,
-        get_all_colors=get_all_colors,
+        get_available_colors=get_available_colors,
         get_previous_proposals=get_previous_proposals,
         get_beads_per_combination=get_beads_per_combination,
     )

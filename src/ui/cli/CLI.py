@@ -38,9 +38,9 @@ class CLI(Subscriber):
         return True
 
     @staticmethod
-    def _has_only_available_colors(proposal: str, all_colors: dict[str, str]) -> bool:
+    def _has_only_available_colors(proposal: str, available_colors: dict[str, str]) -> bool:
         for char in proposal:
-            if not char.upper() in all_colors.keys():
+            if not char.upper() in available_colors.keys():
                 Logger().error(f"The proposal must be only has available colors")
                 return False
         return True
@@ -54,14 +54,14 @@ class CLI(Subscriber):
             if self._has_right_length(proposal, dto.beads_per_combination):
                 has_right_length = True
 
-            if self._has_only_available_colors(proposal, dto.all_colors):
+            if self._has_only_available_colors(proposal, dto.available_colors):
                 has_only_available_colors = True
 
     def _display_previous_attempts_and_available_colors(self, dto: PrepareDTO):
         if len(dto.previous_proposals) > 0:
             self._displayer.print_list("Previous attempts :", dto.previous_proposals)
 
-        self._displayer.print_list("All colors available :", dto.all_colors, are_colors=True)
+        self._displayer.print_list("All colors available :", dto.available_colors, are_colors=True)
         self._displayer.jump_lines(1)
 
     def welcome(self) -> None:

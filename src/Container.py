@@ -2,13 +2,14 @@ from dependency_injector import providers
 from dependency_injector.containers import DeclarativeContainer
 
 from src.app.controllers.PlayerController import PlayerController
+from src.app.controllers.PrepareController import PrepareController
 from src.app.controllers.SessionController import SessionController
 from src.app.usecases.player.get_player import GetPlayer
+from src.app.usecases.prepare.get_all_colors import GetAllColors
 from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
 from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
-from src.app.usecases.values.get_all_colors import GetAllColors
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
@@ -43,8 +44,15 @@ class Container(DeclarativeContainer):
         run_session=run_session,
         stop_session=stop_session
     )
+    prepare_controller_factory = providers.Factory(
+        PrepareController,
+        mediator=mediator,
+        get_all_colors=get_all_colors,
+        get_previous_proposals=get_previous_proposals,
+    )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
+    prepare_controller = prepare_controller_factory()
 
     # Handlers
     main_menu_handler_factory = providers.Factory(

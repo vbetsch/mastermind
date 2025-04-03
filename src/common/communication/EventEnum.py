@@ -5,6 +5,7 @@ class EventEnum(Enum):
     # --- Display ---
     SHOW_MAIN_MENU: str = "Main menu"
     SHOW_PLAY_MENU: str = "Play menu"
+    ASK_PROPOSAL: str = "Ask proposal"
     CANCEL: str = "Cancel"
 
     # --- Handlers ---

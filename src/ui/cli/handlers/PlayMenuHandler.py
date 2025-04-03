@@ -22,5 +22,4 @@ class PlayMenuHandler(IHandler):
             case EventEnum.CALLBACK_PREPARE.name:
                 if not data or not isinstance(data, PrepareDTO) or data.all_colors is None or data.previous_proposals is None:
                     raise CallbackException("Callback prepare doesn't have data")
-                Logger().debug(f"CALLBACK_PREPARE All colors: {data.all_colors}")
-                Logger().debug(f"CALLBACK_PREPARE Previous attempts: {data.previous_proposals}")
+                self.send(EventEnum.ASK_PROPOSAL.name, data)

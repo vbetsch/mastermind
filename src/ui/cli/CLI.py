@@ -1,6 +1,9 @@
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
+from src.common.communication.dto.PrepareDTO import PrepareDTO
+from src.common.exceptions.CallbackException import CallbackException
+from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 
@@ -16,6 +19,10 @@ class CLI(Subscriber):
                 self.main_menu()
             case EventEnum.SHOW_PLAY_MENU.name:
                 self.play_menu()
+            case EventEnum.ASK_PROPOSAL.name:
+                if not data or not isinstance(data, PrepareDTO) or data.all_colors is None or data.previous_proposals is None:
+                    raise CallbackException("Callback prepare doesn't have data")
+                self.ask_proposal()
             case EventEnum.CANCEL.name:
                 self.cancel()
 
@@ -34,6 +41,9 @@ class CLI(Subscriber):
     def play_menu(self) -> None:
         choice: EventEnum = self._displayer.show_play_menu()
         self.send(choice.name)
+
+    def ask_proposal(self):
+        Logger().debug("CLI: Ask proposal")
 
     def cancel(self):
         self.send(EventEnum.STOP_SESSION.name)

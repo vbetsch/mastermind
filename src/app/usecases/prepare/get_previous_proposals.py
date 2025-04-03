@@ -15,5 +15,4 @@ class GetPreviousProposals(IGetPreviousProposals):
             if proposal:
                 previous_proposals.append(proposal)
 
-        Logger().debug(f"Previous proposals : {previous_proposals}")
         return previous_proposals

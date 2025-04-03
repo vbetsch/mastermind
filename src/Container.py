@@ -3,10 +3,10 @@ from dependency_injector.containers import DeclarativeContainer
 
 from src.app.controllers.PlayerController import PlayerController
 from src.app.controllers.SessionController import SessionController
-from src.app.usecases.create_session import CreateSession
-from src.app.usecases.get_player import GetPlayer
-from src.app.usecases.run_session import RunSession
-from src.app.usecases.stop_session import StopSession
+from src.app.usecases.player.get_player import GetPlayer
+from src.app.usecases.session.create_session import CreateSession
+from src.app.usecases.session.run_session import RunSession
+from src.app.usecases.session.stop_session import StopSession
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler

@@ -1,4 +1,4 @@
-from src.app.ports.usecases.ICreateSessionUseCase import ICreateSessionUseCase
+from src.app.ports.usecases.session.ICreateSessionUseCase import ICreateSessionUseCase
 from src.common.logs.Logger import Logger
 from src.domain.core.Generator import Generator
 from src.domain.core.Rules import Rules

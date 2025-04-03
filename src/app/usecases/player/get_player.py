@@ -1,4 +1,4 @@
-from src.app.ports.usecases.IPlayerUseCase import IPlayerUseCase
+from src.app.ports.usecases.player.IPlayerUseCase import IPlayerUseCase
 from src.domain.core.Storage import Storage
 from src.domain.entities.Player import Player
 

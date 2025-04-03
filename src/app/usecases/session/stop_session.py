@@ -1,4 +1,4 @@
-from src.app.ports.usecases.IStopSessionUseCase import IStopSessionUseCase
+from src.app.ports.usecases.session.IStopSessionUseCase import IStopSessionUseCase
 from src.domain.core.Storage import Storage
 from src.domain.entities.Session import Session
 

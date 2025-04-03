@@ -29,6 +29,23 @@ class Displayer:
             ]
         )
 
+    def _print_bullet_points_for_list(self, elements: list, are_colors: bool = False):
+        if are_colors:
+            for element in elements:
+                self._console.print(f"- [{element}]{element}[/]")
+        else:
+            for element in elements:
+                self._console.print(f"- {element}")
+        pass
+
+    def _print_bullet_points_for_dict(self, elements: dict, are_colors: bool = False):
+        if are_colors:
+            for key, value in elements.items():
+                self._console.print(f"- [{value}]{key} = {value}[/]")
+        else:
+            for key, value in elements.items():
+                self._console.print(f"- {key} = {value}")
+
     def jump_lines(self, number: int) -> None:
         if number < 1:
             raise Exception('Line breaks cannot be less than 1')
@@ -43,16 +60,30 @@ class Displayer:
         text: Text = Text(message, style=style)
         self._console.print(text)
 
-    def print_bullet_points(self, elements: list) -> None:
-        markdown_text = "".join(f"- {key}\n" for key in elements)
-        self._console.print(Markdown(markdown_text))
+    def print_bullet_points(self, elements: list | dict, are_colors: bool = False) -> None:
+        if isinstance(elements, list):
+            self._print_bullet_points_for_list(elements, are_colors)
+        elif isinstance(elements, dict):
+            self._print_bullet_points_for_dict(elements, are_colors)
 
     @staticmethod
-    def ask_choices(label: str, choices: list[str], style: str = None) -> str:
+    def ask_choice(label: str, choices: list[str], style: str = None) -> str:
         if style:
             return Prompt.ask(f"[{style}]{label}[/]", choices=choices)
         else:
             return Prompt.ask(label, choices=choices)
+
+    @staticmethod
+    def ask_string(label: str, style: str = None) -> str:
+        if style:
+            return Prompt.ask(f"[{style}]{label}[/]")
+        else:
+            return Prompt.ask(label)
+
+    def print_list(self, title: str, elements: list[str] | dict[str, str], are_colors: bool = False) -> None:
+        self.jump_lines(1)
+        self.print_message(title)
+        self.print_bullet_points(elements, are_colors=are_colors)
 
     def show_main_menu(self) -> EventEnum:
         return self._main_menu.show()

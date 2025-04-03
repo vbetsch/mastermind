@@ -44,11 +44,12 @@ class CLI(Subscriber):
         self.send(choice.name)
 
     def ask_proposal(self, all_colors: dict[str, str], previous_proposals: list[str]) -> None:
+        if len(previous_proposals) > 0:
+            self._displayer.print_list("Previous attempts :", previous_proposals)
+
+        self._displayer.print_list("All colors available :", all_colors, are_colors=True)
         self._displayer.jump_lines(1)
-        self._displayer.print_message("Previous attempts :")
-        self._displayer.print_bullet_points(previous_proposals)
-        self._displayer.jump_lines(1)
-        self._displayer.ask_choices(EventEnum.ASK_PROPOSAL.value, list(all_colors.keys()))
+        proposal: str = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
 
     def cancel(self) -> None:
         self.send(EventEnum.STOP_SESSION.name)

@@ -26,6 +26,8 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   └── usecases
 │   ├── common
 │   │   ├── communication
+│   │   │   └── data
+│   │   │       └── views
 │   │   ├── decorators
 │   │   ├── exceptions
 │   │   ├── logs

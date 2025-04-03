@@ -1,6 +1,5 @@
 from pyfiglet import figlet_format, FigletString
 from rich.console import Console
-from rich.markdown import Markdown
 from rich.prompt import Prompt
 from rich.text import Text
 

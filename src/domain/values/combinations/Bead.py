@@ -8,5 +8,8 @@ class Bead:
     def __repr__(self) -> str:
         return f"Bead(color='{self._color.value}')"
 
-    def get_color(self) -> str:
+    def get_color_key(self) -> str:
+        return self._color.name
+
+    def get_color_value(self) -> str:
         return self._color.value

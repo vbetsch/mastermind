@@ -1,5 +1,6 @@
 from pyfiglet import figlet_format, FigletString
 from rich.console import Console
+from rich.markdown import Markdown
 from rich.prompt import Prompt
 from rich.text import Text
 
@@ -28,17 +29,26 @@ class Displayer:
             ]
         )
 
+    def jump_lines(self, number: int) -> None:
+        if number < 1:
+            raise Exception('Line breaks cannot be less than 1')
+        self._console.print("\n" * number)
+
     def print_ascii_art(self, text: str) -> None:
         ascii_art: FigletString = figlet_format(text, font=self._ascii_font)
         ascii_text: Text = Text(ascii_art, style="bold")
         self._console.print(ascii_text)
 
-    def print_message(self, message: str, style=None, jump_lines: int = None) -> None:
-        text: Text = Text(f"{'\n' * jump_lines if jump_lines else ''}{message}", style=style)
+    def print_message(self, message: str, style=None) -> None:
+        text: Text = Text(message, style=style)
         self._console.print(text)
 
+    def print_bullet_points(self, elements: list) -> None:
+        markdown_text = "".join(f"- {key}\n" for key in elements)
+        self._console.print(Markdown(markdown_text))
+
     @staticmethod
-    def input(label: str, choices: list[str], style: str = None) -> str:
+    def ask_choices(label: str, choices: list[str], style: str = None) -> str:
         if style:
             return Prompt.ask(f"[{style}]{label}[/]", choices=choices)
         else:

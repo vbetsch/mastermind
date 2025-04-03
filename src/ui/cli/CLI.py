@@ -4,6 +4,7 @@ from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
 from src.common.exceptions.CallbackException import CallbackException
 from src.common.patterns.mediator.IMediator import IMediator
+from src.domain.core.Generator import Generator
 from src.ui.cli.Displayer import Displayer
 
 
@@ -21,7 +22,8 @@ class CLI(Subscriber):
             case EventEnum.ASK_PROPOSAL.name:
                 if not data or not isinstance(data, PrepareDTO) or data.all_colors is None or data.previous_proposals is None:
                     raise CallbackException("Callback prepare doesn't have data")
-                self.ask_proposal(data.all_colors, data.previous_proposals)
+                # TODO: self.ask_proposal(data.all_colors, data.previous_proposals)
+                self.ask_proposal(data.all_colors, [str(Generator().generate_combination()), str(Generator().generate_combination()), str(Generator().generate_combination())])
             case EventEnum.CANCEL.name:
                 self.cancel()
 
@@ -29,7 +31,7 @@ class CLI(Subscriber):
         self._displayer.print_message("Welcome to")
         self._displayer.print_ascii_art("mastermind")
 
-    def start(self):
+    def start(self) -> None:
         self.welcome()
         self.main_menu()
 
@@ -41,9 +43,14 @@ class CLI(Subscriber):
         choice: EventEnum = self._displayer.show_play_menu()
         self.send(choice.name)
 
-    def ask_proposal(self, all_colors: dict[str, str], previous_proposals: list):
-        self._displayer.input(EventEnum.ASK_PROPOSAL.value, list(all_colors.keys()))
+    def ask_proposal(self, all_colors: dict[str, str], previous_proposals: list[str]) -> None:
+        self._displayer.jump_lines(1)
+        self._displayer.print_message("Previous attempts :")
+        self._displayer.print_bullet_points(previous_proposals)
+        self._displayer.jump_lines(1)
+        self._displayer.ask_choices(EventEnum.ASK_PROPOSAL.value, list(all_colors.keys()))
 
-    def cancel(self):
+    def cancel(self) -> None:
         self.send(EventEnum.STOP_SESSION.name)
-        self._displayer.print_message("Good Bye!", jump_lines=2)
+        self._displayer.jump_lines(2)
+        self._displayer.print_message("Good Bye!")

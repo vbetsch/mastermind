@@ -1,7 +1,6 @@
 from typing import Dict
 
 from src.app.ports.usecases.prepare.IGetAllColors import IGetAllColors
-from src.common.logs.Logger import Logger
 from src.domain.values.combinations.BeadColorEnum import BeadColorEnum
 
 

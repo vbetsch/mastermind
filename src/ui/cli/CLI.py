@@ -3,7 +3,6 @@ from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
 from src.common.exceptions.CallbackException import CallbackException
-from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 

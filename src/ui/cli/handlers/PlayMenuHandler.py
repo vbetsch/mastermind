@@ -20,9 +20,9 @@ class PlayMenuHandler(IHandler):
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)
             case EventEnum.CALLBACK_PREPARE.name:
-                self._handle_callback_prepare(message, sender, dto)
+                self._handle_callback_prepare(dto)
 
     @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PrepareDTO)
     @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PrepareDTO)
-    def _handle_callback_prepare(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
+    def _handle_callback_prepare(self, dto: IDto = None) -> None:
         self.send(EventEnum.ASK_PROPOSAL.name, dto)

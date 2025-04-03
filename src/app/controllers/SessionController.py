@@ -26,7 +26,7 @@ class SessionController(IController):
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 try:
-                    self._handle_create_and_run_session(message, sender, dto)
+                    self._handle_create_and_run_session(dto)
                 except DTOException:
                     return
             case EventEnum.STOP_SESSION.name:
@@ -34,6 +34,6 @@ class SessionController(IController):
 
     @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PlayerPresenter)
     @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PlayerPresenter)
-    def _handle_create_and_run_session(self, message: str, sender: Subscriber, dto: PlayerPresenter = None) -> None:
+    def _handle_create_and_run_session(self, dto: PlayerPresenter = None) -> None:
         self._create_session.execute(dto.player)
         self._run_session.execute()

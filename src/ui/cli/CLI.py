@@ -21,13 +21,13 @@ class CLI(Subscriber):
             case EventEnum.SHOW_PLAY_MENU.name:
                 self.play_menu()
             case EventEnum.ASK_PROPOSAL.name:
-                self._handle_ask_proposal(message, sender, dto)
+                self._handle_ask_proposal(dto)
             case EventEnum.CANCEL.name:
                 self.cancel()
 
     @check_dto_is_defined(EventEnum.ASK_PROPOSAL, PrepareDTO)
     @check_dto_required_fields(EventEnum.ASK_PROPOSAL, PrepareDTO)
-    def _handle_ask_proposal(self, message: str, sender: Subscriber, dto: PrepareDTO = None) -> None:
+    def _handle_ask_proposal(self, dto: PrepareDTO = None) -> None:
         self.ask_proposal(dto)
 
     def welcome(self) -> None:

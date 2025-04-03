@@ -22,5 +22,5 @@ class PrepareController(IController):
         match message:
             case EventEnum.PREPARE.name:
                 all_colors: Dict[str, str] = self._get_all_colors.execute()
-                previous_proposals: list = self._get_previous_proposals.execute()
+                previous_proposals: list[str] = self._get_previous_proposals.execute()
                 self.send(EventEnum.CALLBACK_PREPARE.name, PrepareDTO(all_colors, previous_proposals))

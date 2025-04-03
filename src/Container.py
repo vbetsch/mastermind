@@ -13,6 +13,7 @@ from src.app.usecases.session.stop_session import StopSession
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
+from src.ui.cli.handlers.PlayMenuHandler import PlayMenuHandler
 
 
 class Container(DeclarativeContainer):
@@ -59,7 +60,12 @@ class Container(DeclarativeContainer):
         MainMenuHandler,
         mediator=mediator
     )
+    play_menu_handler_factory = providers.Factory(
+        PlayMenuHandler,
+        mediator=mediator
+    )
     main_menu_handler = main_menu_handler_factory()
+    play_menu_handler = play_menu_handler_factory()
 
     # UI
     cli = providers.Factory(

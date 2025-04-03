@@ -1,5 +1,5 @@
 from src.common.communication.data.IData import IData
 
 
-class IView(IData):
+class IDto(IData):
     pass

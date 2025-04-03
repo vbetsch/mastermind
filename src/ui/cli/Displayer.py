@@ -18,6 +18,14 @@ class Displayer:
                 EventEnum.QUIT,
             ],
         )
+        self._play_menu: Menu = Menu(
+            console=self._console,
+            title=EventEnum.SHOW_PLAY_MENU.value,
+            options=[
+                EventEnum.PLAY,
+                EventEnum.STOP,
+            ]
+        )
 
     def print_ascii_art(self, text: str) -> None:
         ascii_art: FigletString = figlet_format(text, font=self._ascii_font)
@@ -30,3 +38,6 @@ class Displayer:
 
     def show_main_menu(self) -> EventEnum:
         return self._main_menu.show()
+
+    def show_play_menu(self) -> EventEnum:
+        return self._play_menu.show()

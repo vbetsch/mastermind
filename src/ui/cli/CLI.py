@@ -1,7 +1,6 @@
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
-from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 
@@ -33,8 +32,8 @@ class CLI(Subscriber):
         self.send(choice.name)
 
     def play_menu(self) -> None:
-        Logger().debug("Display play menu...")
-        self.main_menu() # TODO: to delete
+        choice: EventEnum = self._displayer.show_play_menu()
+        self.send(choice.name)
 
     def cancel(self):
         self.send(EventEnum.STOP_SESSION.name)

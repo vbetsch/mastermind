@@ -13,6 +13,8 @@ class EventEnum(Enum):
     QUIT: str = "Quit"
 
     # Play menu
+    PLAY: str = "Play"
+    STOP: str = "Stop"
 
     # --- Backend ---
     GET_PLAYER: str = "GET_PLAYER"

@@ -9,7 +9,7 @@ class MainMenuHandler(IHandler):
     def __init__(self, mediator: IMediator) -> None:
         super().__init__(self.__class__.__name__, mediator)
 
-    def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
+    def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
             case EventEnum.NEW_GAME.name:
                 self.send(EventEnum.CREATE_AND_RUN_SESSION.name)

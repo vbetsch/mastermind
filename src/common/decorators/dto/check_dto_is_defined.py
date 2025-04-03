@@ -5,12 +5,12 @@ from src.common.communication.EventEnum import EventEnum
 from src.common.exceptions.DTOException import DTOException
 
 
-def check_data_is_defined(event: EventEnum, dto: Type):
+def check_dto_is_defined(event: EventEnum, dto_type: Type):
     def decorator(func):
         @wraps(func)
-        def wrapper(self, message, sender, data=None):
-            if not data or not isinstance(data, dto):
+        def wrapper(self, message, sender, dto=None):
+            if not dto or not isinstance(dto, dto_type):
                 raise DTOException(f"Event {event.name} doesn't have data")
-            return func(self, message, sender, data)
+            return func(self, message, sender, dto)
         return wrapper
     return decorator

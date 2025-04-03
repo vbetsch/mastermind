@@ -3,5 +3,5 @@ from src.domain.entities.Player import Player
 
 
 class PlayerPresenter(IPresenter):
-    def __init__(self, data: Player):
-        self.player = data
+    def __init__(self, player: Player):
+        self.player = player

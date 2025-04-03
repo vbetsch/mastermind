@@ -19,7 +19,7 @@ class PrepareController(IController):
         self._get_previous_proposals: IGetPreviousProposals = get_previous_proposals
         self._get_beads_per_combination: IGetBeadsPerCombination = get_beads_per_combination
 
-    def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
+    def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
             case EventEnum.PREPARE.name:
                 all_colors: dict[str, str] = self._get_all_colors.execute()

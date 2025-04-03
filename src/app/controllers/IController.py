@@ -6,5 +6,5 @@ from src.common.communication.dto.IDto import IDto
 
 class IController(Subscriber):
     @abstractmethod
-    def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
+    def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         pass

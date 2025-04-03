@@ -11,7 +11,7 @@ class SubscriberTest(Subscriber):
         super().__init__(name, mediator)
         self.received_messages = []
 
-    def handle(self, message: str, sender: 'SubscriberTest', data: IDto = None) -> None:
+    def handle(self, message: str, sender: 'SubscriberTest', dto: IDto = None) -> None:
         self.received_messages.append((message, sender._name))
 
 class TestMediatorPattern(TestCase):

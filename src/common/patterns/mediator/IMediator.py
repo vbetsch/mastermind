@@ -5,7 +5,7 @@ from src.common.communication.dto.IDto import IDto
 
 class IMediator(ABC):
     @abstractmethod
-    def send_message(self, message: str, sender, data: IDto = None) -> None:
+    def send_message(self, message: str, sender, dto: IDto = None) -> None:
         pass
 
     @abstractmethod

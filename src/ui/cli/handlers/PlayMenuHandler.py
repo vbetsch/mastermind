@@ -2,6 +2,8 @@ from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
+from src.common.decorators.checks.check_data_fields import check_data_fields
+from src.common.decorators.checks.check_data_is_prepare_dto import check_data_is_prepare_dto
 from src.common.exceptions.CallbackException import CallbackException
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.handlers.IHandler import IHandler
@@ -19,10 +21,9 @@ class PlayMenuHandler(IHandler):
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)
             case EventEnum.CALLBACK_PREPARE.name:
-                if not data or not isinstance(data, PrepareDTO):
-                    raise CallbackException("Callback prepare doesn't have data")
-                if (data.all_colors is None
-                        or data.previous_proposals is None
-                        or data.beads_per_combination is None):
-                    raise CallbackException("Callback prepare have data malformed")
-                self.send(EventEnum.ASK_PROPOSAL.name, data)
+                self._handle_callback_prepare(message, sender, data)
+
+    @check_data_is_prepare_dto
+    @check_data_fields
+    def _handle_callback_prepare(self, message: str, sender: Subscriber, data: IDto = None) -> None:
+        self.send(EventEnum.ASK_PROPOSAL.name, data)

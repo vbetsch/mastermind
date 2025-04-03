@@ -8,7 +8,7 @@ from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.decorators.data.check_data_is_defined import check_data_is_defined
 from src.common.decorators.data.check_data_required_fields import check_data_required_fields
-from src.common.exceptions.CallbackException import CallbackException
+from src.common.exceptions.DTOException import DTOException
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -27,7 +27,7 @@ class SessionController(IController):
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 try:
                     self._handle_create_and_run_session(message, sender, data)
-                except CallbackException:
+                except DTOException:
                     return
             case EventEnum.STOP_SESSION.name:
                 self._stop_session.execute()

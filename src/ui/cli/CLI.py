@@ -2,7 +2,8 @@ from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
-from src.common.exceptions.CallbackException import CallbackException
+from src.common.decorators.data.check_data_is_defined import check_data_is_defined
+from src.common.decorators.data.check_data_required_fields import check_data_required_fields
 from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
@@ -20,15 +21,14 @@ class CLI(Subscriber):
             case EventEnum.SHOW_PLAY_MENU.name:
                 self.play_menu()
             case EventEnum.ASK_PROPOSAL.name:
-                if not data or not isinstance(data, PrepareDTO):
-                    raise CallbackException("Callback prepare doesn't have data")
-                if (data.all_colors is None
-                        or data.previous_proposals is None
-                        or data.beads_per_combination is None):
-                    raise CallbackException("Callback prepare have data malformed")
-                self.ask_proposal(data)
+                self._handle_ask_proposal(message, sender, data)
             case EventEnum.CANCEL.name:
                 self.cancel()
+
+    @check_data_is_defined(EventEnum.ASK_PROPOSAL, PrepareDTO)
+    @check_data_required_fields(EventEnum.ASK_PROPOSAL, PrepareDTO)
+    def _handle_ask_proposal(self, message: str, sender: Subscriber, data: PrepareDTO = None) -> None:
+        self.ask_proposal(data)
 
     def welcome(self) -> None:
         self._displayer.print_message("Welcome to")

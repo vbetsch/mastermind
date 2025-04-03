@@ -63,7 +63,8 @@
 
 > You need to follow the _Installation guide_ before
 
-* Run the project
+1. Configure your game rules in [Rules](src/domain/core/Rules.py)
+2. Run the project
    ```shell
    python main.py
    ```

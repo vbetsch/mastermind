@@ -5,7 +5,7 @@ from src.app.ports.usecases.IStopSessionUseCase import IStopSessionUseCase
 from src.app.presenters.PlayerPresenter import PlayerPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.data.IData import IData
+from src.common.communication.dto.IDto import IDto
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -19,7 +19,7 @@ class SessionController(IController):
         self._run_session: IRunSessionUseCase = run_session
         self._stop_session: IStopSessionUseCase = stop_session
 
-    def handle(self, message: str, sender: Subscriber, data: IData = None) -> None:
+    def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 if not data or not isinstance(data, PlayerPresenter) or not data.player:

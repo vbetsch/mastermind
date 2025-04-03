@@ -1,5 +1,5 @@
 from abc import ABC
 
 
-class IData(ABC):
+class IDto(ABC):
     pass

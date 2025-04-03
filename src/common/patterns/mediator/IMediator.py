@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
-from src.common.communication.data.IData import IData
+from src.common.communication.dto.IDto import IDto
 
 
 class IMediator(ABC):
     @abstractmethod
-    def send_message(self, message: str, sender, data: IData = None) -> None:
+    def send_message(self, message: str, sender, data: IDto = None) -> None:
         pass
 
     @abstractmethod

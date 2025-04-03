@@ -1,5 +1,5 @@
-from src.common.communication.data.IData import IData
+from src.common.communication.dto.IDto import IDto
 
 
-class IPresenter(IData):
+class IPresenter(IDto):
     pass

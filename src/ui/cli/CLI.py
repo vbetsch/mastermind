@@ -22,7 +22,7 @@ class CLI(Subscriber):
             case EventEnum.ASK_PROPOSAL.name:
                 if not data or not isinstance(data, PrepareDTO) or data.all_colors is None or data.previous_proposals is None:
                     raise CallbackException("Callback prepare doesn't have data")
-                self.ask_proposal()
+                self.ask_proposal(data.all_colors, data.previous_proposals)
             case EventEnum.CANCEL.name:
                 self.cancel()
 
@@ -42,8 +42,8 @@ class CLI(Subscriber):
         choice: EventEnum = self._displayer.show_play_menu()
         self.send(choice.name)
 
-    def ask_proposal(self):
-        Logger().debug("CLI: Ask proposal")
+    def ask_proposal(self, all_colors: dict[str, str], previous_proposals: list):
+        self._displayer.input(EventEnum.ASK_PROPOSAL.value, list(all_colors.keys()))
 
     def cancel(self):
         self.send(EventEnum.STOP_SESSION.name)

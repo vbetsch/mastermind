@@ -1,5 +1,6 @@
 from pyfiglet import figlet_format, FigletString
 from rich.console import Console
+from rich.prompt import Prompt
 from rich.text import Text
 
 from src.common.communication.EventEnum import EventEnum
@@ -35,6 +36,13 @@ class Displayer:
     def print_message(self, message: str, style=None, jump_lines: int = None) -> None:
         text: Text = Text(f"{'\n' * jump_lines if jump_lines else ''}{message}", style=style)
         self._console.print(text)
+
+    @staticmethod
+    def input(label: str, choices: list[str], style: str = None) -> str:
+        if style:
+            return Prompt.ask(f"[{style}]{label}[/]", choices=choices)
+        else:
+            return Prompt.ask(label, choices=choices)
 
     def show_main_menu(self) -> EventEnum:
         return self._main_menu.show()

@@ -1,5 +1,3 @@
-from typing import Dict
-
 from src.app.controllers.IController import IController
 from src.app.ports.usecases.prepare.IGetAllColors import IGetAllColors
 from src.app.ports.usecases.prepare.IGetPreviousProposals import IGetPreviousProposals
@@ -21,6 +19,6 @@ class PrepareController(IController):
     def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
         match message:
             case EventEnum.PREPARE.name:
-                all_colors: Dict[str, str] = self._get_all_colors.execute()
+                all_colors: dict[str, str] = self._get_all_colors.execute()
                 previous_proposals: list[str] = self._get_previous_proposals.execute()
                 self.send(EventEnum.CALLBACK_PREPARE.name, PrepareDTO(all_colors, previous_proposals))

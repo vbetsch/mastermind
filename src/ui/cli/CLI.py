@@ -41,7 +41,7 @@ class CLI(Subscriber):
     def _has_only_available_colors(proposal: str, available_colors: dict[str, str]) -> bool:
         for char in proposal:
             if not char.upper() in available_colors.keys():
-                Logger().error(f"The proposal must be only has available colors")
+                Logger().error(f"The proposal must only has available colors")
                 return False
         return True
 

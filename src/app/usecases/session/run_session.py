@@ -6,8 +6,6 @@ from src.domain.entities.Session import Session
 
 class RunSession(IRunSessionUseCase):
     def execute(self) -> None:
-        session: Session | None = Storage().get_current_session()
-        if session is None:
-            raise SessionNotFoundException('No session found')
+        session: Session = Storage().get_current_session()
         session.run()
         Storage().set_current_session(session)

@@ -1,3 +1,4 @@
+from src.app.exceptions.SessionNotFoundException import SessionNotFoundException
 from src.common.decorators.Singleton import Singleton
 from src.domain.entities.Player import Player
 from src.domain.entities.Session import Session
@@ -13,7 +14,12 @@ class Storage:
     def get_current_player(self) -> Player:
         return self._currentPlayer
 
-    def get_current_session(self) -> Session | None:
+    def get_current_session(self) -> Session:
+        if self._currentSession is None:
+            raise SessionNotFoundException('No session found')
+        return self._currentSession
+
+    def get_if_session(self) -> Session | None:
         return self._currentSession
 
     def set_current_session(self, session: Session) -> None:

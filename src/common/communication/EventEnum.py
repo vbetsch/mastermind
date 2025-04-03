@@ -7,7 +7,7 @@ class EventEnum(Enum):
     SHOW_PLAY_MENU: str = "Play menu"
 
     # Handlers
-    CREATE_A_SESSION: str = "New game"
+    NEW_GAME: str = "New game"
 
     # Back
     GET_PLAYER: str = "GET_PLAYER"

@@ -11,6 +11,6 @@ class MainMenuHandler(IHandler):
 
     def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
         match message:
-            case EventEnum.CREATE_A_SESSION.name:
+            case EventEnum.NEW_GAME.name:
                 self.send(EventEnum.CREATE_AND_RUN_SESSION.name)
                 self.send(EventEnum.SHOW_PLAY_MENU.name)

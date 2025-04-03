@@ -8,3 +8,6 @@ class Turn:
         self._status: StatusEnum = StatusEnum.NOT_STARTED
         self._feedback: Feedback | None = None
         self._proposal: Combination | None = None
+
+    def get_if_proposal(self) -> Combination | None:
+        return self._proposal

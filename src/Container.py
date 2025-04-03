@@ -4,6 +4,7 @@ from dependency_injector.containers import DeclarativeContainer
 from src.app.controllers.PlayerController import PlayerController
 from src.app.controllers.SessionController import SessionController
 from src.app.usecases.player.get_player import GetPlayer
+from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
 from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
@@ -25,8 +26,9 @@ class Container(DeclarativeContainer):
     run_session = providers.Factory(RunSession)
     stop_session = providers.Factory(StopSession)
 
-    # Values
+    # Prepare
     get_all_colors = providers.Factory(GetAllColors)
+    get_previous_proposals = providers.Factory(GetPreviousProposals)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

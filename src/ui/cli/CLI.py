@@ -17,6 +17,8 @@ class CLI(Subscriber):
                 self.main_menu()
             case EventEnum.SHOW_PLAY_MENU.name:
                 self.play_menu()
+            case EventEnum.CANCEL.name:
+                self.cancel()
 
     def welcome(self) -> None:
         self._displayer.print_message("Welcome to")

@@ -13,7 +13,10 @@ class Displayer:
         self._main_menu: Menu = Menu(
             console=self._console,
             title=EventEnum.SHOW_MAIN_MENU.value,
-            options=[EventEnum.NEW_GAME],
+            options=[
+                EventEnum.NEW_GAME,
+                EventEnum.QUIT,
+            ],
         )
 
     def print_ascii_art(self, text: str) -> None:

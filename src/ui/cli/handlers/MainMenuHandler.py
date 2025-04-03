@@ -14,3 +14,5 @@ class MainMenuHandler(IHandler):
             case EventEnum.NEW_GAME.name:
                 self.send(EventEnum.CREATE_AND_RUN_SESSION.name)
                 self.send(EventEnum.SHOW_PLAY_MENU.name)
+            case EventEnum.QUIT.name:
+                self.send(EventEnum.CANCEL.name)

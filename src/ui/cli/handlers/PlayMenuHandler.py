@@ -11,6 +11,8 @@ class PlayMenuHandler(IHandler):
 
     def handle(self, message: str, sender: Subscriber, data: IDto = None) -> None:
         match message:
+            case EventEnum.PLAY.name:
+                self.send(EventEnum.PREPARE.name)
             case EventEnum.STOP.name:
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)

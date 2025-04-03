@@ -1,4 +1,5 @@
 from src.app.ports.usecases.prepare.IGetPreviousProposals import IGetPreviousProposals
+from src.common.logs.Logger import Logger
 from src.domain.core.Storage import Storage
 from src.domain.entities.Session import Session
 from src.domain.values.combinations.Combination import Combination
@@ -14,4 +15,5 @@ class GetPreviousProposals(IGetPreviousProposals):
             if proposal:
                 previous_proposals.append(proposal)
 
+        Logger().debug(f"Previous proposals : {previous_proposals}")
         return previous_proposals

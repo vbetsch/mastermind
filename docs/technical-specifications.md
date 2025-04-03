@@ -162,14 +162,13 @@ was in.
 
 ## Communication
 
-Communication between the backend and frontend is managed by [Mediator](../src/common/communication/Mediator.py). Each
-controller, each handler, and each UI subscribes to it. The handlers act as intermediaries between controllers and UIs,
-they are used in particular for menus. This makes communication with a
-system for sending and responding to [events](../src/common/communication/EventEnum.py). When I
-need to trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the
-other subscribers receive it. Each of them then
-decides whether or not to process it (with the handle function). This model also allows me to evolve the application: I
-can add as many handlers, controllers and graphical interfaces as I like.
+Communication between backend and frontend is managed by a [Mediator](../src/common/communication/Mediator.py). Every controller, every manager and every user
+interface subscribes to it. Handlers act as intermediaries between controllers and user interfaces, and are used in
+particular for menus. This enables communication with a system for sending and responding to [events](../src/common/communication/EventEnum.py). When I need to
+trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the other subscribers receive it. Each of them then decides
+whether or not to process it (using the handle function). It's also possible to transmit data using the [data](../src/common/communication/data) objects.
+This model also allows me to evolve the application: I can add as many handlers, controllers and graphical interfaces as
+I like.
 
 ### CLI
 

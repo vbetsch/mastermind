@@ -12,12 +12,11 @@ the Singleton.
 
 ## Mediator
 
-I've decided to use this behavioral pattern for communication between my front-end and back-end. Each controller (
-frontend or backend) will
-subscribe to the same mediator. This will enable simple, efficient communication with a system of sending
+I decided to use this behavioral model for communication between my front-end and back-end. Each controller (frontend or
+backend) will subscribe to the same mediator. This will enable simple, efficient communication with a system for sending
 and responding to events. When I need to trigger an event from one subscriber to another, I send a message and all the
-other subscribers receive it. Each of them will decide whether or not to handle it. This pattern also lets me scale the
-application: I can add as many controllers as I like.
+other subscribers receive it. Each of them decides whether or not to process it. This model also allows me to evolve the
+application: I can add as many controllers as I want.
 
 ## Memento
 
@@ -26,4 +25,4 @@ snapshot of the state of the session and save it in a history. When I need to re
 retrieved
 from the history and restored to the exact state it was in.
 
->Note : The Factory design pattern is also used by python libraries
+> Note : The Factory design pattern is also used by python libraries

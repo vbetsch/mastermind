@@ -1,8 +1,12 @@
 from src.app.controllers.IController import IController
 from src.app.ports.usecases.proposal.ICreateCombination import ICreateCombination
 from src.app.ports.usecases.proposal.IGenerateFeedback import IGenerateFeedback
+from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
+from src.common.communication.dto.ProposalDTO import ProposalDTO
+from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
+from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -15,4 +19,12 @@ class ProposalController(IController):
         self._generate_feedback: IGenerateFeedback = generate_feedback
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
-        pass
+        match message:
+            case EventEnum.SEND_PROPOSAL.name:
+                self._handle_send_proposal(dto)
+
+    @check_dto_is_defined(EventEnum.SEND_PROPOSAL, ProposalDTO)
+    @check_dto_required_fields(EventEnum.SEND_PROPOSAL, ProposalDTO)
+    def _handle_send_proposal(self, dto: ProposalDTO = None) -> None:
+        combination = self._create_combination.execute(dto.proposal)
+        self._generate_feedback.execute(combination)

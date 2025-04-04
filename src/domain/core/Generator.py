@@ -28,5 +28,5 @@ class Generator:
     def generate_combination(self, string: str):
         beads: list[Bead] = []
         for index in range(self.nb_beads):
-            beads.append(self._generate_bead(string[index]))
+            beads.append(self._generate_bead(string.upper()[index]))
         return Combination(beads)

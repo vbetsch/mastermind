@@ -2,6 +2,7 @@ from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
+from src.common.communication.dto.ProposalDTO import ProposalDTO
 from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
 from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
 from src.common.logs.Logger import Logger
@@ -59,7 +60,7 @@ class CLI(Subscriber):
 
             if self._has_only_available_colors(proposal, dto.available_colors):
                 has_only_available_colors = True
-        Logger().ok(f"Proposal {proposal}")
+        self.send(EventEnum.SEND_PROPOSAL.name, ProposalDTO(proposal))
 
     def _display_previous_attempts_and_available_colors(self, dto: PrepareDTO):
         if len(dto.previous_proposals) > 0:

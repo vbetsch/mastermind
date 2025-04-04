@@ -6,15 +6,17 @@ from src.domain.values.combinations.Combination import Combination
 
 
 class GetPreviousProposals(IGetPreviousProposals):
+
     def execute(self) -> list[str]:
         session: Session = Storage().get_current_session()
-
         Logger().info(f"The secret combination is {session.secret_combination}")
+        return self._get_previous_proposals(session)
 
+    @staticmethod
+    def _get_previous_proposals(session: Session) -> list[str]:
         previous_proposals: list[str] = []
         for turn in session.turns:
             proposal: Combination | None = turn.get_if_proposal()
             if proposal:
                 previous_proposals.append(str(proposal))
-
         return previous_proposals

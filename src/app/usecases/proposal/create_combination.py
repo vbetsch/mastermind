@@ -19,5 +19,4 @@ class CreateCombination(ICreateCombination):
     def execute(self, proposal: str) -> Combination:
         self._run_proposal_checks(proposal, self._get_available_colors.execute())
         combination: Combination = Generator().generate_combination(proposal)
-        Logger().debug(f"Create combination: {combination}")
         return combination

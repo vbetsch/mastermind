@@ -46,10 +46,11 @@ class CLI(Subscriber):
         return True
 
     def _ask_proposal_until_have_valid(self, dto: PrepareDTO):
+        proposal: str = ""
         has_right_length: bool = False
         has_only_available_colors: bool = False
         while not has_right_length or not has_only_available_colors:
-            proposal: str = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
+            proposal = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
             has_right_length = False
             has_only_available_colors = False
 
@@ -58,6 +59,7 @@ class CLI(Subscriber):
 
             if self._has_only_available_colors(proposal, dto.available_colors):
                 has_only_available_colors = True
+        Logger().ok(f"Proposal {proposal}")
 
     def _display_previous_attempts_and_available_colors(self, dto: PrepareDTO):
         if len(dto.previous_proposals) > 0:

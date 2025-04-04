@@ -50,6 +50,8 @@ class CLI(Subscriber):
         has_only_available_colors: bool = False
         while not has_right_length or not has_only_available_colors:
             proposal: str = self._displayer.ask_string(EventEnum.ASK_PROPOSAL.value)
+            has_right_length = False
+            has_only_available_colors = False
 
             if self._has_right_length(proposal, dto.beads_per_combination):
                 has_right_length = True

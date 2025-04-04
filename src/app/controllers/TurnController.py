@@ -1,10 +1,13 @@
 from src.app.controllers.IController import IController
+from src.app.ports.data.UpdateTurnData import UpdateTurnData
 from src.app.ports.usecases.turn import IRunTurn
 from src.app.ports.usecases.turn.ICreateTurn import ICreateTurn
 from src.app.ports.usecases.turn.IUpdateTurn import IUpdateTurn
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
+from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
+from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
 from src.common.patterns.mediator.IMediator import IMediator
 
 
@@ -23,3 +26,10 @@ class TurnController(IController):
             case EventEnum.CREATE_AND_RUN_TURN.name:
                 self._create_turn.execute()
                 self._run_turn.execute()
+            case EventEnum.UPDATE_TURN.name:
+                self._handle_update_turn(dto)
+
+    @check_dto_is_defined(EventEnum.UPDATE_TURN, UpdateTurnData)
+    @check_dto_required_fields(EventEnum.UPDATE_TURN, UpdateTurnData)
+    def _handle_update_turn(self, dto: UpdateTurnData = None) -> None:
+        self._update_turn.execute(feedback=dto.feedback, proposal=dto.proposal)

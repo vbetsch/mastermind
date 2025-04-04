@@ -2,6 +2,7 @@ from src.app.exceptions.SessionNotFoundException import SessionNotFoundException
 from src.common.decorators.Singleton import Singleton
 from src.domain.entities.Player import Player
 from src.domain.entities.Session import Session
+from src.domain.values.combinations.Combination import Combination
 from src.domain.values.players.StateEnum import StateEnum
 
 
@@ -18,6 +19,9 @@ class Storage:
         if self._currentSession is None:
             raise SessionNotFoundException('No session found')
         return self._currentSession
+
+    def get_current_secret_combination(self) -> Combination:
+        return self.get_current_session().get_secret_combination()
 
     def get_if_session(self) -> Session | None:
         return self._currentSession

@@ -17,6 +17,17 @@ class Session(IOriginator):
     status: StatusEnum = StatusEnum.NOT_STARTED
     turns: list[Turn] = field(default_factory=list)
 
+    def get_secret_combination(self) -> Combination:
+        return self.secret_combination
+
+    def get_previous_proposals(self) -> list[str]:
+        previous_proposals: list[str] = []
+        for turn in self.turns:
+            proposal: Combination | None = turn.get_if_proposal()
+            if proposal:
+                previous_proposals.append(str(proposal))
+        return previous_proposals
+
     def run(self) -> None:
         self.status = StatusEnum.RUNNING
         Logger().log("Session started")
@@ -32,11 +43,3 @@ class Session(IOriginator):
     def stop(self) -> None:
         self.status = StatusEnum.STOPPED
         Logger().log("Session stopped", line_break=True)
-
-    def get_previous_proposals(self) -> list[str]:
-        previous_proposals: list[str] = []
-        for turn in self.turns:
-            proposal: Combination | None = turn.get_if_proposal()
-            if proposal:
-                previous_proposals.append(str(proposal))
-        return previous_proposals

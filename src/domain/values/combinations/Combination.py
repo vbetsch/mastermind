@@ -8,5 +8,11 @@ class Combination:
     def get_beads(self) -> list[Bead]:
         return self._beads
 
+    def get_bead_color_key(self, index: int) -> str:
+        return self.get_beads()[index].get_color_key()
+
+    def get_list_bead_color_keys(self) -> list[str]:
+        pass
+
     def __repr__(self) -> str:
         return ''.join([bead.get_color_key() for bead in self._beads])

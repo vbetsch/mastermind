@@ -1,5 +1,5 @@
+from src.app.ports.usecases.prepare.IGetAvailableColors import IGetAvailableColors
 from src.app.ports.usecases.proposal.ICreateCombination import ICreateCombination
-from src.app.ports.usecases.turn.IGetAvailableColors import IGetAvailableColors
 from src.domain.core.Arbitrator import Arbitrator
 from src.domain.core.Generator import Generator
 from src.domain.values.combinations.Combination import Combination

@@ -1,4 +1,4 @@
-from src.app.ports.usecases.turn.IGetAvailableColors import IGetAvailableColors
+from src.app.ports.usecases.prepare.IGetAvailableColors import IGetAvailableColors
 from src.domain.values.combinations.BeadColorEnum import BeadColorEnum
 
 

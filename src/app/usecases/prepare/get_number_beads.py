@@ -1,4 +1,4 @@
-from src.app.ports.usecases.turn.IGetBeadsPerCombination import IGetBeadsPerCombination
+from src.app.ports.usecases.prepare.IGetBeadsPerCombination import IGetBeadsPerCombination
 from src.domain.core.Rules import Rules
 
 

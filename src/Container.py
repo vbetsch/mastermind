@@ -3,6 +3,7 @@ from dependency_injector.containers import DeclarativeContainer
 
 from src.app.controllers.PlayerController import PlayerController
 from src.app.controllers.PrepareController import PrepareController
+from src.app.controllers.ProposalController import ProposalController
 from src.app.controllers.SessionController import SessionController
 from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
@@ -21,6 +22,7 @@ from src.ui.cli.handlers.PlayMenuHandler import PlayMenuHandler
 
 class Container(DeclarativeContainer):
     mediator: Mediator = Mediator()
+
 
     # --- Use Cases ---
     # Player
@@ -44,6 +46,7 @@ class Container(DeclarativeContainer):
     create_combination = create_combination_factory()
     generate_feedback = providers.Factory(GenerateFeedback)
 
+
     # --- Controllers ---
     player_controller_factory = providers.Factory(
         PlayerController,
@@ -64,9 +67,16 @@ class Container(DeclarativeContainer):
         get_previous_proposals=get_previous_proposals,
         get_beads_per_combination=get_beads_per_combination,
     )
+    proposal_controller_factory = providers.Factory(
+        ProposalController,
+        mediator=mediator,
+        create_combination=create_combination,
+        generate_feedback=generate_feedback,
+    )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
     prepare_controller = prepare_controller_factory()
+
 
     # Handlers
     main_menu_handler_factory = providers.Factory(
@@ -79,6 +89,7 @@ class Container(DeclarativeContainer):
     )
     main_menu_handler = main_menu_handler_factory()
     play_menu_handler = play_menu_handler_factory()
+
 
     # UI
     cli = providers.Factory(

@@ -98,7 +98,7 @@ class CLI(Subscriber):
         self._ask_proposal_until_have_valid(dto)
 
     def show_feedback(self, dto: FeedbackDTO) -> None:
-        Logger().debug(f"Feedback: {dto.feedback}")
+        self._displayer.print_list("Feedback :", dto.feedback)
 
     def cancel(self) -> None:
         self.send(EventEnum.STOP_SESSION.name)

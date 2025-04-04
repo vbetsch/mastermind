@@ -72,7 +72,7 @@ class Displayer:
         else:
             return Prompt.ask(label)
 
-    def print_list(self, title: str, elements: list[str] | dict[str, str], are_colors: bool = False) -> None:
+    def print_list(self, title: str, elements: list[str] | dict, are_colors: bool = False) -> None:
         self.jump_lines(1)
         self.print_message(title)
         self.print_bullet_points(elements, are_colors=are_colors)

@@ -21,7 +21,7 @@ class TurnController(IController):
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
-            case EventEnum.CREATE_AND_RUN_TURN.name:
+            case EventEnum.CREATE_TURN.name:
                 available_colors: dict[str, str] = self._get_available_colors.execute()
                 previous_proposals: list[str] = self._get_previous_proposals.execute()
                 beads_per_combination: int = self._get_beads_per_combination.execute()

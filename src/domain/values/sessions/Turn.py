@@ -1,3 +1,4 @@
+from src.common.logs.Logger import Logger
 from src.domain.values.StatusEnum import StatusEnum
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.turns.Feedback import Feedback
@@ -11,3 +12,7 @@ class Turn:
 
     def get_if_proposal(self) -> Combination | None:
         return self._proposal
+
+    def run(self) -> None:
+        self._status = StatusEnum.RUNNING
+        Logger().log("Session started")

@@ -28,6 +28,9 @@ class Session(IOriginator):
                 previous_proposals.append(str(proposal))
         return previous_proposals
 
+    def add_turn(self, turn: Turn) -> None:
+        self.turns.append(turn)
+
     def run(self) -> None:
         self.status = StatusEnum.RUNNING
         Logger().log("Session started")

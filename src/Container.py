@@ -14,6 +14,7 @@ from src.app.usecases.proposal.generate_feedback import GenerateFeedback
 from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
+from src.app.usecases.turn.create_turn import CreateTurn
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
@@ -46,6 +47,8 @@ class Container(DeclarativeContainer):
     create_combination = create_combination_factory()
     generate_feedback = providers.Factory(GenerateFeedback)
 
+    # Turn
+    create_turn = providers.Factory(CreateTurn)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

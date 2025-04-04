@@ -22,12 +22,19 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   ├── ports
 │   │   │   ├── repositories
 │   │   │   └── usecases
+│   │   │       ├── player
+│   │   │       ├── prepare
+│   │   │       └── session
 │   │   ├── presenters
 │   │   └── usecases
+│   │       ├── player
+│   │       ├── prepare
+│   │       └── session
 │   ├── common
 │   │   ├── communication
 │   │   │   └── dto
 │   │   ├── decorators
+│   │   │   └── dto
 │   │   ├── exceptions
 │   │   ├── logs
 │   │   └── patterns

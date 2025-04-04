@@ -1,7 +1,7 @@
 from src.app.controllers.IController import IController
-from src.app.ports.usecases.prepare.IGetAvailableColors import IGetAvailableColors
-from src.app.ports.usecases.prepare.IGetBeadsPerCombination import IGetBeadsPerCombination
-from src.app.ports.usecases.prepare.IGetPreviousProposals import IGetPreviousProposals
+from src.app.ports.usecases.turn.IGetAvailableColors import IGetAvailableColors
+from src.app.ports.usecases.turn.IGetBeadsPerCombination import IGetBeadsPerCombination
+from src.app.ports.usecases.turn.IGetPreviousProposals import IGetPreviousProposals
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
@@ -9,7 +9,7 @@ from src.common.communication.dto.PrepareDTO import PrepareDTO
 from src.common.patterns.mediator.IMediator import IMediator
 
 
-class PrepareController(IController):
+class TurnController(IController):
     def __init__(self, mediator: IMediator,
                  get_available_colors: IGetAvailableColors,
                  get_previous_proposals: IGetPreviousProposals,
@@ -21,7 +21,7 @@ class PrepareController(IController):
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
-            case EventEnum.PREPARE.name:
+            case EventEnum.CREATE_TURN.name:
                 available_colors: dict[str, str] = self._get_available_colors.execute()
                 previous_proposals: list[str] = self._get_previous_proposals.execute()
                 beads_per_combination: int = self._get_beads_per_combination.execute()

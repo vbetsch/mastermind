@@ -32,3 +32,11 @@ class Session(IOriginator):
     def stop(self) -> None:
         self.status = StatusEnum.STOPPED
         Logger().log("Session stopped", line_break=True)
+
+    def get_previous_proposals(self) -> list[str]:
+        previous_proposals: list[str] = []
+        for turn in self.turns:
+            proposal: Combination | None = turn.get_if_proposal()
+            if proposal:
+                previous_proposals.append(str(proposal))
+        return previous_proposals

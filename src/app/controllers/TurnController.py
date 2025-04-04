@@ -26,7 +26,7 @@ class TurnController(IController):
                 previous_proposals: list[str] = self._get_previous_proposals.execute()
                 beads_per_combination: int = self._get_beads_per_combination.execute()
                 self.send(
-                    EventEnum.CALLBACK_PREPARE.name,
+                    EventEnum.PREPARE.name,
                     PrepareDTO(
                         available_colors=available_colors,
                         previous_proposals=previous_proposals,

@@ -66,13 +66,6 @@ class Displayer:
             self._print_bullet_points_for_dict(elements, are_colors)
 
     @staticmethod
-    def ask_choice(label: str, choices: list[str], style: str = None) -> str:
-        if style:
-            return Prompt.ask(f"[{style}]{label}[/]", choices=choices)
-        else:
-            return Prompt.ask(label, choices=choices)
-
-    @staticmethod
     def ask_string(label: str, style: str = None) -> str:
         if style:
             return Prompt.ask(f"[{style}]{label}[/]")

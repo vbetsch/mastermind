@@ -15,6 +15,7 @@ from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
 from src.app.usecases.turn.create_turn import CreateTurn
+from src.app.usecases.turn.run_turn import RunTurn
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
@@ -49,6 +50,7 @@ class Container(DeclarativeContainer):
 
     # Turn
     create_turn = providers.Factory(CreateTurn)
+    run_turn = providers.Factory(RunTurn)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

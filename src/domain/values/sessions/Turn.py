@@ -15,4 +15,4 @@ class Turn:
 
     def run(self) -> None:
         self._status = StatusEnum.RUNNING
-        Logger().log("Session started")
+        Logger().log("Turn started")

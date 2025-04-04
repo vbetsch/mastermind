@@ -8,6 +8,7 @@ from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
 from src.app.usecases.prepare.get_number_beads import GetBeadsPerCombination
 from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
+from src.app.usecases.proposal.create_combination import CreateCombination
 from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
@@ -33,6 +34,13 @@ class Container(DeclarativeContainer):
     get_available_colors = providers.Factory(GetAvailableColors)
     get_previous_proposals = providers.Factory(GetPreviousProposals)
     get_beads_per_combination = providers.Factory(GetBeadsPerCombination)
+
+    # Proposal
+    create_combination_factory = providers.Factory(
+        CreateCombination,
+        get_available_colors=get_available_colors,
+    )
+    create_combination = create_combination_factory()
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

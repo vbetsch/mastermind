@@ -13,20 +13,20 @@ class TestGenerator:
 
     def test_generate_bead(self, generator):
         with patch.object(generator, '_generate_bead', return_value=Bead(BeadColorEnum.R)) as mock_generate:
-            bead = generator._generate_bead()
+            bead = generator._generate_random_bead()
             assert isinstance(bead, Bead)
             assert bead.get_color_value() == BeadColorEnum.R.value
             mock_generate.assert_called_once()
 
     def test_generate_combination(self, generator):
-        combination = generator.generate_combination()
+        combination = generator.generate_random_combination()
         assert isinstance(combination, Combination)
         assert len(combination._beads) == generator.nb_beads
 
     def test_generate_combination_randomness(self, generator):
         with patch('src.domain.core.Generator.choice', return_value=BeadColorEnum.R):
-            combination1 = generator.generate_combination()
+            combination1 = generator.generate_random_combination()
             with patch('src.domain.core.Generator.choice', return_value=BeadColorEnum.G):
-                combination2 = generator.generate_combination()
+                combination2 = generator.generate_random_combination()
 
             assert combination1 != combination2

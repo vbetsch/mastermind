@@ -1,5 +1,6 @@
 from src.common.decorators.Singleton import Singleton
 from src.common.logs.LoggerColorEnum import LoggerColorEnum
+from src.domain.core.Rules import Rules
 
 
 @Singleton
@@ -8,6 +9,8 @@ class Logger:
         self._prefix: str = "➔"
 
     def _print(self, tag: str, message: str, color: LoggerColorEnum = None, with_line_break: bool = False) -> None:
+        if Rules().get_dev_mode() is False:
+            return
         content: str = f"{self._prefix} {tag}: {message}"
         if color:
             print(f"{'\n' if with_line_break else ''}{color.value}{content}{LoggerColorEnum.RESET.value}")

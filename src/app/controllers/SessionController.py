@@ -1,8 +1,8 @@
 from src.app.controllers.IController import IController
+from src.app.ports.data.PlayerData import PlayerData
 from src.app.ports.usecases.session.ICreateSessionUseCase import ICreateSessionUseCase
 from src.app.ports.usecases.session.IRunSessionUseCase import IRunSessionUseCase
 from src.app.ports.usecases.session.IStopSessionUseCase import IStopSessionUseCase
-from src.app.presenters.PlayerPresenter import PlayerPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
@@ -32,8 +32,8 @@ class SessionController(IController):
             case EventEnum.STOP_SESSION.name:
                 self._stop_session.execute()
 
-    @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PlayerPresenter)
-    @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PlayerPresenter)
-    def _handle_create_and_run_session(self, dto: PlayerPresenter = None) -> None:
+    @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PlayerData)
+    @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PlayerData)
+    def _handle_create_and_run_session(self, dto: PlayerData = None) -> None:
         self._create_session.execute(dto.player)
         self._run_session.execute()

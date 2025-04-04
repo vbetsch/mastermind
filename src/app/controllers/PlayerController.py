@@ -1,6 +1,6 @@
 from src.app.controllers.IController import IController
+from src.app.ports.data.PlayerData import PlayerData
 from src.app.ports.usecases.player.IPlayerUseCase import IPlayerUseCase
-from src.app.presenters.PlayerPresenter import PlayerPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
@@ -16,4 +16,4 @@ class PlayerController(IController):
         match message:
             case EventEnum.CREATE_AND_RUN_SESSION.name:
                 player = self._get_player.execute()
-                self.send(message, PlayerPresenter(player))
+                self.send(message, PlayerData(player))

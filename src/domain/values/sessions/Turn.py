@@ -13,6 +13,12 @@ class Turn:
     def get_if_proposal(self) -> Combination | None:
         return self._proposal
 
+    def set_feedback(self, feedback: Feedback) -> None:
+        self._feedback = feedback
+
+    def set_proposal(self, proposal: Combination) -> None:
+        self._proposal = proposal
+
     def run(self) -> None:
         self._status = StatusEnum.RUNNING
         Logger().log("Turn started")

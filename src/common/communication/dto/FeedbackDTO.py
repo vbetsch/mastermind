@@ -2,5 +2,5 @@ from src.common.communication.dto.IDto import IDto
 
 
 class FeedbackDTO(IDto):
-    def __init__(self, feedback: dict[str, str]):
-        self.feedback: dict[str, str] = feedback
+    def __init__(self, feedback: dict[str, int]):
+        self.feedback: dict[str, int] = feedback

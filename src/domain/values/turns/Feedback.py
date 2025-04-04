@@ -8,6 +8,9 @@ class Feedback:
         self._white_indicator: Indicator = Indicator(IndicatorColorEnum.WHITE)
         self._indicators: list[Indicator] = [self._red_indicator, self._white_indicator]
 
+    def get_indicators(self) -> list[Indicator]:
+        return self._indicators
+
     def get_red_indicator(self) -> Indicator:
         return self._red_indicator
 

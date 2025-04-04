@@ -1,4 +1,5 @@
 from src.app.ports.usecases.turn.IUpdateTurn import IUpdateTurn
+from src.common.logs.Logger import Logger
 from src.domain.core.Storage import Storage
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.sessions.Turn import Turn
@@ -11,3 +12,4 @@ class UpdateTurn(IUpdateTurn):
         turn.set_feedback(feedback)
         turn.set_proposal(proposal)
         Storage().set_current_turn(turn)
+        Logger().log("Turn updated")

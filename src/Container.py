@@ -17,6 +17,7 @@ from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
 from src.app.usecases.turn.create_turn import CreateTurn
 from src.app.usecases.turn.run_turn import RunTurn
+from src.app.usecases.turn.update_turn import UpdateTurn
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
@@ -25,7 +26,6 @@ from src.ui.cli.handlers.PlayMenuHandler import PlayMenuHandler
 
 class Container(DeclarativeContainer):
     mediator: Mediator = Mediator()
-
 
     # --- Use Cases ---
     # Player
@@ -52,6 +52,7 @@ class Container(DeclarativeContainer):
     # Turn
     create_turn = providers.Factory(CreateTurn)
     run_turn = providers.Factory(RunTurn)
+    update_turn = providers.Factory(UpdateTurn)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(
@@ -84,13 +85,13 @@ class Container(DeclarativeContainer):
         mediator=mediator,
         create_turn=create_turn,
         run_turn=run_turn,
+        update_turn=update_turn,
     )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
     prepare_controller = prepare_controller_factory()
     proposal_controller = proposal_controller_factory()
     turn_controller = turn_controller_factory()
-
 
     # Handlers
     main_menu_handler_factory = providers.Factory(
@@ -103,7 +104,6 @@ class Container(DeclarativeContainer):
     )
     main_menu_handler = main_menu_handler_factory()
     play_menu_handler = play_menu_handler_factory()
-
 
     # UI
     cli = providers.Factory(

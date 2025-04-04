@@ -17,7 +17,8 @@ class Generator:
 
     @staticmethod
     def _generate_bead(color_key: str) -> Bead:
-        return Bead(BeadColorEnum[color_key].value)
+        color: BeadColorEnum = BeadColorEnum[color_key]  # type: ignore
+        return Bead(color)
 
     def generate_random_combination(self) -> Combination:
         beads: list[Bead] = []

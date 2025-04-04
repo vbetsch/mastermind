@@ -19,6 +19,7 @@ class EventEnum(Enum):
 
     # --- Callbacks ---
     CALLBACK_PREPARE: str = "CALLBACK PREPARE"
+    REPLY_PROPOSAL: str = "REPLY_PROPOSAL"
 
     # --- Backend ---
     GET_PLAYER: str = "GET_PLAYER"

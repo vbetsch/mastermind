@@ -7,7 +7,6 @@ from src.domain.values.combinations.Combination import Combination
 
 class CreateCombination(ICreateCombination):
     def __init__(self, get_available_colors: IGetAvailableColors):
-        super().__init__()
         self._get_available_colors: IGetAvailableColors = get_available_colors
 
     @staticmethod

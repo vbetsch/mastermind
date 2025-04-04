@@ -2,6 +2,7 @@ from src.app.controllers.IController import IController
 from src.app.ports.data.FeedbackData import FeedbackData
 from src.app.ports.usecases.proposal.ICreateCombination import ICreateCombination
 from src.app.ports.usecases.proposal.IGenerateFeedback import IGenerateFeedback
+from src.app.presenters.FeedbackPresenter import FeedbackPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
@@ -29,4 +30,5 @@ class ProposalController(IController):
     def _handle_send_proposal(self, dto: ProposalDTO = None) -> None:
         combination = self._create_combination.execute(dto.proposal)
         feedback = self._generate_feedback.execute(combination)
-        data: FeedbackData = FeedbackData(feedback)
+        presenter: FeedbackPresenter = FeedbackPresenter(FeedbackData(feedback))
+        self.send(EventEnum.REPLY_PROPOSAL.name, presenter.present())

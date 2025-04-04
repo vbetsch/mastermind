@@ -1,4 +1,5 @@
 from src.app.controllers.IController import IController
+from src.app.ports.data.FeedbackData import FeedbackData
 from src.app.ports.usecases.proposal.ICreateCombination import ICreateCombination
 from src.app.ports.usecases.proposal.IGenerateFeedback import IGenerateFeedback
 from src.common.communication.EventEnum import EventEnum
@@ -27,4 +28,5 @@ class ProposalController(IController):
     @check_dto_required_fields(EventEnum.SEND_PROPOSAL, ProposalDTO)
     def _handle_send_proposal(self, dto: ProposalDTO = None) -> None:
         combination = self._create_combination.execute(dto.proposal)
-        self._generate_feedback.execute(combination)
+        feedback = self._generate_feedback.execute(combination)
+        data: FeedbackData = FeedbackData(feedback)

@@ -24,11 +24,13 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   │   └── usecases
 │   │   │       ├── player
 │   │   │       ├── prepare
+│   │   │       ├── proposal
 │   │   │       └── session
 │   │   ├── presenters
 │   │   └── usecases
 │   │       ├── player
 │   │       ├── prepare
+│   │       ├── proposal
 │   │       └── session
 │   ├── common
 │   │   ├── communication

@@ -76,6 +76,7 @@ class Container(DeclarativeContainer):
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
     prepare_controller = prepare_controller_factory()
+    proposal_controller = proposal_controller_factory()
 
 
     # Handlers

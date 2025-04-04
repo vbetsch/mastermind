@@ -82,6 +82,8 @@ class Container(DeclarativeContainer):
     turn_controller_factory = providers.Factory(
         TurnController,
         mediator=mediator,
+        create_turn=create_turn,
+        run_turn=run_turn,
     )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()

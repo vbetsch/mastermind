@@ -5,6 +5,7 @@ from src.app.controllers.PlayerController import PlayerController
 from src.app.controllers.PrepareController import PrepareController
 from src.app.controllers.ProposalController import ProposalController
 from src.app.controllers.SessionController import SessionController
+from src.app.controllers.TurnController import TurnController
 from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
 from src.app.usecases.prepare.get_number_beads import GetBeadsPerCombination
@@ -78,10 +79,15 @@ class Container(DeclarativeContainer):
         create_combination=create_combination,
         generate_feedback=generate_feedback,
     )
+    turn_controller_factory = providers.Factory(
+        TurnController,
+        mediator=mediator,
+    )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
     prepare_controller = prepare_controller_factory()
     proposal_controller = proposal_controller_factory()
+    turn_controller = turn_controller_factory()
 
 
     # Handlers

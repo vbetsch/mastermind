@@ -1,5 +1,6 @@
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
+from src.common.communication.dto.FeedbackDTO import FeedbackDTO
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
 from src.common.communication.dto.ProposalDTO import ProposalDTO
@@ -23,6 +24,8 @@ class CLI(Subscriber):
                 self.play_menu()
             case EventEnum.ASK_PROPOSAL.name:
                 self._handle_ask_proposal(dto)
+            case EventEnum.SHOW_FEEDBACK.name:
+                self._handle_show_feedback(dto)
             case EventEnum.CANCEL.name:
                 self.cancel()
 
@@ -30,6 +33,11 @@ class CLI(Subscriber):
     @check_dto_required_fields(EventEnum.ASK_PROPOSAL, PrepareDTO)
     def _handle_ask_proposal(self, dto: PrepareDTO = None) -> None:
         self.ask_proposal(dto)
+
+    @check_dto_is_defined(EventEnum.SHOW_FEEDBACK, FeedbackDTO)
+    @check_dto_required_fields(EventEnum.SHOW_FEEDBACK, FeedbackDTO)
+    def _handle_show_feedback(self, dto: FeedbackDTO = None) -> None:
+        self.show_feedback(dto)
 
     @staticmethod
     def _has_right_length(proposal: str, beads_per_combination: int) -> bool:
@@ -88,6 +96,9 @@ class CLI(Subscriber):
     def ask_proposal(self, dto: PrepareDTO) -> None:
         self._display_previous_attempts_and_available_colors(dto)
         self._ask_proposal_until_have_valid(dto)
+
+    def show_feedback(self, dto: FeedbackDTO) -> None:
+        Logger().debug(f"Feedback: {dto.feedback}")
 
     def cancel(self) -> None:
         self.send(EventEnum.STOP_SESSION.name)

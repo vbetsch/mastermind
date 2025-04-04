@@ -12,7 +12,7 @@ class Combination:
         return self.get_beads()[index].get_color_key()
 
     def get_list_bead_color_keys(self) -> list[str]:
-        pass
+        return [bead.get_color_key() for bead in self._beads]
 
     def __repr__(self) -> str:
         return ''.join([bead.get_color_key() for bead in self._beads])

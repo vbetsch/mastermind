@@ -12,7 +12,7 @@ class TestGenerator:
         return Generator()
 
     def test_generate_bead(self, generator):
-        with patch.object(generator, '_generate_bead', return_value=Bead(BeadColorEnum.R)) as mock_generate:
+        with patch.object(generator, '_generate_random_bead', return_value=Bead(BeadColorEnum.R)) as mock_generate:
             bead = generator._generate_random_bead()
             assert isinstance(bead, Bead)
             assert bead.get_color_value() == BeadColorEnum.R.value

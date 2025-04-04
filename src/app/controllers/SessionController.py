@@ -32,8 +32,8 @@ class SessionController(IController):
             case EventEnum.STOP_SESSION.name:
                 self._stop_session.execute()
 
-    @check_dto_is_defined(EventEnum.PREPARE, PlayerData)
-    @check_dto_required_fields(EventEnum.PREPARE, PlayerData)
+    @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PlayerData)
+    @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PlayerData)
     def _handle_create_and_run_session(self, dto: PlayerData = None) -> None:
         self._create_session.execute(dto.player)
         self._run_session.execute()

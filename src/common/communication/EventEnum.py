@@ -19,7 +19,7 @@ class EventEnum(Enum):
     STOP: str = "Stop"
 
     # --- Callbacks ---
-    PREPARE: str = "PREPARE"
+    CALLBACK_PREPARE: str = "CALLBACK PREPARE"
     REPLY_PROPOSAL: str = "REPLY_PROPOSAL"
 
     # --- Backend ---

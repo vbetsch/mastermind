@@ -20,14 +20,14 @@ class PlayMenuHandler(IHandler):
             case EventEnum.STOP.name:
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)
-            case EventEnum.PREPARE.name:
-                self._handle_prepare(dto)
+            case EventEnum.CALLBACK_PREPARE.name:
+                self._handle_callback_prepare(dto)
             case EventEnum.REPLY_PROPOSAL.name:
                 self._handle_reply_proposal(dto)
 
-    @check_dto_is_defined(EventEnum.PREPARE, PrepareDTO)
-    @check_dto_required_fields(EventEnum.PREPARE, PrepareDTO)
-    def _handle_prepare(self, dto: IDto = None) -> None:
+    @check_dto_is_defined(EventEnum.CALLBACK_PREPARE, PrepareDTO)
+    @check_dto_required_fields(EventEnum.CALLBACK_PREPARE, PrepareDTO)
+    def _handle_callback_prepare(self, dto: IDto = None) -> None:
         self.send(EventEnum.ASK_PROPOSAL.name, dto)
 
     @check_dto_is_defined(EventEnum.REPLY_PROPOSAL, FeedbackDTO)

@@ -4,10 +4,10 @@ from src.common.decorators.Singleton import Singleton
 @Singleton
 class Rules:
     def __init__(self) -> None:
-        self._dev_mode: bool = True
-        self._save_when_played: bool = False
-        self._beads_per_combination: int = 4
-        self._max_attempts_before_loose: int = 12
+        self._dev_mode: bool = True  # Display logs and secret combination (default: False)
+        self._save_when_played: bool = False  # Auto-save (default: False)
+        self._beads_per_combination: int = 4  # Combinations length (default: 4)
+        self._max_attempts_before_loose: int = 12  # Board size (default: 12)
 
     def get_dev_mode(self) -> bool:
         return self._dev_mode

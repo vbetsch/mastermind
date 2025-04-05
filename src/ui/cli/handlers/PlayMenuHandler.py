@@ -19,6 +19,7 @@ class PlayMenuHandler(IHandler):
                 self.send(EventEnum.CREATE_AND_RUN_TURN.name)
                 self.send(EventEnum.PREPARE.name)
             case EventEnum.STOP.name:
+                self.send(EventEnum.STOP_TURN.name)
                 self.send(EventEnum.STOP_SESSION.name)
                 self.send(EventEnum.SHOW_MAIN_MENU.name)
             case EventEnum.CALLBACK_PREPARE.name:

@@ -1,6 +1,7 @@
 from pyfiglet import figlet_format, FigletString
 from rich.console import Console
 from rich.prompt import Prompt
+from rich.style import Style
 from rich.text import Text
 
 from src.common.communication.EventEnum import EventEnum
@@ -55,7 +56,7 @@ class Displayer:
         ascii_text: Text = Text(ascii_art, style="bold")
         self._console.print(ascii_text)
 
-    def print_message(self, message: str, style=None) -> None:
+    def print_message(self, message: str, style: str | Style = None) -> None:
         text: Text = Text(message, style=style)
         self._console.print(text)
 

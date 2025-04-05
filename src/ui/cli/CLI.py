@@ -8,7 +8,6 @@ from src.common.dto.PrepareDTO import PrepareDTO
 from src.common.dto.ProposalDTO import ProposalDTO
 from src.common.dto.StatsDTO import StatsDTO
 from src.common.enums.OutcomeEnum import OutcomeEnum
-from src.common.logs.Logger import Logger
 from src.common.patterns.mediator.IMediator import IMediator
 from src.ui.cli.Displayer import Displayer
 
@@ -48,18 +47,16 @@ class CLI(Subscriber):
     def _handle_display_stats(self, dto: StatsDTO = None) -> None:
         self.display_stats(dto)
 
-    @staticmethod
-    def _has_right_length(proposal: str, beads_per_combination: int) -> bool:
+    def _has_right_length(self, proposal: str, beads_per_combination: int) -> bool:
         if len(proposal) != beads_per_combination:
-            Logger().error(f"The proposal must be {beads_per_combination} characters long")
+            self._displayer.print_message(f"The proposal must be {beads_per_combination} characters long", style="red")
             return False
         return True
 
-    @staticmethod
-    def _has_only_available_colors(proposal: str, available_colors: dict[str, str]) -> bool:
+    def _has_only_available_colors(self, proposal: str, available_colors: dict[str, str]) -> bool:
         for char in proposal:
             if not char.upper() in available_colors.keys():
-                Logger().error(f"The proposal must only has available colors")
+                self._displayer.print_message(f"The proposal must only has available colors", style="red")
                 return False
         return True
 

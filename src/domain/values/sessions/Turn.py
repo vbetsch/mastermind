@@ -22,3 +22,7 @@ class Turn:
     def run(self) -> None:
         self._status = StatusEnum.RUNNING
         Logger().log("Turn started")
+
+    def stop(self) -> None:
+        self._status = StatusEnum.STOPPED
+        Logger().log("Turn stopped")

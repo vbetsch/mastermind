@@ -25,6 +25,7 @@ from src.app.usecases.turn.update_turn import UpdateTurn
 from src.common.communication.Mediator import Mediator
 from src.ui.cli.CLI import CLI
 from src.ui.cli.handlers.MainMenuHandler import MainMenuHandler
+from src.ui.cli.handlers.OutcomeHandler import OutcomeHandler
 from src.ui.cli.handlers.PlayMenuHandler import PlayMenuHandler
 
 
@@ -119,8 +120,13 @@ class Container(DeclarativeContainer):
         PlayMenuHandler,
         mediator=mediator
     )
+    outcome_handler_factory = providers.Factory(
+        OutcomeHandler,
+        mediator=mediator
+    )
     main_menu_handler = main_menu_handler_factory()
     play_menu_handler = play_menu_handler_factory()
+    outcome_handler = outcome_handler_factory()
 
     # UI
     cli = providers.Factory(

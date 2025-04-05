@@ -18,6 +18,7 @@ from src.app.usecases.session.end_session import EndSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
 from src.app.usecases.state.get_state import GetState
+from src.app.usecases.stats.get_stats import GetStats
 from src.app.usecases.turn.close_turn import CloseTurn
 from src.app.usecases.turn.create_turn import CreateTurn
 from src.app.usecases.turn.run_turn import RunTurn
@@ -65,6 +66,9 @@ class Container(DeclarativeContainer):
 
     # State
     get_state = providers.Factory(GetState)
+
+    # Stats
+    get_stats = providers.Factory(GetStats)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

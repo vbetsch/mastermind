@@ -26,3 +26,7 @@ class Turn:
     def stop(self) -> None:
         self._status = StatusEnum.STOPPED
         Logger().log("Turn stopped", line_break=True)
+
+    def close(self) -> None:
+        self._status = StatusEnum.DONE
+        Logger().log("Turn closed")

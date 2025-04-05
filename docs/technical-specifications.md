@@ -27,6 +27,8 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   │       ├── prepare
 │   │   │       ├── proposal
 │   │   │       ├── session
+│   │   │       ├── state
+│   │   │       ├── stats
 │   │   │       └── turn
 │   │   ├── presenters
 │   │   └── usecases
@@ -34,12 +36,15 @@ Here is the architecture of the project, which respects clean architecture :
 │   │       ├── prepare
 │   │       ├── proposal
 │   │       ├── session
+│   │       ├── state
+│   │       ├── stats
 │   │       └── turn
 │   ├── common
 │   │   ├── communication
-│   │   │   └── dto
 │   │   ├── decorators
-│   │   │   └── dto
+│   │   │   └── func
+│   │   ├── dto
+│   │   ├── enums
 │   │   ├── exceptions
 │   │   ├── logs
 │   │   └── patterns
@@ -50,8 +55,8 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   ├── entities
 │   │   └── values
 │   │       ├── combinations
-│   │       ├── players
 │   │       ├── sessions
+│   │       ├── stages
 │   │       └── turns
 │   │           └── indicators
 │   ├── infra
@@ -71,7 +76,6 @@ Here is the architecture of the project, which respects clean architecture :
             ├── core
             ├── entities
             └── values
-```
 
 ### app
 

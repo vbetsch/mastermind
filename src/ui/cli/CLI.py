@@ -101,6 +101,7 @@ class CLI(Subscriber):
         self._displayer.print_list("Feedback :", dto.feedback)
 
     def cancel(self) -> None:
+        self.send(EventEnum.STOP_TURN.name)
         self.send(EventEnum.STOP_SESSION.name)
         self._displayer.jump_lines(1)
         self._displayer.print_message("Good Bye!")

@@ -79,10 +79,14 @@ class CLI(Subscriber):
                 has_only_available_colors = True
         self.send(EventEnum.SEND_PROPOSAL.name, ProposalDTO(proposal))
 
-    def _display_previous_attempts_and_available_colors(self, dto: PrepareDTO):
-        if len(dto.previous_proposals) > 0:
-            self._displayer.print_list("Previous attempts :", dto.previous_proposals)
+    def _display_previous_attempts(self, dto: PrepareDTO):
+        if len(dto.previous_attempts) > 0:
+            self._displayer.print_list(
+                "Previous attempts :",
+                [f"{str(attempt[0].proposal)} -> {str(attempt[1].feedback)}" for attempt in dto.previous_attempts]
+            )
 
+    def _display_available_colors(self, dto: PrepareDTO):
         self._displayer.print_list("All colors available :", dto.available_colors, are_colors=True)
         self._displayer.jump_lines(1)
 
@@ -103,7 +107,8 @@ class CLI(Subscriber):
         self.send(choice.name)
 
     def ask_proposal(self, dto: PrepareDTO) -> None:
-        self._display_previous_attempts_and_available_colors(dto)
+        self._display_previous_attempts(dto)
+        self._display_available_colors(dto)
         self._ask_proposal_until_have_valid(dto)
 
     def show_feedback(self, dto: FeedbackDTO) -> None:

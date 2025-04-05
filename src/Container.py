@@ -11,7 +11,7 @@ from src.app.controllers.TurnController import TurnController
 from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
 from src.app.usecases.prepare.get_number_beads import GetBeadsPerCombination
-from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
+from src.app.usecases.prepare.get_previous_attempts import GetPreviousAttempts
 from src.app.usecases.proposal.create_combination import CreateCombination
 from src.app.usecases.proposal.generate_feedback import GenerateFeedback
 from src.app.usecases.session.create_session import CreateSession
@@ -47,7 +47,7 @@ class Container(DeclarativeContainer):
 
     # Prepare
     get_available_colors = providers.Factory(GetAvailableColors)
-    get_previous_proposals = providers.Factory(GetPreviousProposals)
+    get_previous_attempts = providers.Factory(GetPreviousAttempts)
     get_beads_per_combination = providers.Factory(GetBeadsPerCombination)
 
     # Proposal
@@ -89,7 +89,7 @@ class Container(DeclarativeContainer):
         PrepareController,
         mediator=mediator,
         get_available_colors=get_available_colors,
-        get_previous_proposals=get_previous_proposals,
+        get_previous_attempts=get_previous_attempts,
         get_beads_per_combination=get_beads_per_combination,
     )
     proposal_controller_factory = providers.Factory(

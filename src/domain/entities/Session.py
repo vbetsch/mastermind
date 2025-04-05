@@ -8,6 +8,7 @@ from src.domain.values.combinations.Combination import Combination
 from src.domain.values.sessions.SessionMemento import SessionMemento
 from src.domain.values.sessions.Turn import Turn
 from src.domain.values.stages.StatusEnum import StatusEnum
+from src.domain.values.turns.Attempt import Attempt
 
 
 @dataclass(frozen=False)
@@ -23,13 +24,13 @@ class Session(IOriginator):
     def get_turns_length(self) -> int:
         return len(self.turns)
 
-    def get_previous_proposals_to_string(self) -> list[str]:
-        previous_proposals: list[str] = []
+    def get_previous_attempts(self) -> list[Attempt]:
+        previous_attempts: list[Attempt] = []
         for turn in self.turns:
-            proposal: Combination | None = turn.get_if_proposal()
-            if proposal:
-                previous_proposals.append(str(proposal))
-        return previous_proposals
+            attempt: Attempt | None = turn.get_if_attempt()
+            if attempt:
+                previous_attempts.append(attempt)
+        return previous_attempts
 
     def add_turn(self, turn: Turn) -> None:
         self.turns.append(turn)

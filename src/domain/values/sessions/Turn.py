@@ -3,36 +3,30 @@ from src.app.exceptions.ProposalException import ProposalException
 from src.common.logs.Logger import Logger
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.stages.StatusEnum import StatusEnum
+from src.domain.values.turns.Attempt import Attempt
 from src.domain.values.turns.Feedback import Feedback
 
 
 class Turn:
     def __init__(self) -> None:
         self._status: StatusEnum = StatusEnum.NOT_STARTED
-        self._feedback: Feedback | None = None
-        self._proposal: Combination | None = None
+        self._attempt: Attempt | None = None
 
-    def get_if_proposal(self) -> Combination | None:
-        return self._proposal
-
-    def get_if_feedback(self) -> Feedback | None:
-        return self._feedback
+    def get_if_attempt(self) -> Attempt | None:
+        return self._attempt
 
     def get_proposal(self) -> Combination:
-        if not self._proposal:
+        if not self._attempt:
             raise ProposalException("Proposal not found")
-        return self._proposal
+        return self._attempt.get_combination()
 
     def get_feedback(self) -> Feedback:
-        if not self._feedback:
+        if not self._attempt:
             raise FeedbackException("Feedback not found")
-        return self._feedback
+        return self._attempt.get_feedback()
 
-    def set_feedback(self, feedback: Feedback) -> None:
-        self._feedback = feedback
-
-    def set_proposal(self, proposal: Combination) -> None:
-        self._proposal = proposal
+    def set_attempt(self, attempt: Attempt) -> None:
+        self._attempt = attempt
 
     def run(self) -> None:
         self._status = StatusEnum.RUNNING

@@ -88,6 +88,7 @@ class Container(DeclarativeContainer):
         create_turn=create_turn,
         run_turn=run_turn,
         update_turn=update_turn,
+        stop_turn=stop_turn,
     )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()

@@ -30,3 +30,4 @@ class EventEnum(Enum):
     PREPARE: str = "PREPARE"
     SEND_PROPOSAL: str = "SEND_PROPOSAL"
     UPDATE_TURN: str = "UPDATE_TURN"
+    STOP_TURN: str = "STOP_TURN"

@@ -1,4 +1,4 @@
-from src.app.ports.data.IData import IData
+from src.app.data.IData import IData
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.turns.Feedback import Feedback
 

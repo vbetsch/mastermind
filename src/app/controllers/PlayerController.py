@@ -1,5 +1,5 @@
 from src.app.controllers.IController import IController
-from src.app.ports.data.PlayerData import PlayerData
+from src.app.data.PlayerData import PlayerData
 from src.app.ports.usecases.player.IPlayerUseCase import IPlayerUseCase
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber

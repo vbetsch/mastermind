@@ -17,11 +17,11 @@ Here is the architecture of the project, which respects clean architecture :
 ├── src
 │   ├── app
 │   │   ├── controllers
+│   │   ├── data
 │   │   ├── exceptions
 │   │   ├── gateways
 │   │   │   └── repositories
 │   │   ├── ports
-│   │   │   ├── data
 │   │   │   └── usecases
 │   │   │       ├── player
 │   │   │       ├── prepare
@@ -181,7 +181,7 @@ whether or not to process it (using the handle function). It's also possible to 
 This model also allows me to evolve the application: I can add as many handlers, controllers and graphical interfaces as
 I like.
 
-> [Data](../src/app/ports/data) objects are transmitted only between backend [controllers](../src/app/controllers), whereas [DTOs](../src/common/communication/dto) are transmitted between frontend and backend. [Presenters](../src/app/presenters) convert Data objects into DTOs, acting as mappers.
+> [Data](../src/app/data) objects are transmitted only between backend [controllers](../src/app/controllers), whereas [DTOs](../src/common/communication/dto) are transmitted between frontend and backend. [Presenters](../src/app/presenters) convert Data objects into DTOs, acting as mappers.
 
 ### CLI
 

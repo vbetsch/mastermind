@@ -1,4 +1,4 @@
-from src.app.ports.data.FeedbackData import FeedbackData
+from src.app.data.FeedbackData import FeedbackData
 from src.app.presenters.IPresenter import IPresenter
 from src.common.communication.dto.FeedbackDTO import FeedbackDTO
 

@@ -1,5 +1,5 @@
 from src.app.controllers.IController import IController
-from src.app.ports.data.UpdateTurnData import UpdateTurnData
+from src.app.data.UpdateTurnData import UpdateTurnData
 from src.app.ports.usecases.turn import IRunTurn
 from src.app.ports.usecases.turn.ICreateTurn import ICreateTurn
 from src.app.ports.usecases.turn.IStopTurn import IStopTurn

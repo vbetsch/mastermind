@@ -1,5 +1,5 @@
 from src.app.controllers.IController import IController
-from src.app.ports.data.PlayerData import PlayerData
+from src.app.data.PlayerData import PlayerData
 from src.app.ports.usecases.session.ICreateSessionUseCase import ICreateSessionUseCase
 from src.app.ports.usecases.session.IRunSessionUseCase import IRunSessionUseCase
 from src.app.ports.usecases.session.IStopSessionUseCase import IStopSessionUseCase

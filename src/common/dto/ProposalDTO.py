@@ -1,4 +1,4 @@
-from src.common.communication.dto.IDto import IDto
+from .IDto import IDto
 
 
 class ProposalDTO(IDto):

@@ -177,11 +177,11 @@ Communication between backend and frontend is managed by a [Mediator](../src/com
 interface subscribes to it. Handlers act as intermediaries between controllers and user interfaces, and are used in
 particular for menus. This enables communication with a system for sending and responding to [events](../src/common/communication/EventEnum.py). When I need to
 trigger an event from a [subscriber](../src/common/communication/Subscriber.py), I send a message and all the other subscribers receive it. Each of them then decides
-whether or not to process it (using the handle function). It's also possible to transmit data using the [dtos](../src/common/communication/dto).
+whether or not to process it (using the handle function). It's also possible to transmit data using the [dtos](../src/common/dto).
 This model also allows me to evolve the application: I can add as many handlers, controllers and graphical interfaces as
 I like.
 
-> [Data](../src/app/data) objects are transmitted only between backend [controllers](../src/app/controllers), whereas [DTOs](../src/common/communication/dto) are transmitted between frontend and backend. [Presenters](../src/app/presenters) convert Data objects into DTOs, acting as mappers.
+> [Data](../src/app/data) objects are transmitted only between backend [controllers](../src/app/controllers), whereas [DTOs](../src/common/dto) are transmitted between frontend and backend. [Presenters](../src/app/presenters) convert Data objects into DTOs, acting as mappers.
 
 ### CLI
 

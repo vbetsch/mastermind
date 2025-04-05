@@ -6,9 +6,9 @@ from src.app.ports.usecases.session.IRunSessionUseCase import IRunSessionUseCase
 from src.app.ports.usecases.session.IStopSessionUseCase import IStopSessionUseCase
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.dto.IDto import IDto
 from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
 from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
+from src.common.dto.IDto import IDto
 from src.common.exceptions.DTOException import DTOException
 from src.common.patterns.mediator.IMediator import IMediator
 

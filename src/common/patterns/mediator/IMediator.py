@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.common.communication.dto.IDto import IDto
+from src.common.dto.IDto import IDto
 
 
 class IMediator(ABC):

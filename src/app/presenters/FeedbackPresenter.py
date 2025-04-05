@@ -1,6 +1,6 @@
 from src.app.data.FeedbackData import FeedbackData
 from src.app.presenters.IPresenter import IPresenter
-from src.common.communication.dto.FeedbackDTO import FeedbackDTO
+from src.common.dto.FeedbackDTO import FeedbackDTO
 
 
 class FeedbackPresenter(IPresenter):

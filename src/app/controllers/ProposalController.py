@@ -6,10 +6,10 @@ from src.app.ports.usecases.proposal.IGenerateFeedback import IGenerateFeedback
 from src.app.presenters.FeedbackPresenter import FeedbackPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.dto.IDto import IDto
-from src.common.communication.dto.ProposalDTO import ProposalDTO
 from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
 from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
+from src.common.dto.IDto import IDto
+from src.common.dto.ProposalDTO import ProposalDTO
 from src.common.patterns.mediator.IMediator import IMediator
 
 

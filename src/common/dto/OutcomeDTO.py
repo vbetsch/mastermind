@@ -1,5 +1,5 @@
 from src.common.communication.OutcomeEnum import OutcomeEnum
-from src.common.communication.dto.IDto import IDto
+from .IDto import IDto
 
 
 class OutcomeDTO(IDto):

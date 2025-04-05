@@ -4,8 +4,8 @@ from src.app.ports.usecases.prepare.IGetBeadsPerCombination import IGetBeadsPerC
 from src.app.ports.usecases.prepare.IGetPreviousProposals import IGetPreviousProposals
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.dto.IDto import IDto
-from src.common.communication.dto.PrepareDTO import PrepareDTO
+from src.common.dto.IDto import IDto
+from src.common.dto.PrepareDTO import PrepareDTO
 from src.common.patterns.mediator.IMediator import IMediator
 
 

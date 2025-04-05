@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.dto.IDto import IDto
+from src.common.dto.IDto import IDto
 
 
 class IController(Subscriber):

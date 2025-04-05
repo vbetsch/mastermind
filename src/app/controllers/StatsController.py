@@ -4,7 +4,7 @@ from src.app.ports.usecases.stats.IGetStats import IGetStats
 from src.app.presenters.StatsPresenter import StatsPresenter
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.communication.dto.IDto import IDto
+from src.common.dto.IDto import IDto
 from src.common.patterns.mediator.IMediator import IMediator
 
 

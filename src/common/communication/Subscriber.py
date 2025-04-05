@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import Self
 
-from src.common.communication.dto.IDto import IDto
+from src.common.dto.IDto import IDto
 from src.common.patterns.mediator.IComponent import IComponent
 
 

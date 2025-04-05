@@ -12,4 +12,4 @@ class UpdateTurn(IUpdateTurn):
         turn.set_feedback(feedback)
         turn.set_proposal(proposal)
         Storage().set_current_turn(turn)
-        Logger().log("Turn updated")
+        Logger().log("Turn updated", line_break=True)

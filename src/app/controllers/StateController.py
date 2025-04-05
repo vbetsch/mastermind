@@ -8,11 +8,11 @@ from src.common.patterns.mediator.IMediator import IMediator
 
 class StateController(IController):
     def __init__(self, mediator: IMediator,
-                 update_state: IGetState):
+                 get_state: IGetState):
         super().__init__(self.__class__.__name__, mediator)
-        self._update_state: IGetState = update_state
+        self._get_state: IGetState = get_state
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
             case EventEnum.END_TURN.name:
-                state = self._update_state.execute()
+                state = self._get_state.execute()

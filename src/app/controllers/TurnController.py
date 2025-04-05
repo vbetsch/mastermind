@@ -31,14 +31,13 @@ class TurnController(IController):
             case EventEnum.CREATE_AND_RUN_TURN.name:
                 self._create_turn.execute()
                 self._run_turn.execute()
-            case EventEnum.UPDATE_TURN.name:
-                self._handle_update_turn(dto)
+            case EventEnum.UPDATE_AND_CLOSE_TURN.name:
+                self._handle_update_and_close_turn(dto)
+                self._close_turn.execute()
             case EventEnum.STOP_TURN.name:
                 self._stop_turn.execute()
-            case EventEnum.CLOSE_TURN.name:
-                self._close_turn.execute()
 
-    @check_dto_is_defined(EventEnum.UPDATE_TURN, UpdateTurnData)
-    @check_dto_required_fields(EventEnum.UPDATE_TURN, UpdateTurnData)
-    def _handle_update_turn(self, dto: UpdateTurnData = None) -> None:
+    @check_dto_is_defined(EventEnum.UPDATE_AND_CLOSE_TURN, UpdateTurnData)
+    @check_dto_required_fields(EventEnum.UPDATE_AND_CLOSE_TURN, UpdateTurnData)
+    def _handle_update_and_close_turn(self, dto: UpdateTurnData = None) -> None:
         self._update_turn.execute(feedback=dto.feedback, proposal=dto.proposal)

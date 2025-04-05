@@ -31,7 +31,7 @@ class ProposalController(IController):
     def _handle_send_proposal(self, dto: ProposalDTO = None) -> None:
         combination = self._create_combination.execute(dto.proposal)
         feedback = self._generate_feedback.execute(combination)
-        self.send(EventEnum.UPDATE_TURN.name,
+        self.send(EventEnum.UPDATE_AND_CLOSE_TURN.name,
                   UpdateTurnData(feedback=feedback, proposal=combination))
         presenter: FeedbackPresenter = FeedbackPresenter(FeedbackData(feedback))
         self.send(EventEnum.REPLY_PROPOSAL.name, presenter.present())

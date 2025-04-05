@@ -1,5 +1,6 @@
 from src.app.controllers.IController import IController
 from src.app.ports.data.FeedbackData import FeedbackData
+from src.app.ports.data.UpdateTurnData import UpdateTurnData
 from src.app.ports.usecases.proposal.ICreateCombination import ICreateCombination
 from src.app.ports.usecases.proposal.IGenerateFeedback import IGenerateFeedback
 from src.app.presenters.FeedbackPresenter import FeedbackPresenter
@@ -30,5 +31,7 @@ class ProposalController(IController):
     def _handle_send_proposal(self, dto: ProposalDTO = None) -> None:
         combination = self._create_combination.execute(dto.proposal)
         feedback = self._generate_feedback.execute(combination)
+        self.send(EventEnum.UPDATE_TURN.name,
+                  UpdateTurnData(feedback=feedback, proposal=combination))
         presenter: FeedbackPresenter = FeedbackPresenter(FeedbackData(feedback))
         self.send(EventEnum.REPLY_PROPOSAL.name, presenter.present())

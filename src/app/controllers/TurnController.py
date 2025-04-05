@@ -17,12 +17,14 @@ class TurnController(IController):
                  create_turn: ICreateTurn,
                  run_turn: IRunTurn,
                  update_turn: IUpdateTurn,
-                 stop_turn: IStopTurn):
+                 stop_turn: IStopTurn,
+                 close_turn: IStopTurn):
         super().__init__(self.__class__.__name__, mediator)
         self._create_turn: ICreateTurn = create_turn
         self._run_turn: IRunTurn = run_turn
         self._update_turn: IUpdateTurn = update_turn
         self._stop_turn: IStopTurn = stop_turn
+        self._close_turn: IStopTurn = close_turn
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
         match message:
@@ -33,6 +35,8 @@ class TurnController(IController):
                 self._handle_update_turn(dto)
             case EventEnum.STOP_TURN.name:
                 self._stop_turn.execute()
+            case EventEnum.CLOSE_TURN.name:
+                self._close_turn.execute()
 
     @check_dto_is_defined(EventEnum.UPDATE_TURN, UpdateTurnData)
     @check_dto_required_fields(EventEnum.UPDATE_TURN, UpdateTurnData)

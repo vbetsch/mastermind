@@ -5,8 +5,8 @@ class EventEnum(Enum):
     # --- Display ---
     SHOW_MAIN_MENU: str = "Main menu"
     SHOW_PLAY_MENU: str = "Play menu"
-    ASK_PROPOSAL: str = "Make a proposal"
     SHOW_FEEDBACK: str = "Show feedback"
+    ASK_PROPOSAL: str = "Make a proposal"
     CANCEL: str = "Cancel"
 
     # --- Handlers ---
@@ -24,10 +24,11 @@ class EventEnum(Enum):
 
     # --- Backend ---
     GET_PLAYER: str = "GET_PLAYER"
+    PREPARE: str = "PREPARE"
+    SEND_PROPOSAL: str = "SEND_PROPOSAL"
     CREATE_AND_RUN_SESSION: str = "CREATE_AND_RUN_SESSION"
     STOP_SESSION: str = "STOP_SESSION"
     CREATE_AND_RUN_TURN: str = "CREATE_AND_RUN_TURN"
-    PREPARE: str = "PREPARE"
-    SEND_PROPOSAL: str = "SEND_PROPOSAL"
     UPDATE_TURN: str = "UPDATE_TURN"
     STOP_TURN: str = "STOP_TURN"
+    CLOSE_TURN: str = "CLOSE_TURN"

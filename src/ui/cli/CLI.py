@@ -119,6 +119,7 @@ class CLI(Subscriber):
             case OutcomeEnum.DEFEAT:
                 self._displayer.jump_lines(1)
                 self._displayer.print_message(f"Defeat :(", style="red")
+                self._displayer.print_message(f"The secret combination was : {dto.secret_combination}")
         self._displayer.print_message(f"You've made {dto.attempts_number} attempts")
 
     def cancel(self) -> None:

@@ -9,5 +9,6 @@ class GetStats(IGetStats):
         session: Session = Storage().get_current_session()
         return StatsData(
             state=Storage().get_state(),
-            attempts_number=session.get_turns_length()
+            attempts_number=session.get_turns_length(),
+            secret_combination=session.get_secret_combination(),
         )

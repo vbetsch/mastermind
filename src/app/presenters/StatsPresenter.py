@@ -19,5 +19,6 @@ class StatsPresenter(IPresenter):
                 outcome = OutcomeEnum.DEFEAT
         return StatsDTO(
             outcome=outcome,
-            attempts_number=self.data.attempts_number
+            attempts_number=self.data.attempts_number,
+            secret_combination=str(self.data.secret_combination),
         )

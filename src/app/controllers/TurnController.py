@@ -41,3 +41,4 @@ class TurnController(IController):
     def _handle_update_and_close_turn(self, dto: UpdateTurnData = None) -> None:
         self._update_turn.execute(feedback=dto.feedback, proposal=dto.proposal)
         self._close_turn.execute()
+        self.send(EventEnum.END_TURN.name)

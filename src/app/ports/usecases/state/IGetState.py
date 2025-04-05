@@ -1,9 +1,10 @@
 from abc import abstractmethod
 
 from src.app.ports.usecases.IUseCase import IUseCase
+from src.domain.values.stages.StateEnum import StateEnum
 
 
-class IUpdateState(IUseCase):
+class IGetState(IUseCase):
     @abstractmethod
-    def execute(self) -> None:
+    def execute(self) -> StateEnum:
         pass

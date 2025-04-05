@@ -16,7 +16,7 @@ from src.app.usecases.proposal.generate_feedback import GenerateFeedback
 from src.app.usecases.session.create_session import CreateSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
-from src.app.usecases.state.update_state import UpdateState
+from src.app.usecases.state.get_state import GetState
 from src.app.usecases.turn.close_turn import CloseTurn
 from src.app.usecases.turn.create_turn import CreateTurn
 from src.app.usecases.turn.run_turn import RunTurn
@@ -61,7 +61,7 @@ class Container(DeclarativeContainer):
     close_turn = providers.Factory(CloseTurn)
 
     # State
-    update_state = providers.Factory(UpdateState)
+    update_state = providers.Factory(GetState)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(

@@ -31,3 +31,4 @@ class EventEnum(Enum):
     CREATE_AND_RUN_TURN: str = "CREATE_AND_RUN_TURN"
     UPDATE_AND_CLOSE_TURN: str = "UPDATE_AND_CLOSE_TURN"
     STOP_TURN: str = "STOP_TURN"
+    END_TURN: str = "END_TURN"

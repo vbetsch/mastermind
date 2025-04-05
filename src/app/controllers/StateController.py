@@ -1,12 +1,18 @@
 from src.app.controllers.IController import IController
+from src.app.ports.usecases.state.IGetState import IGetState
+from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
 from src.common.communication.dto.IDto import IDto
 from src.common.patterns.mediator.IMediator import IMediator
 
 
 class StateController(IController):
-    def __init__(self, mediator: IMediator):
+    def __init__(self, mediator: IMediator,
+                 update_state: IGetState):
         super().__init__(self.__class__.__name__, mediator)
+        self._update_state: IGetState = update_state
 
     def handle(self, message: str, sender: Subscriber, dto: IDto = None) -> None:
-        pass
+        match message:
+            case EventEnum.END_TURN.name:
+                state = self._update_state.execute()

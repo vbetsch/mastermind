@@ -10,6 +10,7 @@ from src.app.controllers.StatsController import StatsController
 from src.app.controllers.TurnController import TurnController
 from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
+from src.app.usecases.prepare.get_max_attempts import GetMaxAttempts
 from src.app.usecases.prepare.get_number_beads import GetBeadsPerCombination
 from src.app.usecases.prepare.get_previous_attempts import GetPreviousAttempts
 from src.app.usecases.proposal.create_combination import CreateCombination
@@ -49,6 +50,7 @@ class Container(DeclarativeContainer):
     get_available_colors = providers.Factory(GetAvailableColors)
     get_previous_attempts = providers.Factory(GetPreviousAttempts)
     get_beads_per_combination = providers.Factory(GetBeadsPerCombination)
+    get_max_attempts = providers.Factory(GetMaxAttempts)
 
     # Proposal
     create_combination_factory = providers.Factory(
@@ -91,6 +93,7 @@ class Container(DeclarativeContainer):
         get_available_colors=get_available_colors,
         get_previous_attempts=get_previous_attempts,
         get_beads_per_combination=get_beads_per_combination,
+        get_max_attempts=get_max_attempts,
     )
     proposal_controller_factory = providers.Factory(
         ProposalController,

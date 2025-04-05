@@ -79,7 +79,7 @@ class CLI(Subscriber):
     def _display_previous_attempts(self, dto: PrepareDTO):
         if len(dto.previous_attempts) > 0:
             self._displayer.print_list(
-                "Previous attempts :",
+                f"Previous attempts ({len(dto.previous_attempts)}/{dto.max_attempts}) :",
                 [f"{str(attempt[0].proposal)} -> {str(attempt[1].feedback)}" for attempt in dto.previous_attempts]
             )
 
@@ -114,9 +114,11 @@ class CLI(Subscriber):
     def display_stats(self, dto: StatsDTO) -> None:
         match dto.outcome:
             case OutcomeEnum.VICTORY:
-                self._displayer.print_message(f"Victory !!!")
+                self._displayer.jump_lines(1)
+                self._displayer.print_message(f"Victory !!!", style="green")
             case OutcomeEnum.DEFEAT:
-                self._displayer.print_message(f"Defeat :(")
+                self._displayer.jump_lines(1)
+                self._displayer.print_message(f"Defeat :(", style="red")
         self._displayer.print_message(f"You've made {dto.attempts_number} attempts")
 
     def cancel(self) -> None:

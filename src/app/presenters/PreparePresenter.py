@@ -40,4 +40,5 @@ class PreparePresenter(IPresenter):
             available_colors=self.data.available_colors,
             previous_attempts=self._present_previous_attempts(),
             beads_per_combination=self.data.beads_per_combination,
+            max_attempts=self.data.get_max_attempts(),
         )

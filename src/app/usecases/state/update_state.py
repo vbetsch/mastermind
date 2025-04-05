@@ -1,6 +1,5 @@
-from src.app.ports.usecases.IUpdateState import IUpdateState
+from src.app.ports.usecases.state.IUpdateState import IUpdateState
 from src.domain.core.Arbitrator import Arbitrator
-from src.domain.core.Rules import Rules
 from src.domain.core.Storage import Storage
 from src.domain.entities.Session import Session
 from src.domain.values.sessions.Turn import Turn

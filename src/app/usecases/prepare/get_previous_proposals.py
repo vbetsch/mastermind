@@ -9,4 +9,4 @@ class GetPreviousProposals(IGetPreviousProposals):
     def execute(self) -> list[str]:
         session: Session = Storage().get_current_session()
         Logger().info(f"The secret combination is {session.get_secret_combination()}")
-        return session.get_previous_proposals()
+        return session.get_previous_proposals_to_string()

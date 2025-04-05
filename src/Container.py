@@ -6,6 +6,7 @@ from src.app.controllers.PrepareController import PrepareController
 from src.app.controllers.ProposalController import ProposalController
 from src.app.controllers.SessionController import SessionController
 from src.app.controllers.StateController import StateController
+from src.app.controllers.StatsController import StatsController
 from src.app.controllers.TurnController import TurnController
 from src.app.usecases.player.get_player import GetPlayer
 from src.app.usecases.prepare.get_available_colors import GetAvailableColors
@@ -111,12 +112,18 @@ class Container(DeclarativeContainer):
         mediator=mediator,
         get_state=get_state,
     )
+    stats_controller_factory = providers.Factory(
+        StatsController,
+        mediator=mediator,
+        get_stats=get_stats,
+    )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()
     prepare_controller = prepare_controller_factory()
     proposal_controller = proposal_controller_factory()
     turn_controller = turn_controller_factory()
     state_controller = state_controller_factory()
+    stats_controller = stats_controller_factory()
 
     # Handlers
     main_menu_handler_factory = providers.Factory(

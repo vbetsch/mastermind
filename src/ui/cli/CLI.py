@@ -4,6 +4,8 @@ from src.common.communication.dto.FeedbackDTO import FeedbackDTO
 from src.common.communication.dto.IDto import IDto
 from src.common.communication.dto.PrepareDTO import PrepareDTO
 from src.common.communication.dto.ProposalDTO import ProposalDTO
+from src.common.communication.dto.StatsDTO import StatsDTO
+from src.common.communication.dto.enums.OutcomeEnum import OutcomeEnum
 from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
 from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
 from src.common.logs.Logger import Logger
@@ -26,6 +28,8 @@ class CLI(Subscriber):
                 self._handle_ask_proposal(dto)
             case EventEnum.SHOW_FEEDBACK.name:
                 self._handle_show_feedback(dto)
+            case EventEnum.DISPLAY_STATS.name:
+                self._handle_display_stats(dto)
             case EventEnum.CANCEL.name:
                 self.cancel()
 
@@ -38,6 +42,11 @@ class CLI(Subscriber):
     @check_dto_required_fields(EventEnum.SHOW_FEEDBACK, FeedbackDTO)
     def _handle_show_feedback(self, dto: FeedbackDTO = None) -> None:
         self.show_feedback(dto)
+
+    @check_dto_is_defined(EventEnum.DISPLAY_STATS, StatsDTO)
+    @check_dto_required_fields(EventEnum.DISPLAY_STATS, StatsDTO)
+    def _handle_display_stats(self, dto: StatsDTO = None) -> None:
+        self.display_stats(dto)
 
     @staticmethod
     def _has_right_length(proposal: str, beads_per_combination: int) -> bool:
@@ -99,6 +108,14 @@ class CLI(Subscriber):
 
     def show_feedback(self, dto: FeedbackDTO) -> None:
         self._displayer.print_list("Feedback :", dto.feedback)
+
+    def display_stats(self, dto: StatsDTO) -> None:
+        match dto.outcome:
+            case OutcomeEnum.VICTORY:
+                self._displayer.print_message(f"Victory !!!")
+            case OutcomeEnum.DEFEAT:
+                self._displayer.print_message(f"Defeat :(")
+        self._displayer.print_message(f"You've made {dto.attempts_number} attempts")
 
     def cancel(self) -> None:
         self.send(EventEnum.STOP_TURN.name)

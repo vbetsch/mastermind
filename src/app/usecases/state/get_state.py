@@ -9,11 +9,13 @@ from src.domain.values.stages.StateEnum import StateEnum
 class GetState(IGetState):
     def execute(self) -> StateEnum:
         session: Session = Storage().get_current_session()
+        state: StateEnum = StateEnum.PLAYING
         if Arbitrator().has_reached_max_attempts(session):
-            return StateEnum.LOST
+            state = StateEnum.LOST
 
         turn: Turn = Storage().get_current_turn()
         if Arbitrator().has_valid_combination(turn.get_feedback()):
-            return StateEnum.WON
+            state = StateEnum.WON
 
-        return StateEnum.PLAYING
+        Storage().set_state(state)
+        return state

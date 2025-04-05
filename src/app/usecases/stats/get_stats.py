@@ -8,5 +8,6 @@ class GetStats(IGetStats):
     def execute(self) -> StatsData:
         session: Session = Storage().get_current_session()
         return StatsData(
+            state=Storage().get_state(),
             attempts_number=session.get_turns_length()
         )

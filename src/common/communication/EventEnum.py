@@ -9,6 +9,7 @@ class EventEnum(Enum):
     ASK_PROPOSAL: str = "Make a proposal"
     VICTORY: str = "Victory"
     DEFEAT: str = "Defeat"
+    DISPLAY_STATS: str = "DISPLAY_STATS"
     CANCEL: str = "Cancel"
 
     # --- Handlers ---

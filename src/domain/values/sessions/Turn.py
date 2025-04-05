@@ -25,4 +25,4 @@ class Turn:
 
     def stop(self) -> None:
         self._status = StatusEnum.STOPPED
-        Logger().log("Turn stopped")
+        Logger().log("Turn stopped", line_break=True)

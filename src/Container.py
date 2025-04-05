@@ -14,6 +14,7 @@ from src.app.usecases.prepare.get_previous_proposals import GetPreviousProposals
 from src.app.usecases.proposal.create_combination import CreateCombination
 from src.app.usecases.proposal.generate_feedback import GenerateFeedback
 from src.app.usecases.session.create_session import CreateSession
+from src.app.usecases.session.end_session import EndSession
 from src.app.usecases.session.run_session import RunSession
 from src.app.usecases.session.stop_session import StopSession
 from src.app.usecases.state.get_state import GetState
@@ -40,6 +41,7 @@ class Container(DeclarativeContainer):
     create_session = providers.Factory(CreateSession)
     run_session = providers.Factory(RunSession)
     stop_session = providers.Factory(StopSession)
+    end_session = providers.Factory(EndSession)
 
     # Prepare
     get_available_colors = providers.Factory(GetAvailableColors)
@@ -75,7 +77,8 @@ class Container(DeclarativeContainer):
         mediator=mediator,
         create_session=create_session,
         run_session=run_session,
-        stop_session=stop_session
+        stop_session=stop_session,
+        end_session=end_session,
     )
     prepare_controller_factory = providers.Factory(
         PrepareController,

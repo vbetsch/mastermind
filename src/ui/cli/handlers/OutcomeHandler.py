@@ -24,11 +24,9 @@ class OutcomeHandler(IHandler):
     def _handle_callback_state(self, dto: OutcomeDTO = None) -> None:
         match dto.outcome:
             case OutcomeEnum.VICTORY:
-                Logger().ok(f"Victory !")
-                return
+                self.send(EventEnum.VICTORY.name)
             case OutcomeEnum.DEFEAT:
-                Logger().error(f"Defeat :(")
-                return
+                self.send(EventEnum.DEFEAT.name)
             case _:
                 Logger().debug(f"Try again...")
-                return
+                self.send(EventEnum.SHOW_PLAY_MENU.name)

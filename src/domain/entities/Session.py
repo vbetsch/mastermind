@@ -49,3 +49,7 @@ class Session(IOriginator):
     def stop(self) -> None:
         self.status = StatusEnum.STOPPED
         Logger().log("Session stopped", line_break=True)
+
+    def close(self) -> None:
+        self.status = StatusEnum.DONE
+        Logger().log("Session closed")

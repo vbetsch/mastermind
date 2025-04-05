@@ -7,6 +7,8 @@ class EventEnum(Enum):
     SHOW_PLAY_MENU: str = "Play menu"
     SHOW_FEEDBACK: str = "Show feedback"
     ASK_PROPOSAL: str = "Make a proposal"
+    VICTORY: str = "Victory"
+    DEFEAT: str = "Defeat"
     CANCEL: str = "Cancel"
 
     # --- Handlers ---

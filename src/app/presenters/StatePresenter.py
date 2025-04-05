@@ -1,7 +1,7 @@
 from src.app.data.StateData import StateData
 from src.app.presenters.IPresenter import IPresenter
-from src.common.communication.OutcomeEnum import OutcomeEnum
 from src.common.dto.OutcomeDTO import OutcomeDTO
+from src.common.enums.OutcomeEnum import OutcomeEnum
 from src.domain.values.stages.StateEnum import StateEnum
 
 

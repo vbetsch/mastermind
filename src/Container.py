@@ -61,7 +61,7 @@ class Container(DeclarativeContainer):
     close_turn = providers.Factory(CloseTurn)
 
     # State
-    update_state = providers.Factory(GetState)
+    get_state = providers.Factory(GetState)
 
     # --- Controllers ---
     player_controller_factory = providers.Factory(
@@ -101,6 +101,7 @@ class Container(DeclarativeContainer):
     state_controller_factory = providers.Factory(
         StateController,
         mediator=mediator,
+        get_state=get_state,
     )
     player_controller = player_controller_factory()
     session_controller = session_controller_factory()

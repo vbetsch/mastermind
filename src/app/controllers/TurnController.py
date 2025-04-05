@@ -6,8 +6,8 @@ from src.app.ports.usecases.turn.IStopTurn import IStopTurn
 from src.app.ports.usecases.turn.IUpdateTurn import IUpdateTurn
 from src.common.communication.EventEnum import EventEnum
 from src.common.communication.Subscriber import Subscriber
-from src.common.decorators.dto.check_dto_is_defined import check_dto_is_defined
-from src.common.decorators.dto.check_dto_required_fields import check_dto_required_fields
+from src.common.decorators.func.check_dto_is_defined import check_dto_is_defined
+from src.common.decorators.func.check_dto_required_fields import check_dto_required_fields
 from src.common.dto.IDto import IDto
 from src.common.patterns.mediator.IMediator import IMediator
 

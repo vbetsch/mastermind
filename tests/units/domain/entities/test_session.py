@@ -3,10 +3,10 @@ from unittest.mock import MagicMock
 
 from src.domain.entities.Player import Player
 from src.domain.entities.Session import Session
-from src.domain.values.StatusEnum import StatusEnum
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.sessions.SessionMemento import SessionMemento
 from src.domain.values.sessions.Turn import Turn
+from src.domain.values.stages.StatusEnum import StatusEnum
 
 
 class TestSession:

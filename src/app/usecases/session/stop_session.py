@@ -1,7 +1,7 @@
 from src.app.ports.usecases.session.IStopSessionUseCase import IStopSessionUseCase
 from src.domain.core.Storage import Storage
 from src.domain.entities.Session import Session
-from src.domain.values.StatusEnum import StatusEnum
+from src.domain.values.stages.StatusEnum import StatusEnum
 
 
 class StopSession(IStopSessionUseCase):

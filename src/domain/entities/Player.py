@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
-from src.domain.values.players.StateEnum import StateEnum
 from src.domain.values.sessions.SessionHistory import SessionHistory
+from src.domain.values.stages.StateEnum import StateEnum
 
 
 @dataclass(frozen=True)

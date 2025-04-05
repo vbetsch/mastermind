@@ -4,10 +4,10 @@ from typing import Self
 from src.common.logs.Logger import Logger
 from src.common.patterns.memento.IOriginator import IOriginator
 from src.domain.entities.Player import Player
-from src.domain.values.StatusEnum import StatusEnum
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.sessions.SessionMemento import SessionMemento
 from src.domain.values.sessions.Turn import Turn
+from src.domain.values.stages.StatusEnum import StatusEnum
 
 
 @dataclass(frozen=False)
@@ -20,7 +20,15 @@ class Session(IOriginator):
     def get_secret_combination(self) -> Combination:
         return self.secret_combination
 
-    def get_previous_proposals(self) -> list[str]:
+    def get_previous_proposals(self) -> list[Combination]:
+        previous_proposals: list[Combination] = []
+        for turn in self.turns:
+            proposal: Combination | None = turn.get_if_proposal()
+            if proposal:
+                previous_proposals.append(proposal)
+        return previous_proposals
+
+    def get_previous_proposals_to_string(self) -> list[str]:
         previous_proposals: list[str] = []
         for turn in self.turns:
             proposal: Combination | None = turn.get_if_proposal()

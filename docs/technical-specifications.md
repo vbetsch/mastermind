@@ -19,19 +19,22 @@ Here is the architecture of the project, which respects clean architecture :
 │   │   ├── controllers
 │   │   ├── exceptions
 │   │   ├── gateways
+│   │   │   └── repositories
 │   │   ├── ports
-│   │   │   ├── repositories
+│   │   │   ├── data
 │   │   │   └── usecases
 │   │   │       ├── player
 │   │   │       ├── prepare
 │   │   │       ├── proposal
-│   │   │       └── session
+│   │   │       ├── session
+│   │   │       └── turn
 │   │   ├── presenters
 │   │   └── usecases
 │   │       ├── player
 │   │       ├── prepare
 │   │       ├── proposal
-│   │       └── session
+│   │       ├── session
+│   │       └── turn
 │   ├── common
 │   │   ├── communication
 │   │   │   └── dto
@@ -152,8 +155,8 @@ others [core objects](../src/domain/core) :
 
 ### Core objects
 
-* [Arbitrator](../src/domain/core/Arbitrator.py) : defines whether a combination is right or wrong
-* [Generator](../src/domain/core/Generator.py) : generates random combinations
+* [Arbitrator](../src/domain/core/Arbitrator.py) : evaluates and compare combinations
+* [Generator](../src/domain/core/Generator.py) : generates random combinations and beads
 * [Rules](../src/domain/core/Rules.py) : handle game rules
 * [Storage](../src/domain/core/Storage.py) : manage local storage
 
@@ -177,6 +180,8 @@ trigger an event from a [subscriber](../src/common/communication/Subscriber.py),
 whether or not to process it (using the handle function). It's also possible to transmit data using the [dtos](../src/common/communication/dto).
 This model also allows me to evolve the application: I can add as many handlers, controllers and graphical interfaces as
 I like.
+
+> [Data](../src/app/ports/data) objects are transmitted only between backend [controllers](../src/app/controllers), whereas [DTOs](../src/common/communication/dto) are transmitted between frontend and backend. [Presenters](../src/app/presenters) convert Data objects into DTOs, acting as mappers.
 
 ### CLI
 

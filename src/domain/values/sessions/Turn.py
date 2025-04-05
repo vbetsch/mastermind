@@ -1,3 +1,5 @@
+from src.app.exceptions.FeedbackException import FeedbackException
+from src.app.exceptions.ProposalException import ProposalException
 from src.common.logs.Logger import Logger
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.stages.StatusEnum import StatusEnum
@@ -12,6 +14,19 @@ class Turn:
 
     def get_if_proposal(self) -> Combination | None:
         return self._proposal
+
+    def get_if_feedback(self) -> Feedback | None:
+        return self._feedback
+
+    def get_proposal(self) -> Combination:
+        if not self._proposal:
+            raise ProposalException("Proposal not found")
+        return self._proposal
+
+    def get_feedback(self) -> Feedback:
+        if not self._feedback:
+            raise FeedbackException("Feedback not found")
+        return self._feedback
 
     def set_feedback(self, feedback: Feedback) -> None:
         self._feedback = feedback

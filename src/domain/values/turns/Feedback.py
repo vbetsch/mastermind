@@ -11,11 +11,11 @@ class Feedback:
     def get_indicators(self) -> list[Indicator]:
         return self._indicators
 
-    def get_red_indicator(self) -> Indicator:
-        return self._red_indicator
+    def get_red_indicator_value(self) -> int:
+        return self._red_indicator.get_value()
 
-    def get_white_indicator(self) -> Indicator:
-        return self._white_indicator
+    def get_white_indicator_value(self) -> int:
+        return self._white_indicator.get_value()
 
     def set_red_indicator_value(self, value: int) -> None:
         self._red_indicator.set_value(value)

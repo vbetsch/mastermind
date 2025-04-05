@@ -2,6 +2,7 @@ from src.app.exceptions.ProposalException import ProposalException
 from src.common.decorators.Singleton import Singleton
 from src.domain.core.Rules import Rules
 from src.domain.core.Storage import Storage
+from src.domain.entities.Session import Session
 from src.domain.values.combinations.Bead import Bead
 from src.domain.values.combinations.Combination import Combination
 from src.domain.values.turns.Feedback import Feedback
@@ -21,6 +22,16 @@ class Arbitrator:
             if not char.upper() in available_colors.keys():
                 raise ProposalException(f"Proposal {proposal} has unavailable color")
         return True
+
+    @staticmethod
+    def has_valid_combination(feedback: Feedback) -> bool:
+        if feedback.get_red_indicator_value() == Rules().get_beads_per_combination():
+            return True
+        return False
+
+    @staticmethod
+    def has_reached_max_attempts(session: Session) -> bool:
+        return session.get_turns_length() >= Rules().get_max_attempts_before_loose()
 
     @staticmethod
     def _has_bead(bead: Bead, combination: Combination) -> bool:

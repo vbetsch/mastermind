@@ -20,13 +20,8 @@ class Session(IOriginator):
     def get_secret_combination(self) -> Combination:
         return self.secret_combination
 
-    def get_previous_proposals(self) -> list[Combination]:
-        previous_proposals: list[Combination] = []
-        for turn in self.turns:
-            proposal: Combination | None = turn.get_if_proposal()
-            if proposal:
-                previous_proposals.append(proposal)
-        return previous_proposals
+    def get_turns_length(self) -> int:
+        return len(self.turns)
 
     def get_previous_proposals_to_string(self) -> list[str]:
         previous_proposals: list[str] = []

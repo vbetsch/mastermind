@@ -76,6 +76,7 @@ Here is the architecture of the project, which respects clean architecture :
             ├── core
             ├── entities
             └── values
+```
 
 ### app
 
